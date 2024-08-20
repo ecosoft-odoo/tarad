@@ -217,6 +217,11 @@ class Agreement(models.Model):
     def _validate_rent_product_dates(self, product_lines):
         return True
 
+
+    @api.multi
+    def _validate_rent_product_year(self):
+        return True
+
     @api.constrains("line_ids")
     def _check_line_ids(self):
         return

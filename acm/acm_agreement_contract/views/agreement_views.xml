@@ -62,7 +62,7 @@
             <group name="term_information" position="inside">
                 <group string="Rental Information">
                     <field name="year_start_date" invisible="1"/>
-                    <field name="rent_product_id" domain="[('year', '=', year_start_date), ('is_lastest_version', '=', True)]" attrs="{'invisible': [('is_template', '=', True)], 'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}"/>
+                    <field name="rent_product_id" domain="[('year', '=', year_start_date)]" attrs="{'invisible': [('is_template', '=', True)], 'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}"/>
                 </group>
             </group>
             <field name="termination_date" position="attributes">
