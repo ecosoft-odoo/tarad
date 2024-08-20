@@ -582,6 +582,17 @@ class Agreement(models.Model):
                 raise UserError(_(ex))
 
     @api.multi
+    def _validate_rent_product_year(self):
+        for rec in self:
+            # Year of rental product must same with year of start date
+            product = rec.rent_product_id.product_tmpl_id
+            if rec.year_start_date != product.year:
+                raise UserError(_('Year of rental product must same with year of start date.'))
+            # Rental product must latest version in selected year
+            if product.new_product_template_ids.filtered(lambda k: k.year == rec.year_start_date):
+                raise UserError(_('Please select latest version of rental product %s for the year %s.') % (product.name, rec.year_start_date))
+
+    @api.multi
     def active_statusbar(self):
         """ Change state from draft -> active """
         for rec in self:
@@ -590,6 +601,8 @@ class Agreement(models.Model):
                 rec._validate_active_agreement()
                 # Validate rent product dates sequence
                 rec._validate_rent_product_dates(rec.line_ids)
+                # Validate rent product year
+                rec._validate_rent_product_year()
                 # Create agreement invoice line
                 rec._create_agreement_invoice_line()
             rec.write({'state': 'active',
