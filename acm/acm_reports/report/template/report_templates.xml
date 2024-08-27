@@ -11,18 +11,31 @@
     <template id="external_layout_background" inherit_id="web.external_layout_background" primary="True">
         <xpath expr="//div[@class='float-left company_address']" position="replace">
             <div class="float-left company_address" style="font-size: 24px; color: #000000;">
-                <div>
-                    <strong t-field="company.display_name"/>
-                </div>
-                <span t-field="company.partner_id.street"/>
-                <span t-field="company.partner_id.street2"/>
-                <span t-field="company.partner_id.zip"/>
-                <div t-esc="'โทรศัพท์ %s  โทรสาร %s' % (company.partner_id.phone, company.fax)"/>
-                <div>
-                    <strong t-esc="'สำนักงาน%s' % company.market_name"/>
-                    <span t-esc="'โทรศัพท์ %s' % company.company_phone"/>
-                </div>
-                <span t-esc="'เลขประจำตัวผู้เสียภาษีอากร %s' % company.partner_id.vat"/>
+                <t t-if="company.display_name == 'บริษัท คำเที่ยงพัฒนา จำกัด'" >
+                    <div>
+                        <strong t-esc="'%s (สาขาที่ 00001)' % company.display_name"/>
+                    </div>
+                    <div t-esc="'สำนักงานตลาดคำเที่ยง 100 ถ.ตลาดคำเที่ยง ต.ป่าตัน อ.เมืองเชียงใหม่'"/>
+                    <div t-esc="'จ.เชียงใหม่ 50300'"/>
+                    <div>
+                        <span t-esc="'โทรศัพท์ %s' % company.company_phone"/>
+                    </div>
+                    <span t-esc="'เลขประจำตัวผู้เสียภาษีอากร %s' % company.partner_id.vat"/>
+                </t>
+                <t t-else="">
+                    <div>
+                        <strong t-field="company.display_name"/>
+                    </div>
+                    <span t-field="company.partner_id.street"/>
+                    <span t-field="company.partner_id.street2"/>
+                    <span t-field="company.partner_id.zip"/>
+                    <div t-esc="'โทรศัพท์ %s  โทรสาร %s' % (company.partner_id.phone, company.fax)"/>
+                    <div>
+                        <strong t-esc="'สำนักงาน%s' % company.market_name"/>
+                        <span t-esc="'โทรศัพท์ %s' % company.company_phone"/>
+                    </div>
+                    <span t-esc="'เลขประจำตัวผู้เสียภาษีอากร %s' % company.partner_id.vat"/>
+                </t>
             </div>
             <div t-if="page or page == 0" name="original_copy" style="margin-left: 800px; margin-top:140px; font-weight: bold; font-size: 34px; position: absolute">
                 <t t-if="page == 0">
