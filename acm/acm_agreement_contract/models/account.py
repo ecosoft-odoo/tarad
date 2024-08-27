@@ -2,6 +2,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
 from odoo import models, fields, api
+from datetime import datetime
+import json
 
 
 class AccountInvoice(models.Model):
@@ -26,6 +28,29 @@ class AccountInvoice(models.Model):
         string='Merged',
         default=False,
     )
+    payment_date = fields.Char(        
+        compute='_compute_payment_date',
+        string='Pay Date',
+    )
+    
+    @api.depends('payments_widget')
+    def _compute_payment_date(self):
+        for invoice in self:
+            payment_data = json.loads(invoice.payments_widget)
+            if payment_data and isinstance(payment_data, dict):
+                try:
+                    # Picking 'date' in the first item of the list 'content'
+                    date_str = payment_data.get('content', [{}])[0].get('date', '')
+                    if date_str:
+                        # Convert date from 'YYYY-MM-DD' to 'DD/MM/YYYY'
+                        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+                        invoice.payment_date = date_obj.strftime('%d/%m/%Y')
+                    else:
+                        invoice.payment_date = ''
+                except (json.JSONDecodeError, TypeError, KeyError):
+                    invoice.payment_date = ''
+            else:
+                invoice.payment_date = ''
 
     @api.multi
     def _get_computed_reference(self):

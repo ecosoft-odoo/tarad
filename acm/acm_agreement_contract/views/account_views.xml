@@ -34,6 +34,9 @@
             <field name="partner_id" position="before">
                 <field name="type2"/>
             </field>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="payment_date"/>
+            </xpath>
         </field>
     </record>
 
