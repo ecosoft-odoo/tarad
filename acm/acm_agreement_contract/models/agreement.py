@@ -107,14 +107,29 @@ class Agreement(models.Model):
         states={'active': [('readonly', True)]},
     )
     company_contact_id = fields.Many2one(
-        string='Lessor Contact',
-        default=lambda self: self._default_company_contract_id(),
+        string='Lessor Contact 1',
+        # default=lambda self: self._default_company_contract_id(),
     )
     company_contact_phone = fields.Char(
-        string='Lessor Phone',
+        string='Lessor Phone 1',
     )
     company_contact_email = fields.Char(
-        string='Lessor Email',
+        string='Lessor Email 1',
+    )
+    company_contact_2_id = fields.Many2one(
+        'res.partner',
+        string='Lessor Contact 2',
+        copy=True,
+        help='The primary contact in the company.',
+        # default=lambda self: self._default_company_contract_id(),
+    )
+    company_contact_2_phone = fields.Char(
+        related='company_contact_2_id.phone',
+        string='Lessor Phone 2',
+    )
+    company_contact_2_email = fields.Char(
+        related='company_contact_2_id.email',
+        string='Lessor Email 2',
     )
     state = fields.Selection(
         string='Status',

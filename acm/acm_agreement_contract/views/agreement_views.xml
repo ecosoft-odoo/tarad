@@ -173,9 +173,25 @@
                     <field name="company_witness" nolabel="1" attrs="{'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}" placeholder="พยานผู้ให้เช่า"/>
                 </group>
             </group>
-            <field name="company_contact_id" position="attributes">
+            <!-- <field name="company_contact_id" position="attributes">
                 <attribute name="attrs">{'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}</attribute>
-            </field>
+            </field> -->
+            <group name="contact_right" position="replace">
+                <group name="contact_right" string="Primary Contact">
+                    <label for="company_contact_id"/>
+                    <div>
+                        <field name="company_contact_id" attrs="{'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}" domain="[('parent_id', '=', company_id)]" nolabel="1"/>
+                        <field name="company_contact_phone" widget="phone" readonly="1" nolabel="1"/>
+                        <field name="company_contact_email" widget="email" readonly="1" nolabel="1"/>
+                    </div>
+                    <label for="company_contact_2_id"/>
+                    <div>
+                        <field name="company_contact_2_id" attrs="{'readonly': [('state', '=', 'active'), ('is_template', '=', False)]}" domain="[('parent_id', '=', company_id)]" nolabel="1"/>
+                        <field name="company_contact_2_phone" widget="phone" readonly="1" nolabel="1"/>
+                        <field name="company_contact_2_email" widget="email" readonly="1" nolabel="1"/>
+                    </div>
+                </group>
+            </group>
             <!-- Make sure for no error 'Unknown field state in domain' in the agreement -->
             <xpath expr="//field[@name='child_agreements_ids']/tree" position="inside">
                 <field name="state" invisible="1"/>
