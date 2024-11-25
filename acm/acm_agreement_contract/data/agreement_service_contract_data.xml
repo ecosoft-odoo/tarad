@@ -239,8 +239,8 @@
         <field name="section_id" ref="agreement_service_contract_section2"/>
         <field name="content">
             <![CDATA[
-                <p>บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้บริการมีไปถึงผู้รับบริการ ตามที่อยู่ที่ผู้รับบริการให้ไว้ในสัญญานี้ไม่ว่าผู้รับบริการจะได้รับหรือไม่เพียงใดผู้รับบริการตกลงให้ถือว่าผู้รับบริการได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว</p>
-                <p>หากผู้รับบริการมีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้รับบริการจะต้องแจ้งให้ผู้ให้บริการทราบภายใน 15 วัน นับแต่วันเปลี่ยนแปลง</p>
+                <p>บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้เช่ามีไปถึงผู้เช่า ตามที่อยู่ที่ผู้เช่าให้ไว้ในสัญญานี้ไม่ว่าผู้เช่าจะได้รับหรือไม่เพียงใดผู้เช่าตกลงให้ถือว่าผู้เช่าได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว</p>
+                <p>หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบเป็นลายลักษณ์อักษรภายใน 15 วัน นับแต่วันเปลี่ยนแปลง</p>
             ]]>
         </field>
     </record>
@@ -306,15 +306,15 @@
                 <p>กรณีการใช้สิทธิบอกเลิกสัญญา</p>
                 <p>สัญญานี้จะสิ้นสุดลงทันที เมื่อเกิดเหตุการณ์อย่างหนึ่งอย่างใด ดังต่อไปนี้</p>
                 <p>18.1 กรณีการใช้สิทธิบอกเลิกสัญญา</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.1 สัญญาทุกข้อ และเอกสารแนบท้ายสัญญาทั้งหมดถือเป็นสาระสำคัญ ถ้าผู้รับบริการไม่ปฏิบัติตามสัญญาข้อหนึ่งข้อใด หรือแม้แต่ส่วนหนึ่งส่วนใด และผู้ให้บริการได้แจ้งให้ผู้รับบริการแก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนดแล้ว หากผู้รับบริการเพิกเฉย หรือไม่แก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนด ผู้ให้บริการมีสิทธิบอกเลิกการให้บริการได้ทันที โดยมิพักต้องเตือนหรือบอกกล่าวให้ปฏิบัติตามสัญญาก่อน และบรรดาเงินค่าบริการหรือเงินอื่นใด ที่ผู้รับบริการได้ชำระไปแล้วให้ตกเป็นของผู้ให้บริการทั้งหมดโดยผู้รับบริการไม่มีสิทธิเรียกร้องคืน</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.2 ในกรณีที่ผู้รับบริการประสงค์จะบอกเลิกสัญญาบริการก่อนครบกำหนดอายุสัญญาบริการผู้รับบริการต้องมีหนังสือแจ้งให้ผู้ให้บริการทราบล่วงหน้าไม่น้อยกว่า 3 เดือน กรณีนี้ผู้ให้บริการมีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตาม ข้อ 2. ของสัญญาบริการฉบับนี้ ทั้งนี้ ผู้รับบริการยังคงมีหน้าที่ต้องชำระค่าบริการ หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.3 ผู้ให้บริการจะบอกเลิกสัญญาบริการก่อนครบกำหนดอายุสัญญาบริการก็ได้ โดยผู้ให้บริการต้องมีหนังสือแจ้งให้ผู้ให้บริการทราบล่วงหน้าไม่น้อยกว่า 2 เดือน</p>
-                <p style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ก่อนครบกำหนดอายุสัญญาบริการ ในกรณีที่ผู้ให้บริการจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สินที่ให้บริการ ผู้ให้บริการจะแจ้งให้ผู้รับบริการทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาบริการสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้รับบริการจะเรียกร้องค่าเสียหายใดๆ ไม่ได้</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เมื่อผู้ให้บริการบอกเลิกสัญญาบริการ หากปรากฏว่าผู้รับบริการได้ส่งมอบเงินประกันการปฏิบัติตามสัญญาครบถ้วนแล้ว และได้ชำระหนี้ที่ค้างชำระได้แก่ ค่าบริการ ค่าตอบแทน หรือค่าบริการสาธารณูปโภค รวมตลอดถึงค่าปรับ ค่าสินไหมทดแทน และบรรดาค่าเสียหาย หรือหนี้เงินอย่างใดๆ ตามที่ระบุไว้ในสัญญาบริการ และเอกสารแนบท้ายสัญญา ให้แก่ผู้ให้บริการจนครบถ้วนแล้ว ผู้ให้บริการจะคืนเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุไว้ใน ข้อ 2. แห่งสัญญานี้</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.1 สัญญาทุกข้อ และเอกสารแนบท้ายสัญญาทั้งหมดถือเป็นสาระสำคัญ ถ้าผู้รับบริการไม่ปฏิบัติตามสัญญาข้อหนึ่งข้อใด หรือแม้แต่ส่วนหนึ่งส่วนใด และผู้ให้บริการได้แจ้งให้ผู้รับบริการแก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนดแล้ว หากผู้รับบริการเพิกเฉย หรือไม่แก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนด ผู้ให้บริการมีสิทธิบอกเลิกการเช่าได้ทันที โดยมิพักต้องเตือนหรือบอกกล่าวให้ปฏิบัติตามสัญญาก่อน และบรรดาเงินค่าเช่าและค่าบริการหรือเงินอื่นใด ที่ผู้รับบริการได้ชำระไปแล้วให้ตกเป็นของผู้ให้บริการทั้งหมดโดยผู้รับบริการไม่มีสิทธิเรียกร้องคืน</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.2 ในกรณีที่ผู้รับบริการประสงค์จะบอกเลิกสัญญาให้บริการก่อนครบกำหนดอายุสัญญาให้บริการ ผู้รับบริการต้องมีหนังสือแจ้งให้ผู้ให้บริการทราบล่วงหน้าไม่น้อยกว่า 2 เดือน กรณีนี้ผู้ให้บริการมีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตาม ข้อ 2. ของสัญญาให้บริการฉบับนี้ ทั้งนี้ ผู้รับบริการยังคงมีหน้าที่ต้องชำระค่าเช่า หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.1.3 ผู้ให้บริการจะบอกเลิกสัญญาให้บริการก่อนครบกำหนดอายุสัญญาให้บริการก็ได้ โดยผู้ให้บริการต้องมีหนังสือแจ้งให้ผู้รับบริการทราบล่วงหน้าไม่น้อยกว่า 2 เดือน </p>
+                <p style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ก่อนครบกำหนดอายุสัญญาให้บริการ ในกรณีที่ผู้ให้บริการจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สิน ที่เช่า ผู้ให้บริการจะแจ้งให้ผู้รับบริการทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาให้บริการสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้รับบริการจะเรียกร้องค่าเสียหายใดๆ ไม่ได้</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เมื่อผู้ให้บริการบอกเลิกสัญญาให้บริการ หากปรากฏว่าผู้รับบริการได้ส่งมอบเงินประกันการปฏิบัติตามสัญญาครบถ้วนแล้ว และได้ชำระหนี้ที่ค้างชำระได้แก่ ค่าเช่า ค่าตอบแทน ค่าบริการ หรือค่าบริการสาธารณูปโภค รวมตลอดถึงค่าปรับ ค่าสินไหมทดแทน และบรรดาค่าเสียหาย หรือหนี้เงินอย่างใดๆ ตามที่ระบุไว้ในสัญญาให้บริการ และเอกสารแนบท้ายสัญญา ให้แก่ผู้ให้บริการจนครบถ้วนแล้ว ผู้ให้บริการจะคืนเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุไว้ใน ข้อ 2. แห่งสัญญานี้</p>
                 <p>18.2 กรณีดังต่อไปนี้ ให้ถือว่าสัญญาสิ้นสุดลงทันที โดยมิต้องบอกกล่าวแต่อย่างใด</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.1 เมื่อครบกำหนดสิ้นสุดตามอายุการบริการของสัญญาฉบับนี้ โดยมิได้มีการต่ออายุสัญญาบริการ</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.2 ในกรณีเกิดอัคคีภัย หรือภัยพิบัติอย่างอื่นซึ่งทำความเสียหายแก่ทรัพย์สินที่ให้บริการทั้งหมด หรือแต่ส่วนหนึ่งส่วนใดจนไม่เหมาะสมที่จะใช้ประกอบการค้าอีกต่อไป</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.3 ผู้รับบริการใช้ทรัพย์สินที่ให้บริการในทางผิดกฎหมาย หรือขัดต่อความสงบเรียบร้อยและศีลธรรมอันดีของประชาชน</p>
+                <p style=">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.1 เมื่อครบกำหนดสิ้นสุดตามอายุการเช่าของสัญญาฉบับนี้ โดยมิได้มีการต่ออายุสัญญาให้บริการ</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.2 ในกรณีเกิดอัคคีภัย หรือภัยพิบัติอย่างอื่นซึ่งทำความเสียหายแก่ทรัพย์สินที่เช่าทั้งหมด หรือแต่ส่วนหนึ่งส่วนใดจนไม่เหมาะสมที่จะใช้ประกอบการค้าอีกต่อไป</p>
+                <p style=">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18.2.3 ผู้รับบริการใช้ทรัพย์สินที่เช่าในทางผิดกฎหมาย หรือขัดต่อความสงบเรียบร้อยและศีลธรรมอันดีของประชาชน</p>
             ]]>
         </field>
     </record>
@@ -329,16 +329,12 @@
                 <p>ผลภายหลังสัญญาสิ้นสุด</p>
                 <p>เมื่อสัญญาระงับลงไม่ว่าด้วยเหตุใดก็ตาม ผู้ให้บริการและผู้รับบริการตกลงกัน ดังนี้</p>
                 <p>19.1 บรรดาเงินใดๆ ที่ผู้รับบริการชำระแล้วไม่มีสิทธิเรียกคืน และผู้ให้บริการมีสิทธิเรียกให้ผู้รับบริการชำระหนี้ที่ค้างชำระตลอดจนค่าปรับทั้งหมด และในกรณีผู้รับบริการปฏิบัติผิดสัญญา ผู้รับบริการยินยอมให้ผู้ให้บริการมีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุใน ข้อ 2. ของสัญญานี้ รวมทั้งมีสิทธิเรียกค่าเสียหายในส่วนที่เกินจากเงินประกันสัญญาทั้งหมด (หากมี)</p>
-                <p>19.2 ผู้รับบริการจะต้องขนย้ายทรัพย์สิน และบริวารออกจากทรัพย์สินที่ให้บริการ พร้อมทั้งส่งมอบทรัพย์สินที่ให้บริการในสภาพเดิม และเรียบร้อย และรื้อถอนทรัพย์สินที่ผู้รับบริการเป็นผู้ดำเนินการติดตั้ง (หากมี) ภายในระยะเวลาที่สัญญานี้สิ้นสุดลงด้วยค่าใช้จ่ายของผู้รับบริการเองทั้งสิ้น หากผู้รับบริการไม่ดำเนินการให้ถือว่าผู้รับบริการยังคงครอบครองทรัพย์สินที่ให้บริการอยู่ และผู้ให้บริการมีสิทธิเรียกค่าปรับในอัตราวันละ 500 บาท (ห้าร้อยบาทถ้วน) ต่อพื้นที่ให้บริการ นับแต่วันที่สัญญาระงับจนถึงวันที่ผู้รับบริการส่งมอบทรัพย์สินที่ให้บริการคืนเสร็จเรียบร้อยแล้ว ทั้งนี้ไม่ตัดสิทธิผู้ให้บริการในการเรียกร้องค่าใช้จ่ายใดๆ ที่เกิดขึ้นจากการดำเนินการให้ทรัพย์สินที่ให้บริการอยู่ในสภาพเดิมจากผู้รับบริการ</p>
-                <p>19.3 กรณีผู้รับบริการไม่ส่งมอบคืนพื้นที่ตามข้อ 19.2 นอกจากสิทธิเรียกค่าปรับแล้ว ผู้ให้บริการมีสิทธิเข้าครอบครองทรัพย์สินที่ให้บริการได้ด้วยตนเอง โดยผู้รับบริการไม่มีสิทธิคัดค้าน หรือเรียกค่าเสียหาย หรือดำเนินการตามกฎหมายกับผู้ให้บริการทั้งคดีแพ่งและคดีอาญาแต่ประการใด กล่าวคือ</p>
+                <p>19.2 ผู้รับบริการจะต้องขนย้ายทรัพย์สิน และบริวารออกจากทรัพย์สินที่เช่า พร้อมทั้งส่งมอบทรัพย์สินที่เช่าในสภาพเดิม และเรียบร้อย และรื้อถอนทรัพย์สินที่ผู้รับบริการเป็นผู้ดำเนินการติดตั้ง (หากมี) ภายในระยะเวลาที่สัญญานี้สิ้นสุดลงด้วยค่าใช้จ่ายของผู้รับบริการเองทั้งสิ้น หากผู้รับบริการไม่ดำเนินการให้ถือว่าผู้รับบริการยังคงครอบครองทรัพย์สินที่เช่าอยู่ และผู้ให้บริการมีสิทธิเรียกค่าปรับในอัตราวันละ 500 บาท (ห้าร้อยบาทถ้วน) ต่อพื้นที่เช่านับแต่วันที่สัญญาระงับจนถึงวันที่ผู้รับบริการส่งมอบทรัพย์สินที่เช่าคืนเสร็จเรียบร้อยแล้ว ทั้งนี้ไม่ตัดสิทธิผู้ให้บริการในการเรียกร้องค่าใช้จ่ายใดๆ ที่เกิดขึ้นจากการดำเนินการให้ทรัพย์สินที่เช่าอยู่ในสภาพเดิมจากผู้รับบริการ</p>
+                <p>19.3 กรณีผู้รับบริการไม่ส่งมอบคืนพื้นที่ตามข้อ 19.2 นอกจากสิทธิเรียกค่าปรับแล้ว ผู้ให้บริการมีสิทธิเข้าครอบครองทรัพย์สินที่เช่าได้ด้วยตนเอง โดยผู้รับบริการไม่มีสิทธิคัดค้าน หรือเรียกค่าเสียหาย หรือดำเนินการตามกฎหมายกับผู้ให้บริการทั้งคดีแพ่งและคดีอาญาแต่ประการใด กล่าวคือ</p>
                 <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ก) ให้ถือว่าสิทธิครอบครองพื้นที่กลับคืนสู่ผู้ให้บริการในทันที</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ข) ผู้ให้บริการหรือตัวแทนผู้ให้บริการมีสิทธิที่จะทำลายสิ่งกีดขวางประตู หรือกุญแจ และเคลื่อนย้ายทรัพย์สินต่างๆ ออกจากพื้นที่โดยผู้รับบริการจะต้องเป็นผู้รับผิดชอบค่าใช้จ่ายในการขนย้าย และหรือ เก็บรักษาทรัพย์สินนั้น</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ค) ผู้ให้บริการ หรือตัวแทนผู้ให้บริการ มีสิทธิที่จะปิดกั้น หรือกระทำการใดๆ เพื่อห้ามมิให้ผู้รับบริการ เข้าในทรัพย์สินที่ให้บริการ</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ง) ผู้ให้บริการมีสิทธิระงับการให้บริการสาธารณูปโภค เช่น กระแสไฟฟ้า น้ำประปา โทรศัพท์ และอื่นๆ ที่ให้บริการภายในทรัพย์สินที่ให้บริการได้ทันที โดยการระงับการให้บริการของผู้ให้บริการนั้น ผู้รับบริการไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไรจากผู้ให้บริการแต่อย่างใด</p>
-                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;จ) ผู้ให้บริการมีสิทธิที่จะดำเนินการให้ผู้รับบริการรายใหม่เข้าใช้ประโยชน์ทรัพย์สินที่ให้บริการได้ในทันที</p>
-                <p>19.4 กรณีผู้รับบริการไม่ขนย้ายทรัพย์สินออกจากทรัพย์สินที่ให้บริการ บรรดาทรัพย์สินที่อยู่ในทรัพย์สินที่ให้บริการ ผู้ให้บริการไม่ต้องรับผิดชอบในความสูญหายหรือเสียหายของทรัพย์สินของผู้รับบริการ และผู้รับบริการยินยอมให้ผู้ให้บริการมีสิทธิยึดหน่วงทรัพย์สินดังกล่าวได้ โดยสามารถใช้สอย หรือเอาให้เช่า หรือเอาทรัพย์สินนั้นไปเป็นหลักประกันได้ จนกว่าผู้ให้บริการจะได้รับชำระหนี้ทั้งหมดตามสัญญา โดยผู้รับบริการจะต้องรับผิดชอบค่าใช้จ่ายในการดำเนินการดังกล่าวทั้งหมด</p>
-                <p>19.5 กรณีที่ผู้รับบริการได้ขนย้ายทรัพย์สินออกจากทรัพย์สินที่ให้บริการแล้ว หากปรากฏว่ามีทรัพย์สินใดๆ คงอยู่ในทรัพย์สินที่ให้บริการให้ถือว่าทรัพย์สินนั้นตกเป็นกรรมสิทธิ์ของผู้ให้บริการทันทีโดยไม่มีค่าใช้จ่ายหรือค่าการงานแต่อย่างใด</p>
-
+                <p style=">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ข) ผู้ให้บริการหรือตัวแทนผู้ให้บริการมีสิทธิที่จะทำลายสิ่งกีดขวางประตู หรือกุญแจ และเคลื่อนย้ายทรัพย์สินต่างๆ ออกจากพื้นที่โดยผู้รับบริการจะต้องเป็นผู้รับผิดชอบค่าใช้จ่ายในการขนย้าย และหรือ เก็บรักษาทรัพย์สินนั้น</p>
+                <p style="text-align:left;>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ค) ผู้ให้บริการ หรือตัวแทนผู้ให้บริการ มีสิทธิที่จะปิดกั้น หรือกระทำการใดๆ เพื่อห้ามมิให้ผู้รับบริการ เข้าในทรัพย์สินที่เช่า</p>
+                <p style=">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ง) ผู้ให้บริการมีสิทธิระงับการให้บริการสาธารณูปโภค เช่น กระแสไฟฟ้า น้ำประปา โทรศัพท์ และอื่นๆ ที่ให้บริการภายในทรัพย์สินที่เช่าได้ทันที โดยการระงับการให้บริการของผู้ให้บริการนั้น ผู้รับบริการไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไรจากผู้ให้บริการแต่อย่างใด</p>
             ]]>
         </field>
     </record>
@@ -350,7 +346,7 @@
         <field name="section_id" ref="agreement_service_contract_section2"/>
         <field name="content">
             <![CDATA[
-                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาบริการนี้ ผู้รับบริการตกลงให้ผู้ให้บริการเป็นผู้วินิจฉัยชี้ขาด และผู้รับบริการตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งรัด</p>
+                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาให้บริการนี้ ผู้รับบริการตกลงให้ผู้ให้บริการเป็นผู้วินิจฉัยชี้ขาด และผู้รับบริการตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งครัด</p>
             ]]>
         </field>
     </record>
@@ -400,196 +396,228 @@
         <field name="content">
             <![CDATA[
                 <div style="text-align: left;line-height:27px !important;">
-                <p class="text-center"><b style="text-decoration: underline;text-decoration-thickness: 1px;">เอกสารแนบท้ายสัญญาเงื่อนไขการให้บริการพื้นที่${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่ให้บริการ ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></p>
-                <p class="text-right"><b>เลขที่</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>1.</b>
-                </div>
-                <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
-                <b>ชื่อผู้รับบริการ (นิติบุคคล)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.name or '-'}
-                </div>
-                <div class="col-5">
-                <b>เลขทะเบียนนิติบุคคล</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.vat or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>2.</b>
-                </div>
-                <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
-                <b>ชื่อผู้รับบริการ (บุคคลธรรมดา)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.name or '-'}
-                </div>
-                <div class="col-5">
-                <b>เลขประจำตัวประชาชน</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.vat or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>3.</b>
-                </div>
-                <div class="col-2" style="padding-left: 0px;">
-                <b>ที่อยู่</b>
-                </div>
-                <div class="col-9">
-                ${(object.agreement_id.partner_id.street or object.agreement_id.partner_id.street2 or object.agreement_id.partner_id.zip) and '%s %s %s' % (object.agreement_id.partner_id.street or '', object.agreement_id.partner_id.street2 or '', object.agreement_id.partner_id.zip or '') or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>4.</b>
-                </div>
-                <div class="col-2" style="padding-left: 0px;padding-right: 0px;">
-                <b>เบอร์ติดต่อ</b>
-                </div>
-                <div class="col-9">
-                ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>5.</b>
-                </div>
-                <div class="col-11" style="padding-left: 0px;">
-                <div class="row">
-                <div class="col-12">
-                <b>ประเภทธุรกิจ/กิจการ</b>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-3" style="padding-right: 0px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;- ชื่อกิจการ
-                </div>
-                <div class="col-3" style="padding-right: 0px;">
-                ${object.agreement_id.business_name or '-'}
-                </div>
-                <div class="col-3" style="padding-right: 0px;">
-                หมวดสินค้า
-                </div>
-                <div class="col-3">
-                ${object.agreement_id.goods_category_id.name or '-'}
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-3" style="padding-right: 0px;">
-                &nbsp;&nbsp;&nbsp;&nbsp;- จำหน่ายสินค้าประเภท
-                </div>
-                <div class="col-3" style="padding-right: 0px;">
-                ${object.agreement_id.goods_type or '-'}
-                </div>
-                <div class="col-3" style="padding-right: 0px;">
-                ช่วงเวลาประกอบการค้า
-                </div>
-                <div class="col-3">
-                ${object.agreement_id.rent_product_id.attribute_value_ids and ', '.join(object.agreement_id.rent_product_id.attribute_value_ids.mapped('name')) or object.agreement_id.rent_product_id.working_hours_id.working_hours or '-'}
-                </div>
-                </div>
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>6.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;">
-                <b>ทรัพย์สินที่ให้บริการ</b><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- เลขที่พื้นที่ให้บริการ<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่ (กว้าง x ยาว)
-                </div>
-                <div class="col-7">
-                <span style="margin-left: -150px;"><b>ตลาดคำเที่ยง เลขที่ 100 ถ.ตลาดคำเที่ยง ต.ป่าตัน อ.เมืองเชียงใหม่ จ.เชียงใหม่</b></span><br>
-                ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
-                ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร) (พื้นที่โดยประมาณ)
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>7.</b>
-                </div>
-                <div class="col-11" style="padding-left: 0px;">
-                <b>ผู้รับบริการต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่ให้บริการโดยมีน้ำหนัก</b> ไม่มากกว่า ${object.agreement_id.rent_product_id.group_id.weight1 or '-'} กิโลกรัมต่อตารางเมตร
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>8.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;">
-                <b>ระยะเวลาการให้บริการ</b>
-                </div>
-                <div class="col-7">
-                ${object.agreement_id.get_rental_period(object.agreement_id.start_date, object.agreement_id.end_date) or '-'} (วันที่ ${object.agreement_id.start_date and '%s %s %s' % (object.agreement_id.start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.start_date.strftime('%m')), (object.agreement_id.start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.end_date and '%s %s %s' % (object.agreement_id.end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.end_date.strftime('%m')), (object.agreement_id.end_date + relativedelta(years=543)).strftime('%Y')) or '-'})
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>9.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;">
-                <b>วันส่งมอบพื้นที่ให้บริการ</b>
-                </div>
-                <div class="col-7">
-                วันที่ ${object.agreement_id.rental_area_delivery_date and '%s %s %s' % (object.agreement_id.rental_area_delivery_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_area_delivery_date.strftime('%m')), (object.agreement_id.rental_area_delivery_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>10.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;">
-                <b>ระยะเวลาปลอดค่าบริการ</b>
-                </div>
-                <div class="col-7">
-                วันที่ ${object.agreement_id.rental_free_start_date and '%s %s %s' % (object.agreement_id.rental_free_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_start_date.strftime('%m')), (object.agreement_id.rental_free_start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.rental_free_end_date and '%s %s %s' % (object.agreement_id.rental_free_end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_end_date.strftime('%m')), (object.agreement_id.rental_free_end_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>11.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;">
-                <b>วันเริ่มต้นชำระค่าบริการ</b>
-                </div>
-                <div class="col-7">
-                % set rent_start_date = object.agreement_id.rental_free_end_date and object.agreement_id.rental_free_end_date + relativedelta(days=+1) or object.agreement_id.start_date
-                วันที่ ${rent_start_date and '%s %s %s' % (rent_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(rent_start_date.strftime('%m')), (rent_start_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>12.</b>
-                </div>
-                <div class="col-11" style="padding-left: 0px;">
-                <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้บริการ จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท (รวมภาษีมูลค่าเพิ่ม) แบ่งจ่ายดังนี้' or ' - บาท (รวมภาษีมูลค่าเพิ่ม)'}
-                <div>
-                % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
-                %endfor
-                </div>
-                &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท  (รวมภาษีมูลค่าเพิ่ม)
-                ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม) ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
-                </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px;">
-                <div class="col-1" style="padding-right: 0px;">
-                <b>13.</b>
-                </div>
-                <div class="col-4" style="padding-left: 0px;padding-right: 0px;">
-                <b>เงินประกันการปฏิบัติตามสัญญา</b><br>
-                &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันการปฏิบัติตามสัญญา<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าบริการพื้นที่ส่วนกลาง<br>
-                &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าสาธารณูปโภค
-                </div>
-                <div class="col-7">
-                <span style="color: white;">.</span><br>
-                ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='security_deposit').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
-                ${object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
-                ${object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
-                </div>
-                </div>
-                <div class="row" style="text-indent: 0px;margin-top: 70px;"><div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้บริการ<br>(${object.agreement_id.company_contact_id and &nbsp;&nbsp;&nbsp;object.agreement_id.company_contact_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div><div class="col-6 text-center">ลงชื่อ.....................................................ผู้รับบริการ<br>
-                (${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div></div>
+                    <p class="text-center"><b style="text-decoration: underline;text-decoration-thickness: 1px;">เอกสารแนบท้ายสัญญาเงื่อนไขการให้บริการพื้นที่${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่ให้บริการ ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></p>
+                    <p class="text-right"><b>เลขที่</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>1.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้รับบริการ (นิติบุคคล)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-6">
+                            <b>เลขทะเบียนนิติบุคคล</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>2.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้รับบริการ (บุคคลธรรมดา)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-6">
+                            <b>เลขประจำตัวประชาชน</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>3.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;">
+                            <b>ที่อยู่</b>
+                        </div>
+                        <div class="col-9">
+                            ${(object.agreement_id.partner_id.street or object.agreement_id.partner_id.street2 or object.agreement_id.partner_id.zip) and '%s %s %s' % (object.agreement_id.partner_id.street or '', object.agreement_id.partner_id.street2 or '', object.agreement_id.partner_id.zip or '') or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>4.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;padding-right: 0px;">
+                            <b>เบอร์ติดต่อ</b>
+                        </div>
+                        <div class="col-9">
+                            ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>5.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>ประเภทธุรกิจ/กิจการ</b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- ชื่อกิจการ
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.business_name or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    หมวดสินค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.goods_category_id.name or '-'}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- จำหน่ายสินค้าประเภท
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.goods_type or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ช่วงเวลาประกอบการค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.rent_product_id.attribute_value_ids and ', '.join(object.agreement_id.rent_product_id.attribute_value_ids.mapped('name')) or object.agreement_id.rent_product_id.working_hours_id.working_hours or '-'}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>6.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ทรัพย์สินที่ให้บริการ</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- เลขที่พื้นที่ให้บริการ<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่ (กว้าง x ยาว)
+                        </div>
+                        <div class="col-7">
+                            <span style="margin-left: -150px;"><b>ตลาดคำเที่ยง เลขที่ 100 ถ.ตลาดคำเที่ยง ต.ป่าตัน อ.เมืองเชียงใหม่ จ.เชียงใหม่</b></span><br>
+                            ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
+                            ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร) (พื้นที่โดยประมาณ)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>7.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <b>ผู้รับบริการต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่ให้บริการโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>8.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาการให้บริการ</b>
+                        </div>
+                        <div class="col-7">
+                            ${object.agreement_id.get_rental_period(object.agreement_id.start_date, object.agreement_id.end_date) or '-'} (วันที่ ${object.agreement_id.start_date and '%s %s %s' % (object.agreement_id.start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.start_date.strftime('%m')), (object.agreement_id.start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.end_date and '%s %s %s' % (object.agreement_id.end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.end_date.strftime('%m')), (object.agreement_id.end_date + relativedelta(years=543)).strftime('%Y')) or '-'})
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>9.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันส่งมอบพื้นที่ให้บริการ</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_area_delivery_date and '%s %s %s' % (object.agreement_id.rental_area_delivery_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_area_delivery_date.strftime('%m')), (object.agreement_id.rental_area_delivery_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>10.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาปลอดค่าบริการ</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_free_start_date and '%s %s %s' % (object.agreement_id.rental_free_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_start_date.strftime('%m')), (object.agreement_id.rental_free_start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.rental_free_end_date and '%s %s %s' % (object.agreement_id.rental_free_end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_end_date.strftime('%m')), (object.agreement_id.rental_free_end_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>11.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันเริ่มต้นชำระค่าบริการ</b>
+                        </div>
+                        <div class="col-7">
+                            % set rent_start_date = object.agreement_id.rental_free_end_date and object.agreement_id.rental_free_end_date + relativedelta(days=+1) or object.agreement_id.start_date
+                            วันที่ ${rent_start_date and '%s %s %s' % (rent_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(rent_start_date.strftime('%m')), (rent_start_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>12.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้บริการ จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท (รวมภาษีมูลค่าเพิ่ม) แบ่งจ่ายดังนี้' or ' - บาท (รวมภาษีมูลค่าเพิ่ม)'}
+                            <div>
+                                % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
+                                %endfor
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท  (รวมภาษีมูลค่าเพิ่ม)
+                            ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม) ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>13.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;padding-right: 0px;">
+                            <b>เงินประกันการปฏิบัติตามสัญญา</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันการปฏิบัติตามสัญญา<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าบริการพื้นที่ส่วนกลาง<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าสาธารณูปโภค
+                        </div>
+                        <div class="col-7">
+                            <span style="color: white;">.</span><br>
+                            ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='security_deposit').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            ${object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            ${object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                                <b>14.</b>
+                            </div>
+                        <div class="col-11" style="padding-left: 0px;padding-right: 0px;">
+                            <b>วันชำระค่าเช่า และค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) และค่าปรับ</b><br>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการรายวัน</div>
+                            <div class="col-6">ชำระทุกวัน (ห้ามค้างชำระเกิน 5 วัน วันที่เกินคิดค่าปรับ)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการรายเดือน</div>
+                            <div class="col-6">ชำระภายในวันที่ 15 ของทุกเดือน</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า)</div>
+                            <div class="col-6">ชำระภายในวันที่ 15 ของเดือนถัดไป</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการ เกินกำหนด</div>
+                            <div class="col-6">คิดค่าปรับในอัตราวันละ 50 บาท ต่อสัญญา ติดต่อกันไป จนกว่าจะชำระเสร็จสิ้น</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) เกินกำหนด</div>
+                            <div class="col-6">คิดค่าปรับในอัตราวันละ 50 บาท ต่อสัญญา ติดต่อกันไป จนกว่าจะชำระเสร็จสิ้น</div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-indent: 0px;margin-top: 70px;">
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้บริการ<br>(  นางสาวปิยะดา  เลาหวัฒน์  )</div>
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้รับบริการ<br>(${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div>
+                    </div>
                 </div>
             ]]>
         </field>
