@@ -10,6 +10,7 @@
         <field name="contract_type">sale</field>
         <field name="description">สัญญาเช่า</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="company_contact_id" search="[('type', '=', 'contact'), ('name', '=', 'นางสาวปิยะดา เลาหวัฒน์')]"/>
     </record>
 
     <!-- section -->
@@ -89,7 +90,7 @@
                 <p>- เอกสารแนบท้ายสัญญา ข. แผนผังแสดงโซนที่เช่า</p>
                 <p>- เอกสารแนบท้ายสัญญา ค. กฎระเบียบ และข้อบังคับในการดำเนินกิจการค้าในพื้นที่เช่า</p>
                 <p>- เอกสารแนบท้ายสัญญา ง. ภาพถ่ายทรัพย์สินที่เช่าในวันส่งมอบพื้นที่</p>
-                <p>ผู้ให้เช่าสงวนสิทธิในการปรับปรุง เปลี่ยนแปลง เคลื่อนย้ายตำแหน่งที่ตั้งทรัพย์สินที่เช่าตามสัญญานี้ได้ตามความเหมาะสม</p>
+                <p>ผู้ให้เช่าสงวนสิทธิ์ในการปรับปรุง เปลี่ยนแปลง เคลื่อนย้ายตำแหน่งที่ตั้งทรัพย์สินที่เช่าตามสัญญานี้ได้ตามความเหมาะสม</p>
                 <p>ผู้เช่ารับทราบเป็นอย่างดีว่า ประเภทกิจการที่ผู้เช่าได้รับอนุญาตตามข้อนี้ มิได้ให้สิทธิแก่ผู้เช่ารายเดียว <br>ผู้ให้เช่ามีสิทธิอนุญาตให้ผู้เช่ารายอื่นประกอบกิจการประเภทเดียวกับผู้เช่าได้</p>
             ]]>
         </field>
@@ -299,7 +300,7 @@
                     บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้เช่ามีไปถึงผู้เช่าตามที่อยู่ที่ผู้เช่าให้ไว้ในสัญญานี้ไม่ว่าผู้เช่าจะได้รับหรือไม่เพียงใดผู้เช่าตกลงให้ถือว่าผู้เช่าได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว
                 </p>
                 <p>
-                    หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบภายใน 15 วัน นับแต่วันเปลี่ยนแปลง
+                    หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบเป็นลายลักษณ์อักษรภายใน 15 วัน นับแต่วันเปลี่ยนแปลง
                 </p>
             ]]>
         </field>
@@ -628,7 +629,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่เช่า (กว้าง x ยาว)
                     </div>
                     <div class="col-7">
-                    <p style="margin-left: -190px;"><b>อาคารตลาดวโรรส เลขที่ 15 ถ.ช้างม่อย อ.เมืองเชียงใหม่ จ.เชียงใหม่</b></p><br>
+                    <p style="margin-left: -190px;"><b>อาคาร${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} ${object.agreement_id.company_id.market_address or '&nbsp;&nbsp;&nbsp;'}</b></p><br>
                     ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
                     ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร)
                     </div>
@@ -638,7 +639,7 @@
                     <b>7.</b>
                     </div>
                     <div class="col-11" style="padding-left: 0px;">
-                    <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า ${object.agreement_id.rent_product_id.group_id.weight1 or '150'} กิโลกรัมต่อตารางเมตร
+                    <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
                     </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
