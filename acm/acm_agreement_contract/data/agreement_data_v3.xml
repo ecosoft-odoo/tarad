@@ -693,15 +693,15 @@
                     </div>
                     <div class="col-11" style="padding-left: 0px;">
                     <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('lst_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
                     <div>
                     % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.lst_price and '{0:,.2f}'.format(line.lst_price) or '-'} บาท</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
                     %endfor
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('lst_price')[:1])) or '-'} บาท
-                    ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('lst_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('lst_price')[:1])) or '-'} บาท ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('lst_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท
+                    ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
                     </div>
                     </div>
                     <p><b>13.เงินประกันการปฏิบัติตามสัญญา</b></p>
