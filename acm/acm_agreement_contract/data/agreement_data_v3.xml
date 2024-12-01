@@ -1,6 +1,6 @@
 <odoo noupdate="0">
     <!-- สัญญาเช่า ( V3 ) -->
-    <record id="agreement_template_v3" model="agreement">
+    <record id="agreement_lease_template_v3" model="agreement">
         <field name="name">สัญญาเช่า (V3)</field>
         <field name="code">Template</field>
         <field name="is_template">True</field>
@@ -10,75 +10,65 @@
         <field name="contract_type">sale</field>
         <field name="description">สัญญาเช่า</field>
         <field name="company_id" ref="base.main_company"/>
+        <field name="company_contact_id" search="[('type', '=', 'contact'), ('name', '=', 'นางสาวปิยะดา เลาหวัฒน์')]"/>
     </record>
 
     <!-- section -->
-    <record id="agreement_section1_v3" model="agreement.section">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_section1_v3" model="agreement.section">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ย่อหน้าที่ 1</field>
         <field name="title"> </field>
         <field name="sequence">10</field>
         <field name="content">
             <![CDATA[
-                <div style="text-align: center; font-weight: bold; font-size: 28px;">
-                    สัญญาเช่าบางส่วน ${object.agreement_id.company_id.market_name or '   '}  เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '   '} โซน ${object.agreement_id.rent_product_id.group_id.description or '   '}
-                </div>
-                <span style="display: block; margin-bottom: 10px;text-align: right;">
-                    เลขที่ ${object.agreement_id.code or '   '}
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    สัญญานี้ทำขึ้น ณ สำนักงาน${object.agreement_id.company_id.market_name or '   '} จังหวัดเชียงใหม่ เมื่อวันที่ ${object.agreement_id.date_contract and '%s %s %s' % (object.agreement_id.date_contract.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.date_contract.strftime('%m')), (object.agreement_id.date_contract + relativedelta(years=543)).strftime('%Y')) or '   '} ระหว่าง
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ${object.agreement_id.company_id.name or '   '} ซึ่งจดทะเบียนเป็นนิติบุคคลเลขที่ ${object.agreement_id.company_id.vat or '   '} มีสำนักงานใหญ่อยู่ที่ ${object.agreement_id.company_id.street or ''} ${object.agreement_id.company_id.street2 or ''} ${object.agreement_id.company_id.zip or ''} ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "ผู้ให้เช่า" ฝ่ายหนึ่ง กับ ${object.agreement_id.partner_id.name or '   '}
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    &emsp;เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ${object.agreement_id.partner_id.vat or '   '} อยู่บ้านเลขที่ ${object.agreement_id.partner_id.street or ''} ${object.agreement_id.partner_id.street2 or ''} ${object.agreement_id.partner_id.zip or ''} โทรศัพท์ ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '   '} ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "ผู้เช่า" อีกฝ่ายหนึ่ง
-                </span>
+                <p style="text-align: center; text-indent: 0px;">
+                    <font style="font-size: 28px;">
+                        <b>สัญญาเช่าพื้นที่บางส่วน&nbsp;${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b>
+                    </font>
+                </p>
+                <p style="text-align: right; text-indent: 0px;">เลขที่ ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
+                <p>สัญญานี้ทำขึ้น ณ สำนักงาน${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} จังหวัดเชียงใหม่ เมื่อวันที่ ${object.agreement_id.date_contract and '%s %s %s' % (object.agreement_id.date_contract.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.date_contract.strftime('%m')), (object.agreement_id.date_contract + relativedelta(years=543)).strftime('%Y')) or '&nbsp;&nbsp;&nbsp;'} ระหว่าง</p>
+                <p>${object.agreement_id.company_id.name or '&nbsp;&nbsp;&nbsp;'} ซึ่งจดทะเบียนเป็นนิติบุคคลเลขที่ ${object.agreement_id.company_id.vat or '&nbsp;&nbsp;&nbsp;'} มีสำนักงานใหญ่อยู่ที่ ${object.agreement_id.company_id.street or ''} ${object.agreement_id.company_id.street2 or ''} ${object.agreement_id.company_id.zip or ''}
+                ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า<br>"ผู้ให้เช่า" ฝ่ายหนึ่ง กับ</p>
+                <p>${object.agreement_id.partner_id.name or '&nbsp;&nbsp;&nbsp;'} เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ${object.agreement_id.partner_id.vat or '&nbsp;&nbsp;&nbsp;'} อยู่บ้านเลขที่ ${object.agreement_id.partner_id.street or ''} ${object.agreement_id.partner_id.street2 or ''} ${object.agreement_id.partner_id.zip or ''} โทรศัพท์ ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '&nbsp;&nbsp;&nbsp;'} ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "ผู้เช่า" อีกฝ่ายหนึ่ง</p>
             ]]>
         </field>
     </record>
 
-    <record id="agreement_section2_v3" model="agreement.section">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_section2_v3" model="agreement.section">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ย่อหน้าที่ 2</field>
         <field name="title"> </field>
         <field name="sequence">20</field>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    คู่สัญญาทั้งสองฝ่ายได้ตกลงทำสัญญากัน มีข้อความดังต่อไปนี้
-                </span>
+                <p>คู่สัญญาทั้งสองฝ่ายได้ตกลงทำสัญญากัน มีข้อความดังต่อไปนี้</p>
             ]]>
         </field>
     </record>
 
-    <record id="agreement_section3_v3" model="agreement.section">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_section3_v3" model="agreement.section">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ย่อหน้าที่ 3</field>
         <field name="title"> </field>
         <field name="sequence">30</field>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    สัญญานี้ทำขึ้นไว้สองฉบับข้อความตรงกันคู่สัญญาได้ตรวจ และเห็นว่าถูกต้องแล้วจึงได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน และคู่สัญญาแต่ละฝ่ายต่างยึดถือกันไว้ฝ่ายละฉบับ
-                </span>
-                <br><br>
-                <div class="row">
-                    <div class="col-6 text-center">
-                        ลงชื่อ.....................................................ผู้ให้เช่า<br>
-                        &emsp;&emsp;(${ object.agreement_id.company_contact_id and object.agreement_id.company_contact_id.name or '.....................................................' })
+                <p>สัญญานี้ทำขึ้นไว้สองฉบับข้อความตรงกัน คู่สัญญาได้ตรวจและเห็นว่าถูกต้องแล้ว จึงได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน และคู่สัญญาแต่ละฝ่ายต่างยึดถือกันไว้ฝ่ายละฉบับ</p><br><br>
+                <div style="page-break-inside: avoid !important;">
+                    <div class="row" style="text-indent: 0px;">
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้เช่า<br>
+                            (${object.agreement_id.company_contact_id and &nbsp;&nbsp;&nbsp;object.agreement_id.company_contact_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})
+                        </div>
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้เช่า<br>
+                            (${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})
+                        </div>
                     </div>
-                    <div class="col-6 text-center">
-                        ลงชื่อ.....................................................ผู้เช่า<br>
-                        &emsp;&emsp;(${ object.agreement_id.partner_id and object.agreement_id.partner_id.name or '.....................................................' })
-                    </div>
-                </div>
-                <br><br>
-                <div class="row">
-                    <div class="col-12 text-center">
-                        ลงชื่อ.....................................................พยาน<br>
-                        &emsp;&emsp;(${ object.agreement_id.company_witness or '.....................................................' })
+                    <br><br>
+                    <div class="row" style="text-indent: 0px;">
+                        <div class="col-12 text-center">ลงชื่อ.....................................................พยาน<br>
+                            (${object.agreement_id.company_witness and &nbsp;&nbsp;&nbsp;object.agreement_id.company_witness&nbsp;&nbsp;&nbsp; or '.....................................................'})
+                        </div>
                     </div>
                 </div>
             ]]>
@@ -86,488 +76,464 @@
     </record>
 
     <!-- clause -->
-    <record id="agreement_clause1_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause1_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 1</field>
         <field name="title"> </field>
         <field name="sequence">10</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ข้อตกลงการเช่าและทรัพย์สินที่เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้ให้เช่าตกลงให้ผู้เช่า และผู้เช่าตกลงเช่าทรัพย์สินของผู้ให้เช่า โดยคู่สัญญาตกลงกันว่าบรรดาเอกสารแนบท้ายสัญญารวมทั้งประกาศคำสั่งหรือข้อกำหนดที่ผู้ให้เช่าประกาศใช้บังคับแก่ผู้เช่าไม่ว่าขณะนี้หรือที่ผู้ให้เช่าจะประกาศใช้บังคับต่อไปในภายหน้าให้ถือว่าเงื่อนไขดังกล่าวนั้นทั้งหมดเป็นส่วนหนึ่งซึ่งเป็นสาระสำคัญของสัญญานี้ รวมทั้งจะต้องไม่ให้ลูกจ้างหรือบริวารของผู้เช่าหรือบุคคลอื่นใดฝ่าฝืนกฎระเบียบ ประกาศ คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัดประกอบด้วย
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    - เอกสารแนบท้ายสัญญา ก. เงื่อนไขการเช่าพื้นที่เช่าตลาด ${object.agreement_id.company_id.market_name or '   '} ${object.agreement_id.rent_product_id.lock_number or '   '} โซน ${object.agreement_id.rent_product_id.group_id.description or '   '}
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    - เอกสารแนบท้ายสัญญา ข. แผนผังแสดงโซนที่เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    - เอกสารแนบท้ายสัญญา ค. กฎระเบียบ และข้อบังคับในการดำเนินกิจการค้าในพื้นที่เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    - เอกสารแนบท้ายสัญญา ง. ภาพถ่ายทรัพย์สินที่เช่าในวันส่งมอบพื้นที่
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้ให้เช่าสงวนสิทธิในการปรับปรุง เปลี่ยนแปลง เคลื่อนย้ายตำแหน่งที่ตั้งทรัพย์สินที่เช่าตามสัญญานี้ได้ตามความเหมาะสม
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้เช่ารับทราบเป็นอย่างดีว่า ประเภทกิจการที่ผู้เช่าได้รับอนุญาตตามข้อนี้ มิได้ให้สิทธิแก่ผู้เช่ารายเดียว ผู้ให้เช่ามีสิทธิอนุญาตให้ผู้เช่ารายอื่นประกอบกิจการประเภทเดียวกับผู้เช่าได้
-                </span>
+                <p>ข้อตกลงการเช่าและทรัพย์สินที่เช่า</p>
+                <p>ผู้ให้เช่าตกลงให้เช่า และผู้เช่าตกลงเช่าทรัพย์สินของผู้ให้เช่า โดยคู่สัญญาตกลงกันว่าบรรดาเอกสารแนบท้ายสัญญา รวมทั้งประกาศ คำสั่ง หรือข้อกำหนด ที่ผู้ให้เช่าประกาศใช้บังคับแก่ผู้เช่าไม่ว่าขณะนี้ หรือที่ผู้ให้เช่าจะประกาศใช้บังคับต่อไปในภายหน้าให้ถือว่าเงื่อนไขดังกล่าวนั้นทั้งหมดเป็นส่วนหนึ่งซึ่งเป็นสาระสำคัญของสัญญานี้ รวมทั้งจะต้องไม่ให้ลูกจ้าง หรือบริวารของผู้เช่าหรือบุคคลอื่นใดฝ่าฝืนกฎระเบียบ ประกาศ คำสั่งหรือข้อกำหนดดังกล่าวโดยเคร่งครัด ประกอบด้วย</p>
+                <p>- เอกสารแนบท้ายสัญญา ก. เงื่อนไขการเช่าพื้นที่เช่า ${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</p>
+                <p>- เอกสารแนบท้ายสัญญา ข. แผนผังแสดงโซนที่เช่า</p>
+                <p>- เอกสารแนบท้ายสัญญา ค. กฎระเบียบ และข้อบังคับในการดำเนินกิจการค้าในพื้นที่เช่า</p>
+                <p>- เอกสารแนบท้ายสัญญา ง. ภาพถ่ายทรัพย์สินที่เช่าในวันส่งมอบพื้นที่</p>
+                <p>ผู้ให้เช่าสงวนสิทธิ์ในการปรับปรุง เปลี่ยนแปลง เคลื่อนย้ายตำแหน่งที่ตั้งทรัพย์สินที่เช่าตามสัญญานี้ได้ตามความเหมาะสม</p>
+                <p>ผู้เช่ารับทราบเป็นอย่างดีว่า ประเภทกิจการที่ผู้เช่าได้รับอนุญาตตามข้อนี้ มิได้ให้สิทธิแก่ผู้เช่ารายเดียว <br>ผู้ให้เช่ามีสิทธิอนุญาตให้ผู้เช่ารายอื่นประกอบกิจการประเภทเดียวกับผู้เช่าได้</p>
             ]]>
         </field>
     </record>
 
-    <record id="agreement_clause2_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause2_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 2</field>
         <field name="title"> </field>
         <field name="sequence">20</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    เงินประกันการปฏิบัติตามสัญญา
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ในขณะทำสัญญาฉบับนี้ผู้เช่าตกลงส่งมอบเงินประกันให้แก่ผู้ให้เช่าเพื่อเป็นเงินประกันการปฏิบัติตามสัญญานี้ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    หากผู้เช่าปฏิบัติผิดสัญญาข้อใดข้อหนึ่ง ผู้ให้เช่ามีสิทธิเรียกร้องเอาบรรดาค่าเสียหายอย่างใดๆ ตามสัญญานี้ โดยหักเงินจากเงินประกันการปฏิบัติตามสัญญาดังกล่าวได้ทันที และหากปรากฏว่าบรรดาค่าเสียหายดังกล่าวเกินกว่าเงินประกันแล้ว ผู้เช่าจะต้องนำเงินมาชำระเพิ่มเติมให้แก่ผู้ให้เช่า ภายใน 7 (เจ็ด) วัน นับจากวันที่ได้รับแจ้งเป็นหนังสือจากผู้ให้เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้ให้เช่าจะคืนเงินประกันการปฏิบัติตามสัญญาให้ผู้เช่าโดยไม่มีดอกเบี้ยภายใน 60 (หกสิบ) วัน นับแต่วันที่ผู้เช่าพ้นจากความผูกพันตามสัญญานี้ และสัญญาอื่นที่เกี่ยวข้องกับสัญญานี้ทั้งหมด
-                </span>
+                <p>เงินประกันการปฏิบัติตามสัญญา</p>
+                <p>ในขณะทำสัญญาฉบับนี้ผู้เช่าตกลงส่งมอบเงินประกันให้แก่ผู้ให้เช่าเพื่อเป็นเงินประกันการปฏิบัติตามสัญญานี้ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.</p>
+                <p>หากผู้เช่าปฏิบัติผิดสัญญาข้อใดข้อหนึ่ง ผู้ให้เช่ามีสิทธิเรียกร้องเอาบรรดาค่าเสียหายอย่างใดๆ ตามสัญญานี้ โดยหักเงินจากเงินประกันการปฏิบัติตามสัญญาดังกล่าวได้ทันที และหากปรากฏว่าบรรดาค่าเสียหายดังกล่าว เกินกว่าเงินประกันแล้ว &nbsp;&nbsp;&nbsp;ผู้เช่าจะต้องนำเงินมาชำระเพิ่มเติมให้แก่ผู้ให้เช่า ภายใน 7 (เจ็ด) วัน &nbsp;&nbsp;&nbsp;นับจากวันที่ได้รับแจ้งเป็นหนังสือ จาก<br>ผู้ให้เช่า</p>
+                <p>ผู้ให้เช่าจะคืนเงินประกันการปฏิบัติตามสัญญาให้ผู้เช่าโดยไม่มีดอกเบี้ยภายใน 60 (หกสิบ) วัน &nbsp;&nbsp;&nbsp;นับแต่วันที่ผู้เช่าพ้นจากความผูกพันตามสัญญานี้ และสัญญาอื่นที่เกี่ยวข้องกับสัญญานี้ทั้งหมด</p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause3_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause3_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 3</field>
         <field name="title"> </field>
         <field name="sequence">30</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้ให้เช่าไม่ต้องรับผิดชอบเพื่อการรอนสิทธิหรือเพื่อความชำรุดบกพร่องในทรัพย์สินที่เช่า อันเกิดขึ้นในระหว่างเวลาเช่า และไม่ว่ากรณีใดๆ และผู้ให้เช่าไม่มีหน้าที่บำรุงรักษา และซ่อมแซมทรัพย์สินที่เช่าอันเกิดจากความชำรุดบกพร่องในระหว่างการเช่า ทั้งนี้ผู้เช่ามีหน้าที่ และรับผิดชอบเสียค่าใช้จ่ายในการบำรุงรักษาทรัพย์สินที่เช่า
-                </span>
+                <p>
+                    ผู้ให้เช่าไม่ต้องรับผิดชอบเพื่อการรอนสิทธิ หรือเพื่อความชำรุดบกพร่องในทรัพย์สินที่เช่า อันเกิดขึ้นในระหว่างเวลาเช่า และไม่ว่ากรณีใดๆ และผู้ให้เช่าไม่มีหน้าที่บำรุงรักษา และซ่อมแซมทรัพย์สินที่เช่าอันเกิดจากความชำรุดบกพร่องในระหว่างการเช่า ทั้งนี้ผู้เช่ามีหน้าที่ และรับผิดชอบเสียค่าใช้จ่ายในการบำรุงรักษาทรัพย์สินที่เช่า
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause4_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause4_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 4</field>
         <field name="title"> </field>
         <field name="sequence">40</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้เช่าจะต้องประกอบกิจการค้าขายตามช่วงเวลาที่กำหนดโดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
+                    ผู้เช่าจะต้องประกอบกิจการค้าขายตามช่วงเวลาที่กำหนดโดยเงื่อนไขให้เป็นไปตาม<br>เอกสารแนบท้ายสัญญา ก.
+                </p>
+                <p>
                     ผู้เช่าจะหยุดประกอบกิจการ (ปิดร้าน) เกิน 3 วันติดต่อกันไม่ได้ หากมีความจำเป็นต้องปิดร้านเกินกำหนดเวลาดังกล่าวจะต้องมีหนังสือแจ้งต่อผู้ให้เช่า เพื่อพิจารณาอนุญาตก่อนหยุดประกอบกิจการ (ปิดร้าน) หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ค.
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause5_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause5_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 5</field>
         <field name="title"> </field>
         <field name="sequence">50</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ถ้าทรัพย์สินที่เช่าสูญหายหรือเสียหายเกินกว่าครึ่งหนึ่งของทรัพย์สินที่เช่าก็ดี หรือสูญหายหรือเสียหายในส่วนที่สำคัญให้สัญญาเช่าเป็นอันระงับตั้งแต่วันที่ทรัพย์สินนั้นสูญหายหรือเสียหาย ในกรณีที่ทรัพย์สินที่เช่าสูญหายหรือเสียหายไม่เกินครึ่งหนึ่ง ผู้เช่ามีหน้าที่ซ่อมแซมให้กลับคืนสภาพดีดังเดิมภายในระยะเวลาที่ผู้ให้เช่ากำหนด
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause6_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause6_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 6</field>
         <field name="title"> </field>
         <field name="sequence">60</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    การดัดแปลง และการต่อเติมทรัพย์สินที่เช่าก็ดี การปลูกสร้างหรือแก้ไขเพิ่มเติมหรือรื้อถอนทรัพย์สินที่เช่าก็ดีผู้เช่าจะกระทำมิได้ เว้นแต่จะได้รับการอนุญาตจากผู้ให้เช่าเป็นหนังสือ และปฏิบัติตามเงื่อนไขที่ผู้ให้เช่ากำหนด คือ ส่งแบบแปลนและรายละเอียดของการก่อสร้างรวมตลอดถึงเอกสารที่จำเป็นให้ผู้ให้เช่าตรวจสอบก่อนการอนุญาต
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
+                    การดัดแปลง และการต่อเติมทรัพย์สินที่เช่าก็ดี &nbsp;&nbsp;&nbsp;การปลูกสร้างหรือแก้ไขเพิ่มเติม &nbsp;&nbsp;&nbsp;หรือรื้อถอนทรัพย์สินที่เช่าก็ดี ผู้เช่าจะกระทำมิได้เว้นแต่จะได้รับการอนุญาตจากผู้ให้เช่าเป็นหนังสือ และปฏิบัติตามเงื่อนไขที่ผู้ให้เช่ากำหนดคือส่งแบบแปลนและรายละเอียดของการก่อสร้างรวมตลอดถึงเอกสารที่จำเป็นให้ผู้ให้เช่าตรวจสอบก่อนการอนุญาต
+                </p>
+                <p>
                     เมื่อได้รับอนุญาตจากผู้ให้เช่าแล้ว หากการดังกล่าวต้องขออนุญาตจากหน่วยงานราชการ ผู้เช่าต้องดำเนินการให้ถูกต้องตามระเบียบที่กำหนด และหากการไม่ขออนุญาตดังกล่าวเป็นความผิดตามกฎหมาย ผู้เช่าจะต้องรับผิดแต่เพียงผู้เดียวและโดยค่าใช้จ่ายของผู้เช่าเอง
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     ในกรณีที่การดัดแปลง และการต่อเติมทรัพย์สินที่เช่าไม่ได้ขออนุญาตจากผู้ให้เช่าก็ดี และ/หรือไม่ได้ทำการขออนุญาตให้ถูกต้องตามระเบียบของหน่วยงานราชการก็ดี ผู้ให้เช่ามีสิทธิเรียกร้องต่อผู้เช่าดังต่อไปนี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     ก) เรียกร้องค่าปรับจากการไม่ขออนุญาตจำนวน 5,000 (ห้าพัน) บาท ต่อครั้ง / ต่อสัญญาจากผู้เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     ข) เรียกร้องให้ผู้เช่าต้องดำเนินการแก้ไข และขออนุญาตตามระเบียบของหน่วยงานราชการให้ถูกต้อง ตามแบบที่ได้รับอนุญาตจากผู้ให้เช่าเท่านั้น
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     ค) หากผู้เช่าเพิกเฉย ผู้ให้เช่ามีสิทธิยกเลิกสัญญาเช่าได้
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause7_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause7_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 7</field>
         <field name="title"> </field>
         <field name="sequence">70</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้เช่าจะให้ผู้อื่นเช่าช่วงหรือโอนสิทธิของตนอันมีในทรัพย์สินที่เช่า ไม่ว่าทั้งหมดหรือบางส่วนหรือให้ผู้อื่นเข้าใช้ประโยชน์ในพื้นที่เช่าแทนตนไม่ได้ หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตรา 500 (ห้าร้อย) บาท ต่อวัน / ต่อสัญญา และขอสงวนสิทธิ์ให้ผู้เช่าในการพิจารณาเรื่องค่าปรับและการยกเลิกสัญญาเช่าต่อไป
-                </span>
+                <p>
+                    ผู้เช่าจะให้ผู้อื่นเช่าช่วง หรือโอนสิทธิของตนอันมีในทรัพย์สินที่เช่า ไม่ว่าทั้งหมดหรือบางส่วนหรือให้ผู้อื่นเข้าใช้ประโยชน์ในพื้นที่เช่าแทนตนไม่ได้ หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตรา 500 (ห้าร้อย) บาท ต่อวัน / ต่อสัญญา และขอสงวนสิทธิ์ให้ผู้ให้เช่าในการพิจารณาเรื่องค่าปรับและการยกเลิกสัญญาเช่าต่อไป
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause8_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause8_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 8</field>
         <field name="title"> </field>
         <field name="sequence">80</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้เช่าตกลงยินยอมให้ผู้ให้เช่าหรือผู้ได้รับมอบหมายจากผู้ให้เช่าเข้าไปในพื้นที่เช่าเป็นครั้งคราวในเวลา และระยะเวลาอันสมควรในระหว่างเวลาทำการของพื้นที่เช่า เพื่อวัตถุประสงค์ที่อาจจำเป็นสำหรับการปกป้องรักษาประโยชน์ของผู้ให้เช่า และประโยชน์ส่วนรวมได้ โดยผู้ให้เช่าจะต้องแจ้งให้ผู้เช่าทราบล่วงหน้าตามสมควร เว้นแต่เป็นกรณีฉุกเฉินหรือจำเป็นเร่งด่วนเพื่อป้องกันหรือบรรเทาความเสียหายที่เกิดขึ้นหรืออาจจะเกิดขึ้นกับพื้นที่เช่า อาคาร หรือพื้นที่เช่าของผู้เช่ารายอื่น ผู้ให้เช่าสามารถที่จะเข้าไปในพื้นที่เช่าได้ในทันทีโดยไม่ต้องแจ้งให้ผู้เช่าทราบ ทั้งนี้ไม่ว่าในระหว่างเวลาทำการหรือนอกเวลาทำการของผู้เช่าก็ตามโดยมิให้ถือว่ามีเจตนาเป็นการบุกรุก
-                </span>
+                <p>
+                    ผู้เช่าตกลงยินยอมให้ผู้ให้เช่าหรือผู้ได้รับมอบหมายจากผู้ให้เช่าเข้าไปในพื้นที่เช่าเป็นครั้งคราวในเวลา และระยะเวลาอันสมควรในระหว่างเวลาทำการของพื้นที่เช่า เพื่อวัตถุประสงค์ที่อาจจำเป็นสำหรับ การปกป้องรักษาประโยชน์ของผู้ให้เช่า และประโยชน์ส่วนรวมได้ โดยผู้ให้เช่าจะต้องแจ้งให้ผู้เช่าทราบล่วงหน้าตามสมควร เว้นแต่เป็นกรณีฉุกเฉินหรือจำเป็นเร่งด่วนเพื่อป้องกันหรือบรรเทาความเสียหายที่เกิดขึ้นหรืออาจจะเกิดขึ้นกับพื้นที่เช่า อาคาร หรือพื้นที่เช่าของผู้เช่ารายอื่น ผู้ให้เช่าสามารถที่จะเข้าไปในพื้นที่เช่าได้ในทันทีโดยไม่ต้องแจ้งให้ผู้เช่าทราบ ทั้งนี้ไม่ว่าในระหว่างเวลาทำการหรือนอกเวลาทำการของผู้เช่าก็ตามโดยมิให้ถือว่ามีเจตนาเป็นการบุกรุก
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause9_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause9_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 9</field>
         <field name="title"> </field>
         <field name="sequence">90</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     การชำระค่าเช่าค่าตอบแทนและค่าบริการ
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     9.1 ผู้เช่าต้องชำระค่าเช่า ค่าตอบแทน ค่าบริการตามข้อ 1. และค่าบริการสาธารณูปโภค เช่น ค่ากระแสไฟฟ้า ค่าน้ำประปา ค่าโทรศัพท์ เป็นต้น ภายในวันที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. ณ สำนักงานตลาดในวัน และเวลาทำการ หรือชำระด้วยวิธีการใดๆ ที่ผู้ให้เช่ากำหนดเพิ่มเติม หากวันครบกำหนดชำระเงินข้างต้นตรงกับวันหยุดทำการของสำนักงานตลาด ผู้เช่าตกลงชำระก่อนวันดังกล่าวไม่น้อยกว่า 1 (หนึ่ง) วัน
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    9.2 หากผู้เช่าค้างชำระค่าบริการสาธารณูปโภค ตั้งแต่ 2 งวดขึ้นไป ผู้เช่ายินยอมให้ผู้ให้เช่าระงับการให้บริการสาธารณูปโภคได้ทันที โดยไม่จำเป็นต้องแจ้งให้ผู้เช่าทราบล่วงหน้า และผู้เช่าให้ถือว่าการระงับการให้บริการสาธารณูปโภคดังกล่าวไม่เป็นการกระทำละเมิดต่อผู้เช่า และผู้เช่าไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไร หรือค่าขาดรายได้จากผู้ให้เช่าทั้งสิ้น
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    9.3 ผู้เช่าทราบและให้ความยินยอมว่าในระหว่างอายุสัญญา อาจมีการเปลี่ยนแปลงค่าบริการสาธารณูปโภค และวันชำระค่าเช่า และค่าสาธารณูปโภคเพื่อให้เหมาะสมตามความจำเป็นจากผู้ให้เช่าได้ โดยผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อน
-                </span>
+                </p>
+                <p>
+                    9.2 หากผู้เช่าค้างชำระค่าบริการสาธารณูปโภค ตั้งแต่ 2 งวดขึ้นไป ผู้เช่ายินยอมให้ผู้ให้เช่าระงับการให้บริการสาธารณูปโภคได้ทันที โดยไม่จำเป็นต้องแจ้งให้ผู้เช่าทราบล่วงหน้า และผู้เช่าให้ถือว่าการระงับการให้บริการสาธารณูปโภค ดังกล่าวไม่เป็นการกระทำละเมิดต่อผู้เช่า และผู้เช่าไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไร หรือค่าขาดรายได้จากผู้ให้เช่าทั้งสิ้น
+                </p>
+                <p>
+                    9.3 ผู้เช่าทราบและให้ความยินยอมว่าในระหว่างอายุสัญญา อาจมีการเปลี่ยนแปลงค่าบริการสาธารณูปโภค และวันชำระค่าเช่าและค่าสาธารณูปโภคเพื่อให้เหมาะสม ตามความจำเป็นจากผู้ให้เช่าได้โดยผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อน
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause10_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause10_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 10</field>
         <field name="title"> </field>
         <field name="sequence">100</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ค่าภาษีและค่าธรรมเนียม
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ผู้เช่าตกลงชำระภาษีที่ดิน และสิ่งปลูกสร้าง ภาษีป้าย หรือภาษีอื่นใด ค่าอากร ค่าเบี้ยประกันภัย ค่าธรรมเนียม หรือเงินอื่นใดที่รัฐเรียกเก็บเกี่ยวกับทรัพย์สินที่เช่า (หากมี) ตลอดระยะเวลาที่ผู้เช่าครอบครองทรัพย์สินที่เช่าจนถึงวันที่ส่งมอบทรัพย์สินที่เช่าคืนแก่ผู้ให้เช่าเสร็จเรียบร้อย
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    หากผู้ให้เช่าชำระไปก่อน ให้ผู้ให้เช่ามีสิทธิเรียกเก็บเงินที่ได้ชำระไปนั้นคืนจากผู้เช่าได้ทั้งหมดพร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 (สิบห้า) ต่อปี นับแต่วันที่ผู้เช่าได้ชำระเงินนั้น
-                </span>
+                </p>
+                <p>
+                    ผู้เช่าตกลงชำระภาษีที่ดินและสิ่งปลูกสร้าง ภาษีป้าย หรือภาษีอื่นใด ค่าอากร ค่าเบี้ยประกันภัย ค่าธรรมเนียม หรือเงินอื่นใดที่รัฐเรียกเก็บเกี่ยวกับทรัพย์สินที่เช่า (หากมี) ตลอดระยะเวลาที่ผู้เช่าครอบครองทรัพย์สินที่เช่าจนถึงวันที่ส่งมอบทรัพย์สินที่เช่าคืนแก่ผู้ให้เช่าเสร็จเรียบร้อย
+                </p>
+                <p>
+                    หากผู้ให้เช่าชำระไปก่อนให้ผู้ให้เช่ามีสิทธิเรียกเก็บเงินที่ได้ชำระไปนั้นคืนจากผู้เช่าได้ทั้งหมดพร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 (สิบห้า) ต่อปี นับแต่วันที่ผู้เช่าได้ชำระเงินนั้น
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause11_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause11_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 11</field>
         <field name="title"> </field>
         <field name="sequence">110</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ผู้เช่าต้องปฏิบัติตาม กฎหมาย กฎระเบียบ ประกาศ คำสั่ง ระเบียบของราชการ หรือกฎหมายเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคล หรือคำสั่งของพนักงานเจ้าหน้าที่ตามกฎหมายที่เกี่ยวข้องกับการดำเนินกิจการตลาด และการดำเนินกิจการค้าของผู้เช่าให้ถูกต้องตามกฎหมาย หรือข้อกำหนดของกฎหมายทั้งปวงที่ผู้ให้เช่าหรือสำนักงานตลาดประกาศใช้บังคับแก่ผู้เช่าไม่ว่าขณะนี้ หรือที่ผู้ให้เช่าจะประกาศใช้บังคับต่อไปในภายหน้า  รวมทั้งจะต้องไม่ให้ลูกจ้างหรือบริวารของผู้เช่า หรือบุคคลอื่นใดฝ่าฝืน คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัด การเพิกเฉยหรือฝ่าฝืนให้ถือว่าเป็นการปฏิบัติผิดสัญญาเช่าอย่างร้ายแรง
-                </span>
+                </p>
             ]]>
         </field>
     </record>
 
-    <record id="agreement_clause12_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause12_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 12</field>
         <field name="title"> </field>
         <field name="sequence">120</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ผู้เช่ารับทราบแล้วว่าสิทธิการเช่าของผู้เช่ามีเพียงเท่าที่ตกลงตามสัญญาเช่านี้ และเมื่อครบกำหนดอายุสัญญาเช่าแล้ว และหรือมีเหตุอื่นใดที่ผู้เช่าปฏิบัติผิดเงื่อนไขในสัญญาอันเป็นเหตุให้สัญญาเป็นอันระงับสิ้นไป ผู้เช่าจะต้องส่งมอบทรัพย์สินที่เช่าคืนแก่ผู้ให้เช่าในสภาพเดิม และเรียบร้อย โดยค่าใช้จ่ายในการส่งมอบพื้นที่ หรือรื้อถอนเป็นหน้าที่ของผู้เช่าเอง และผู้เช่าไม่ติดใจว่าเมื่อครบกำหนดอายุสัญญาการเช่า ผู้ให้เช่าจะต่อสัญญาเช่าให้อีกต่อไปหรือไม่
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     การส่งมอบพื้นที่เช่าคืนก็ดี และหรือการรื้อถอนการดัดแปลง และการต่อเติมทรัพย์สินที่เช่าตามที่บังคับไว้ใน ข้อ 6. ก็ดีขอสงวนสิทธิ์ให้ผู้ให้เช่าเป็นผู้พิจารณา
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause13_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause13_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 13</field>
         <field name="title"> </field>
         <field name="sequence">130</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้เช่ามีไปถึงผู้เช่าตามที่อยู่ที่ผู้เช่าให้ไว้ในสัญญานี้ไม่ว่าผู้เช่าจะได้รับหรือไม่เพียงใดผู้เช่าตกลงให้ถือว่าผู้เช่าได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบภายใน 15 วัน นับแต่วันเปลี่ยนแปลง
-                </span>
+                </p>
+                <p>
+                    หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบเป็นลายลักษณ์อักษรภายใน 15 วัน นับแต่วันเปลี่ยนแปลง
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause14_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause14_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 14</field>
         <field name="title"> </field>
         <field name="sequence">140</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ก่อนครบกำหนดสัญญาเช่าไม่น้อยกว่า 90(เก้าสิบ) วัน ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบถึงเรื่องการต่อสัญญาเช่า และ/หรือการไม่ต่อสัญญาเช่า เพื่อให้คู่สัญญาทั้งสองฝ่ายได้เจรจาตกลงค่าเช่า และเงื่อนไขในสัญญาเช่าหากตกลงกันไม่ได้ก่อนครบกำหนดสัญญาเช่า ให้ถือว่าสัญญาเช่าสิ้นสุดเมื่อครบกำหนดการเช่า และผู้ให้เช่ามีสิทธิให้บุคคลอื่นเช่าได้
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause15_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause15_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 15</field>
         <field name="title"> </field>
         <field name="sequence">150</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ผู้เช่าตกลงหรือยินยอมให้ผู้ให้เช่า และบุคคลอื่นที่ผู้ให้เช่ามอบหมายใช้ข้อมูลส่วนบุคคลของผู้เช่า เพื่อวัตถุประสงค์ตามสัญญานี้หรือที่เกี่ยวข้องต่อเนื่องกับการปฏิบัติตามสัญญานี้ได้
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause16_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause16_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 16</field>
         <field name="title"> </field>
         <field name="sequence">160</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ผู้เช่าจะต้องตั้งวางจำหน่ายสินค้าภายในพื้นที่เช่าเท่านั้น และจะไม่ตั้งวางสินค้า หรือสิ่งของนอกบริเวณพื้นที่เช่า บนทางเท้า ถนน หรือพื้นที่ส่วนกลาง และต้องไม่ตั้งวางสินค้า หรือสิ่งของรุกล้ำพื้นที่เช่าอื่น หรือตั้งวางสินค้า หรือสิ่งของอันมีลักษณะเป็นการบังพื้นที่เช่าอื่น หรือเป็นอุปสรรคในการประกอบการค้าของ ผู้เช่ารายอื่นโดยไม่ได้รับอนุญาตเป็นหนังสือจากผู้ให้เช่า หรือการตั้งวางสินค้าในพื้นที่โดยมีน้ำหนักเกิน หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตราวันละ 500 (ห้าร้อย) บาท ต่อสัญญา โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause17_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause17_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 17</field>
         <field name="title"> </field>
         <field name="sequence">170</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     การปฏิบัติผิดสัญญาและค่าปรับ
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     17.1 ในกรณีที่ผู้เช่าผิดนัดชำระเงินค่าเช่า ค่าบริการสาธารณูปโภค หรือเงินอื่นใดในสัญญาหรือปฏิบัติผิดสัญญาข้อหนึ่งข้อใดหรือแม้แต่ส่วนหนึ่งส่วนใดหากผู้ให้เช่ามีหนังสือแจ้งเตือนผู้เช่าแล้วแต่ผู้เช่าไม่ดำเนินการภายในระยะเวลาที่ผู้ให้เช่ากำหนดผู้ให้เช่ามีสิทธิบอกเลิกสัญญาได้ทันที แต่ทั้งนี้หากผู้ให้เช่ายังไม่ใช้สิทธิบอกเลิกสัญญาให้ผู้ให้เช่ามีสิทธิดำเนินการดังต่อไปนี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     ก) เรียกให้ชำระค่าปรับในอัตราที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. จนกว่าผู้เช่าจะแก้ไข และดำเนินการปฏิบัติตามสัญญาให้ถูกต้อง
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    ข) ผู้เช่ายินยอมให้ผู้ให้เช่าใช้สิทธิยึดหน่วงในบรรดาทรัพย์สินของผู้เช่าที่ยังคงอยู่ในทรัพย์สินที่เช่าจนกว่าผู้เช่า จะพ้นจากภาระผูกพัน และหน้าที่ในการชำระค่าเช่า ค่าบริการหรือหนี้เงินอื่นใดตามสัญญานี้ และสัญญาอื่นๆ ที่เกี่ยวข้อง
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
+                    ข) ผู้เช่ายินยอมให้ผู้ให้เช่าใช้สิทธิยึดหน่วงในบรรดาทรัพย์สินของผู้เช่าที่ยังคงอยู่ในทรัพย์สินที่เช่าจนกว่า &nbsp;ผู้เช่าจะพ้นจากภาระผูกพัน และหน้าที่ในการชำระค่าเช่า ค่าบริการหรือหนี้เงินอื่นใดตามสัญญานี้ และสัญญาอื่นๆ ที่เกี่ยวข้อง
+                </p>
+                <p>
                     17.2 ในกรณีที่ผู้เช่าไม่ปฏิบัติตามสัญญาเช่า ข้อ 3. ข้อ 4. และข้อ 5. ผู้เช่าต้องชดใช้ค่าปรับ และหรือค่าสินไหมทดแทนแก่ผู้ให้เช่า สำหรับการไม่ปฏิบัติตามเงื่อนไขในสัญญาหรือสำหรับค่าเสื่อมราคาแห่งทรัพย์สินที่เช่า ถ้าผู้ให้เช่าเข้าดำเนินการบำรุงรักษาหรือซ่อมแซมทรัพย์สินที่เช่า  ผู้เช่าต้องใช้เงินทดแทนแก่ผู้ให้เช่าเท่ากับที่ผู้ให้เช่าได้ใช้จ่ายไปพร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 ต่อปี นับแต่วันที่ผู้ให้เช่าได้จ่ายไป
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause18_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause18_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 18</field>
         <field name="title"> </field>
         <field name="sequence">180</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     กรณีการใช้สิทธิบอกเลิกสัญญา
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     สัญญานี้จะสิ้นสุดลงทันที เมื่อเกิดเหตุการณ์อย่างหนึ่งอย่างใด ดังต่อไปนี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     18.1 กรณีการใช้สิทธิบอกเลิกสัญญา
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;18.1.1 สัญญาทุกข้อ และเอกสารแนบท้ายสัญญาทั้งหมดถือเป็นสาระสำคัญ ถ้าผู้เช่าไม่ปฏิบัติตามสัญญาข้อหนึ่งข้อใด หรือแม้แต่ส่วนหนึ่งส่วนใด และผู้ให้เช่าได้แจ้งให้ผู้เช่าแก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนดแล้ว หากผู้เช่าเพิกเฉย หรือไม่แก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนด ผู้ให้เช่ามีสิทธิบอกเลิกการเช่าได้ทันที โดยมิพักต้องเตือนหรือบอกกล่าวให้ปฏิบัติตามสัญญาก่อน และบรรดาเงินค่าเช่า และค่าบริการหรือเงินอื่นใด ที่ผู้เช่าได้ชำระไปแล้วให้ตกเป็นของผู้ให้เช่าทั้งหมดโดยผู้เช่าไม่มีสิทธิเรียกร้องคืน
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;18.1.2 ในกรณีที่ผู้เช่าประสงค์จะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่า ผู้เช่าต้องมีหนังสือแจ้งให้ผู้ให้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน กรณีนี้ผู้ให้เช่ามีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตาม ข้อ 2. ของสัญญาเช่าฉบับนี้ ทั้งนี้ ผู้เช่ายังคงมีหน้าที่ต้องชำระค่าเช่า หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    &emsp;18.1.3 ผู้ให้เช่าจะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่าก็ได้ โดยผู้ให้เช่าต้องมีหนังสือแจ้งให้ผู้ให้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
-                    &emsp;ก่อนครบกำหนดอายุสัญญาเช่า ในกรณีที่ผู้ให้เช่าจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สิน ที่เช่า ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาเช่าสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้เช่าจะเรียกร้องค่าเสียหายใดๆ ไม่ได้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
+                    &emsp;18.1.3 ผู้ให้เช่าจะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่าก็ได้ โดยผู้ให้เช่าต้องมีหนังสือแจ้งให้ผู้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน
+                </p>
+                <p>
+                    &emsp;ก่อนครบกำหนดอายุสัญญาเช่า &nbsp;ในกรณีที่ผู้ให้เช่าจะมีการปรับปรุง &nbsp;ดัดแปลง &nbsp;ต่อเติม &nbsp;ทรัพย์สิน ที่เช่า ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาเช่าสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้เช่าจะเรียกร้องค่าเสียหายใดๆ ไม่ได้
+                </p>
+                <p>
                     &emsp;เมื่อผู้ให้เช่าบอกเลิกสัญญาเช่า หากปรากฏว่าผู้เช่าได้ส่งมอบเงินประกันการปฏิบัติตามสัญญาครบถ้วนแล้ว และได้ชำระหนี้ที่ค้างชำระได้แก่ ค่าเช่า ค่าตอบแทน ค่าบริการ หรือค่าบริการสาธารณูปโภค รวมตลอดถึงค่าปรับ ค่าสินไหมทดแทน และบรรดาค่าเสียหาย หรือหนี้เงินอย่างใดๆ ตามที่ระบุไว้ในสัญญาเช่า และเอกสารแนบท้ายสัญญา ให้แก่ผู้ให้เช่าจนครบถ้วนแล้ว ผู้ให้เช่าจะคืนเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุไว้ใน ข้อ 2. แห่งสัญญานี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     18.2 กรณีดังต่อไปนี้ ให้ถือว่าสัญญาสิ้นสุดลงทันที โดยมิต้องบอกกล่าวแต่อย่างใด
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;18.2.1 เมื่อครบกำหนดสิ้นสุดตามอายุการเช่าของสัญญาฉบับนี้ โดยมิได้มีการต่ออายุสัญญาเช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;18.2.2 ในกรณีเกิดอัคคีภัย หรือภัยพิบัติอย่างอื่นซึ่งทำความเสียหายแก่ทรัพย์สินที่เช่าทั้งหมด หรือแต่ส่วนหนึ่งส่วนใดจนไม่เหมาะสมที่จะใช้ประกอบการค้าอีกต่อไป
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;18.2.3 ผู้เช่าใช้ทรัพย์สินที่เช่าในทางผิดกฎหมาย หรือขัดต่อความสงบเรียบร้อยและศีลธรรมอันดีของประชาชน
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause19_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause19_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 19</field>
         <field name="title"> </field>
         <field name="sequence">190</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
+                <p>
                     ผลภายหลังสัญญาสิ้นสุด
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     เมื่อสัญญาระงับลงไม่ว่าด้วยเหตุใดก็ตาม ผู้ให้เช่าและผู้เช่าตกลงกัน ดังนี้
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     19.1 บรรดาเงินใดๆ ที่ผู้เช่าชำระแล้วไม่มีสิทธิเรียกคืน และผู้ให้เช่ามีสิทธิเรียกให้ผู้เช่าชำระหนี้ที่ค้างชำระตลอดจนค่าปรับทั้งหมด และในกรณีผู้เช่าปฏิบัติผิดสัญญา ผู้เช่ายินยอมให้ผู้ให้เช่ามีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุใน ข้อ 2. ของสัญญานี้ รวมทั้งมีสิทธิเรียกค่าเสียหายในส่วนที่เกินจากเงินประกันสัญญาทั้งหมด (หากมี)
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     19.2 ผู้เช่าจะต้องขนย้ายทรัพย์สิน และบริวารออกจากทรัพย์สินที่เช่า พร้อมทั้งส่งมอบทรัพย์สินที่เช่าในสภาพเดิม และเรียบร้อย และรื้อถอนทรัพย์สินที่ผู้เช่าเป็นผู้ดำเนินการติดตั้ง (หากมี) ภายในระยะเวลาที่สัญญานี้สิ้นสุดลงด้วยค่าใช้จ่ายของผู้เช่าเองทั้งสิ้น หากผู้เช่าไม่ดำเนินการให้ถือว่าผู้เช่ายังคงครอบครองทรัพย์สินที่เช่าอยู่ และผู้ให้เช่ามีสิทธิเรียกค่าปรับในอัตราวันละ 500 บาท (ห้าร้อยบาทถ้วน) ต่อพื้นที่เช่านับแต่วันที่สัญญาระงับจนถึงวันที่ผู้เช่าส่งมอบทรัพย์สินที่เช่าคืนเสร็จเรียบร้อยแล้ว ทั้งนี้ไม่ตัดสิทธิผู้ให้เช่าในการเรียกร้องค่าใช้จ่ายใดๆ ที่เกิดขึ้นจากการดำเนินการให้ทรัพย์สินที่เช่าอยู่ในสภาพเดิมจากผู้เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     19.3 กรณีผู้เช่าไม่ส่งมอบคืนพื้นที่ตามข้อ 19.2 นอกจากสิทธิเรียกค่าปรับแล้ว ผู้ให้เช่ามีสิทธิเข้าครอบครองทรัพย์สินที่เช่าได้ด้วยตนเอง โดยผู้เช่าไม่มีสิทธิคัดค้าน หรือเรียกค่าเสียหาย หรือดำเนินการตามกฎหมายกับผู้ให้เช่าทั้งคดีแพ่งและคดีอาญาแต่ประการใด กล่าวคือ
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;ก) ให้ถือว่าสิทธิครอบครองพื้นที่กลับคืนสู่ผู้ให้เช่าในทันที
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;ข) ผู้ให้เช่าหรือตัวแทนผู้ให้เช่ามีสิทธิที่จะทำลายสิ่งกีดขวางประตูหรือกุญแจ และเคลื่อนย้ายทรัพย์สินต่างๆ ออกจากพื้นที่โดยผู้เช่าจะต้องเป็นผู้รับผิดชอบค่าใช้จ่ายในการขนย้าย และหรือ เก็บรักษาทรัพย์สินนั้น
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;ค) ผู้ให้เช่า หรือตัวแทนผู้ให้เช่ามีสิทธิที่จะปิดกั้น หรือกระทำการใดๆ เพื่อห้ามมิให้ผู้เช่าเข้าในทรัพย์สินที่เช่า
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;ง) ผู้ให้เช่ามีสิทธิระงับการให้บริการสาธารณูปโภค เช่น กระแสไฟฟ้า น้ำประปา โทรศัพท์ และอื่นๆ ที่ให้บริการภายในทรัพย์สินที่เช่าได้ทันที โดยการระงับการให้บริการของผู้ให้เช่านั้น ผู้เช่าไม่มีสิทธิเรียกร้องค่าเสียหายใดๆหรือค่าขาดกำไรจากผู้ให้เช่าแต่อย่างใด
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     &emsp;จ) ผู้ให้เช่ามีสิทธิที่จะดำเนินการให้ผู้เช่ารายใหม่เข้าใช้ประโยชน์ทรัพย์สินที่เช่าได้ในทันที
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     19.4 กรณีผู้เช่าไม่ขนย้ายทรัพย์สินออกจากทรัพย์สินที่เช่า บรรดาทรัพย์สินที่อยู่ในทรัพย์สินที่เช่า ผู้ให้เช่าไม่ต้องรับผิดชอบในความสูญหายหรือเสียหายของทรัพย์สินของผู้เช่าและผู้เช่ายินยอมให้ผู้ให้เช่ามีสิทธิยึดหน่วงทรัพย์สินดังกล่าวได้ โดยสามารถใช้สอย หรือเอาให้เช่า หรือเอาทรัพย์สินนั้นไปเป็นหลักประกันได้ จนกว่าผู้ให้เช่าจะได้รับชำระหนี้ทั้งหมดตามสัญญา โดยผู้เช่าจะต้องรับผิดชอบค่าใช้จ่ายในการดำเนินการดังกล่าวทั้งหมด
-                </span>
-                <span style="display: block; margin-bottom: 10px;">
+                </p>
+                <p>
                     19.5 กรณีที่ผู้เช่าได้ขนย้ายทรัพย์สินออกจากทรัพย์สินที่เช่าแล้ว หากปรากฏว่ามีทรัพย์สินใดๆ คงอยู่ในทรัพย์สินที่เช่าให้ถือว่าทรัพย์สินนั้นตกเป็นกรรมสิทธิ์ของผู้ให้เช่าทันทีโดยไม่มีค่าใช้จ่ายหรือค่าการงานแต่อย่างใด
-                </span>
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause20_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause20_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 20</field>
         <field name="title"> </field>
         <field name="sequence">200</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็นผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งรัด
-                </span>
+                <p>
+                    หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็นผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งครัด
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause21_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause21_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 21</field>
         <field name="title"> </field>
-        <field name="sequence">220</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="sequence">210</field>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    การไม่ใช้สิทธิของคู่สัญญาฝ่ายหนึ่งฝ่ายใดในการบังคับคู่สัญญาอีกฝ่ายหนึ่งสำหรับการที่ไม่ปฏิบัติหรือการละเมิดข้อตกลงตามสัญญาฉบับนี้ ไม่ถือว่าคู่สัญญาฝ่ายนั้นได้สละหรือยกเลิกสิทธิ ข้อตกลงหรือเงื่อนไขของตนเป็นการถาวร นอกจากนี้ การที่ผู้ให้เช่ายินยอมให้ผู้เช่ากระทำการ หรือละเว้นกระทำการใดซึ่งขัดต่อข้อตกลงในหนังสือสัญญาฉบับนี้ ให้ถือว่าเป็นการยินยอมเฉพาะกรณี และไม่มีผลต่อการกระทำใด ๆ ที่เกิดขึ้นในภายหลัง
-                </span>
+                <p>
+                    การไม่ใช้สิทธิของคู่สัญญาฝ่ายหนึ่งฝ่ายใดในการบังคับคู่สัญญาอีกฝ่ายหนึ่ง สำหรับการที่ไม่ปฏิบัติหรือการละเมิดข้อตกลงตามสัญญาฉบับนี้ ไม่ถือว่าคู่สัญญาฝ่ายนั้นได้สละหรือยกเลิกสิทธิ ข้อตกลงหรือเงื่อนไขของตนเป็นการถาวร นอกจากนี้ การที่ผู้ให้เช่ายินยอมให้ผู้เช่ากระทำการ หรือละเว้นกระทำการใดซึ่งขัดต่อข้อตกลงในหนังสือสัญญาฉบับนี้ ให้ถือว่าเป็นการยินยอมเฉพาะกรณี และไม่มีผลต่อการกระทำใด ๆ ที่เกิดขึ้นในภายหลัง
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause22_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause22_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 22</field>
         <field name="title"> </field>
         <field name="sequence">220</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ห้ามผู้เช่ากระทำการทุจริตโดยการดัดแปลงแก้ไขอุปกรณ์มิเตอร์หรืออุปกรณ์ควบคุมในการจ่ายกระแสไฟฟ้าหรือน้ำ หรือกระทำการอื่นใดให้ผู้ให้เช่าได้รับความเสียหาย หากผู้ให้เช่าตรวจพบการกระทำผิดของผู้เช่าดังกล่าว ให้ถือว่าเป็นการกระทำความผิดอย่างร้ายแรง และเป็นเหตุให้ผู้ให้เช่ามีสิทธิยกเลิกสัญญาได้ รวมตลอดถึงการเรียกร้องค่าเสียหาย และการดำเนินคดีตามกฎหมายได้
-                </span>
+                <p>
+                    ห้ามผู้เช่ากระทำการทุจริตโดยการดัดแปลงแก้ไขอุปกรณ์มิเตอร์ หรืออุปกรณ์ควบคุมในการจ่ายกระแสไฟฟ้าหรือน้ำ หรือกระทำการอื่นใดให้ผู้ให้เช่าได้รับความเสียหาย หากผู้ให้เช่าตรวจพบการกระทำผิดของผู้เช่าดังกล่าว ให้ถือว่าเป็นการกระทำความผิดอย่างร้ายแรง และเป็นเหตุให้ผู้ให้เช่ามีสิทธิยกเลิกสัญญาได้ รวมตลอดถึงการเรียกร้องค่าเสียหาย และการดำเนินคดีตามกฎหมายได้
+                </p>
             ]]>
         </field>
     </record>
-    <record id="agreement_clause23_v3" model="agreement.clause">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_clause23_v3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">ข้อที่ 23</field>
         <field name="title"> </field>
         <field name="sequence">230</field>
-        <field name="section_id" ref="agreement_section2_v3"/>
+        <field name="section_id" ref="agreement_lease_section2_v3"/>
         <field name="content">
             <![CDATA[
-                <span style="display: block; margin-bottom: 10px;">
-                    ในกรณีที่ส่วนหนึ่งส่วนใดของสัญญาเช่าฉบับนี้ตกเป็นโมฆะหรือไม่อาจใช้บังคับกับบุคคลหรือเหตุการณ์ที่กำหนดไว้ได้ ให้ข้อกำหนดส่วนอื่นๆ ของสัญญาเช่าฉบับนี้หรือการบังคับใช้สัญญานี้ต่อบุคคลหรือในเหตุการณ์อื่นๆ นอกเหนือจากส่วนที่ตกเป็นโมฆะดังกล่าว รวมทั้งข้อกำหนดแต่ละข้อของสัญญาเช่าฉบับนี้ในส่วนอื่นๆ ยังคงมีผลสมบูรณ์และสามารถใช้บังคับได้ตราบเท่าที่ไม่ขัดต่อบทบัญญัติแห่งกฎหมาย
-                </span>
+                <p>
+                    ในกรณีที่ส่วนหนึ่งส่วนใดของสัญญาเช่าฉบับนี้ตกเป็นโมฆะ หรือไม่อาจใช้บังคับกับบุคคลหรือเหตุการณ์ที่กำหนดไว้ได้ ให้ข้อกำหนดส่วนอื่นๆ ของสัญญาเช่าฉบับนี้หรือการบังคับใช้สัญญานี้ต่อบุคคลหรือในเหตุการณ์อื่นๆ นอกเหนือจากส่วนที่ตกเป็นโมฆะดังกล่าว รวมทั้งข้อกำหนดแต่ละข้อของสัญญาเช่าฉบับนี้ในส่วนอื่นๆ ยังคงมีผลสมบูรณ์และสามารถใช้บังคับได้ตราบเท่าที่ไม่ขัดต่อบทบัญญัติแห่งกฎหมาย
+                </p>
             ]]>
         </field>
     </record>
 
     <!-- Appendices -->
-    <record id="agreement_appendix1_v3" model="agreement.appendix">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_appendix1_v3" model="agreement.appendix">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่าของพื้นที่เช่า</field>
         <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่าของพื้นที่เช่า</field>
         <field name="sequence">10</field>
         <field name="content">
             <![CDATA[
                 <div style="text-align: left;line-height:25px !important;">
-                    <p class="text-center"><b style="text-decoration-thickness: 1px; font-size:28px;">เอกสารแนบท้ายสัญญา ก.<br>เงื่อนไขการเช่าของพื้นที่เช่า${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'}</b></p>
+                    <p class="text-center"><b style="text-decoration-thickness: 1px; font-size:28px;">เอกสารแนบท้ายสัญญา ก.<br>เงื่อนไขการเช่าของพื้นที่เช่า${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></p>
                     <p class="text-right"><b>เลขที่สัญญา</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
                     <div class="row" style="margin-bottom: 10px;">
                     <div class="col-1" style="padding-right: 0px;">
@@ -663,9 +629,9 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่เช่า (กว้าง x ยาว)
                     </div>
                     <div class="col-7">
-                    <span style="margin-left: -190px;"><b>อาคารตลาดวโรรส เลขที่ 15 ถ.ช้างม่อย อ.เมืองเชียงใหม่ จ.เชียงใหม่</b></span><br>
+                    <p style="margin-left: -190px;"><b>อาคาร${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} ${object.agreement_id.company_id.market_address or '&nbsp;&nbsp;&nbsp;'}</b></p><br>
                     ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
-                    ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร) (พื้นที่โดยประมาณ)
+                    ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร)
                     </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
@@ -673,7 +639,7 @@
                     <b>7.</b>
                     </div>
                     <div class="col-11" style="padding-left: 0px;">
-                    <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า ${object.agreement_id.rent_product_id.group_id.weight1 or '150'} กิโลกรัมต่อตารางเมตร
+                    <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
                     </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
@@ -727,48 +693,42 @@
                     </div>
                     <div class="col-11" style="padding-left: 0px;">
                     <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('lst_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
                     <div>
                     % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.lst_price and '{0:,.2f}'.format(line.lst_price) or '-'} บาท</div>
+                    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
                     %endfor
                     </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('lst_price')[:1])) or '-'} บาท
-                    ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('lst_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('lst_price')[:1])) or '-'} บาท ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('lst_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท
+                    ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าเช่ารายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
                     </div>
                     </div>
+                    <p><b>13.เงินประกันการปฏิบัติตามสัญญา</b></p>
                     <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-1" style="padding-right: 0px;">
-                            <b>13.</b>
-                        </div>
+                        <div class="col-1"></div>
                         <div class="col-4" style="padding-left: 0px;padding-right: 0px;">
-                            <b>เงินประกันการปฏิบัติตามสัญญา</b><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันการปฏิบัติตามสัญญา<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าบริการพื้นที่ส่วนกลาง<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าสาธารณูปโภค
+                            &nbsp;&nbsp;&nbsp;- เงินประกันการปฏิบัติตามสัญญา<br>
+                            &nbsp;&nbsp;&nbsp;- เงินประกันค่าบริการพื้นที่ส่วนกลาง<br>
+                            &nbsp;&nbsp;&nbsp;- เงินประกันค่าสาธารณูปโภค
                         </div>
                         <div class="col-7">
-                            <span style="color: white;">.</span><br>
                             ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='security_deposit').mapped('total_price'))) or '-'} บาท<br>
                             ${object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
                             ${object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
                         </div>
                     </div>
+                    <p><b>14.วันชำระค่าเช่า และค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) และค่าปรับ</b></p>
                     <div class="row" style="margin-bottom: 10px;">
-                        <div class="col-1" style="padding-right: 0px;">
-                            <b>14.</b>
-                        </div>
+                        <div class="col-1"></div>
                         <div class="col-4" style="padding-left: 0px;padding-right: 0px;">
-                            <b>วันชำระค่าเช่า และค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) และค่าปรับ</b><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าเช่ารายวัน<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าเช่ารายเดือน<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า)<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าเช่า เกินกำหนด<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) เกินกำหนด<br>
+                            &nbsp;&nbsp;&nbsp;- การชำระค่าเช่ารายวัน<br>
+                            &nbsp;&nbsp;&nbsp;- การชำระค่าเช่ารายเดือน<br>
+                            &nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า)<br>
+                            &nbsp;&nbsp;&nbsp;- การชำระค่าเช่า เกินกำหนด<br><br>
+                            &nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) เกินกำหนด<br>
                         </div>
                         <div class="col-7">
-                            <span style="color: white;">.</span><br>
                             ชำระทุกวัน (ห้ามค้างชำระเกิน 5 วันวันที่เกินคิดค่าปรับ)<br>
                             ชำระภายในวันที่ 15 ของทุกเดือน<br>
                             ชำระภายในวันที่ 15 ของเดือนถัดไป<br>
@@ -778,14 +738,13 @@
                     </div>
                     <div class="row" style="text-indent: 0px;margin-top: 30px;"><div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้เช่า<br>(${object.agreement_id.company_contact_id and &nbsp;&nbsp;&nbsp;object.agreement_id.company_contact_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div><div class="col-6 text-center">ลงชื่อ.....................................................ผู้เช่า<br>
                     (${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div></div>
-
                 </div>
             ]]>
         </field>
     </record>
 
-    <record id="agreement_appendix2_v3" model="agreement.appendix">
-        <field name="agreement_id" ref="agreement_template_v3"/>
+    <record id="agreement_lease_appendix2_v3" model="agreement.appendix">
+        <field name="agreement_id" ref="agreement_lease_template_v3"/>
         <field name="name">เอกสารแนบท้ายแผนผังแสดงโซนที่เช่า</field>
         <field name="title">เอกสารแนบท้ายแผนผังแสดงโซนที่เช่า</field>
         <field name="sequence">20</field>

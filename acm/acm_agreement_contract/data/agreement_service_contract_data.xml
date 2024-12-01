@@ -1,0 +1,649 @@
+<odoo noupdate="0">
+    <!-- สัญญาให้บริการ V3 -->
+    <record id="agreement_service_contract_data" model="agreement">
+        <field name="name">สัญญาให้บริการ (V3)</field>
+        <field name="code">Template</field>
+        <field name="is_template">True</field>
+        <field name="agreement_type_id" ref="agreement_legal.agreement_type_contract"/>
+        <field name="agreement_subtype_id" ref="acm.agreement_subtype_lease"/>
+        <field name="income_type_id" search="[('name', '=', 'รายได้ค่าบริการ')]"/>
+        <field name="contract_type">sale</field>
+        <field name="description">สัญญาให้บริการ</field>
+        <field name="company_id" ref="base.main_company"/>
+        <field name="company_contact_id" search="[('type', '=', 'contact'), ('name', '=', 'นางสาวปิยะดา เลาหวัฒน์')]"/>
+    </record>
+
+    <!-- section -->
+    <record id="agreement_service_contract_section1" model="agreement.section">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ย่อหน้าที่ 1</field>
+        <field name="title"> </field>
+        <field name="sequence">10</field>
+        <field name="content">
+            <![CDATA[
+                <p style="text-align: center; text-indent: 0px;"><font style="font-size: 28px;"><b>สัญญาให้บริการพื้นที่บางส่วน&nbsp;${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่ให้บริการ ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></font></p>
+                <p style="text-align: right; text-indent: 0px;">เลขที่ ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
+                <p>สัญญานี้ทำขึ้น ณ สำนักงาน${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} จังหวัดเชียงใหม่ เมื่อวันที่ ${object.agreement_id.date_contract and '%s %s %s' % (object.agreement_id.date_contract.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.date_contract.strftime('%m')), (object.agreement_id.date_contract + relativedelta(years=543)).strftime('%Y')) or '&nbsp;&nbsp;&nbsp;'} ระหว่าง</p>
+                <p>${object.agreement_id.company_id.name or '&nbsp;&nbsp;&nbsp;'} ซึ่งจดทะเบียนเป็นนิติบุคคลเลขที่ ${object.agreement_id.company_id.vat or '&nbsp;&nbsp;&nbsp;'} มีสำนักงานใหญ่อยู่ที่ ${object.agreement_id.company_id.street or ''} ${object.agreement_id.company_id.street2 or ''} ${object.agreement_id.company_id.zip or ''} ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "ผู้ให้บริการ" ฝ่ายหนึ่ง กับ</p>
+                <p>${object.agreement_id.partner_id.name or '&nbsp;&nbsp;&nbsp;'} เลขประจำตัวประชาชน/เลขทะเบียนนิติบุคคล ${object.agreement_id.partner_id.vat or '&nbsp;&nbsp;&nbsp;'} อยู่บ้านเลขที่ ${object.agreement_id.partner_id.street or ''} ${object.agreement_id.partner_id.street2 or ''} ${object.agreement_id.partner_id.zip or ''} โทรศัพท์ ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '&nbsp;&nbsp;&nbsp;'} ซึ่งต่อไปนี้ในสัญญานี้เรียกว่า "ผู้รับบริการ" อีกฝ่ายหนึ่ง</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="agreement_service_contract_section2" model="agreement.section">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ย่อหน้าที่ 2</field>
+        <field name="title"> </field>
+        <field name="sequence">20</field>
+        <field name="content">
+            <![CDATA[
+                <p>คู่สัญญาทั้งสองฝ่ายได้ตกลงทำสัญญากัน มีข้อความดังต่อไปนี้</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="agreement_service_contract_section3" model="agreement.section">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ย่อหน้าที่ 3</field>
+        <field name="title"> </field>
+        <field name="sequence">30</field>
+        <field name="content">
+            <![CDATA[
+                <p>สัญญานี้ทำขึ้นไว้สองฉบับข้อความตรงกัน คู่สัญญาได้ตรวจและเห็นว่าถูกต้องแล้ว จึงได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน และคู่สัญญาแต่ละฝ่ายต่างยึดถือกันไว้ฝ่ายละฉบับ</p>
+                <br><br>
+                <div style="page-break-inside: avoid !important;">
+                    <div class="row" style="text-indent: 0px;">
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้บริการ<br>(${object.agreement_id.company_contact_id and &nbsp;&nbsp;&nbsp;object.agreement_id.company_contact_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div>
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้รับบริการ<br>(${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div>
+                    </div>
+                    <br><br>
+                    <div class="row" style="text-indent: 0px;"><div class="col-12 text-center">ลงชื่อ.....................................................พยาน<br>(${object.agreement_id.company_witness and &nbsp;&nbsp;&nbsp;object.agreement_id.company_witness&nbsp;&nbsp;&nbsp; or '.....................................................'})</div>
+                    </div>
+                </div>
+            ]]>
+        </field>
+    </record>
+
+    <!-- clause -->
+    <record id="agreement_service_clause1" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 1</field>
+        <field name="title"> </field>
+        <field name="sequence">10</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ข้อตกลงการบริการและทรัพย์สินที่ให้บริการ</p>
+                <p>ผู้ให้บริการตกลงให้บริการ และผู้รับบริการตกลงรับบริการทรัพย์สินของผู้ให้บริการ โดยคู่สัญญาตกลงกันว่าบรรดาเอกสารแนบท้ายสัญญา รวมทั้งประกาศ คำสั่ง หรือข้อกำหนด ที่ผู้ให้บริการประกาศใช้บังคับแก่ผู้รับบริการไม่ว่าขณะนี้ หรือที่ผู้ให้บริการจะประกาศใช้บังคับต่อไปในภายหน้า ให้ถือว่าเงื่อนไขดังกล่าวนั้นทั้งหมดเป็นส่วนหนึ่งซึ่งเป็นสาระสำคัญของสัญญานี้ รวมทั้งจะต้องไม่ให้ลูกจ้าง หรือบริวารของผู้รับบริการ หรือบุคคลอื่นใดฝ่าฝืนกฎระเบียบ ประกาศ คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัด ประกอบด้วย</p>
+                <p>- เอกสารแนบท้ายสัญญา ก. เงื่อนไขการบริการพื้นที่ที่ให้บริการตลาด${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่ ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</p>
+                <p>- เอกสารแนบท้ายสัญญา ข. แผนผังแสดงโซนที่ให้บริการ</p>
+                <p>- เอกสารแนบท้ายสัญญา ค. กฎระเบียบ และข้อบังคับในการดำเนินกิจการค้าในพื้นที่ที่ให้บริการ</p>
+                <p>- เอกสารแนบท้ายสัญญา ง. ภาพถ่ายทรัพย์สินที่ให้บริการในวันส่งมอบพื้นที่</p>
+                <p>ผู้ให้บริการสงวนสิทธิ์ในการปรับปรุง เปลี่ยนแปลง เคลื่อนย้ายตำแหน่งที่ตั้งทรัพย์สินที่ให้บริการตามสัญญานี้ได้ตามความเหมาะสม</p>
+                <p>ผู้รับบริการรับทราบเป็นอย่างดีว่า ประเภทกิจการที่ผู้รับบริการได้รับอนุญาตตามข้อนี้ มิได้ให้สิทธิแก่ผู้รับบริการรายเดียว ผู้ให้บริการมีสิทธิอนุญาตให้ผู้รับบริการรายอื่นประกอบกิจการประเภทเดียวกับผู้รับบริการได้</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="agreement_service_clause2" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 2</field>
+        <field name="title"> </field>
+        <field name="sequence">20</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>เงินประกันการปฏิบัติตามสัญญา</p>
+                <p>ในขณะทำสัญญาฉบับนี้ ผู้รับบริการตกลงส่งมอบเงินประกันให้แก่ผู้ให้บริการเพื่อเป็นเงินประกันการปฏิบัติตามสัญญานี้ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.</p>
+                <p>หากผู้รับบริการปฏิบัติผิดสัญญาข้อใดข้อหนึ่ง ผู้ให้บริการมีสิทธิเรียกร้องเอาบรรดาค่าเสียหายอย่างใดๆ ตามสัญญานี้ โดยหักเงินจากเงินประกันการปฏิบัติตามสัญญาดังกล่าวได้ทันที และหากปรากฏว่าบรรดาค่าเสียหายดังกล่าวเกินกว่าเงินประกันแล้ว ผู้รับบริการจะต้องนำเงินมาชำระเพิ่มเติมให้แก่ผู้ให้บริการ ภายใน 7 (เจ็ด) วัน นับจากวันที่ได้รับแจ้งเป็นหนังสือจากผู้ให้บริการ</p>
+                <p>ผู้ให้บริการจะคืนเงินประกันการปฏิบัติตามสัญญาให้ผู้รับบริการโดยไม่มีดอกเบี้ยภายใน 60 (หกสิบ) วัน นับแต่วันที่ผู้รับบริการพ้นจากความผูกพันตามสัญญานี้ และสัญญาอื่นที่เกี่ยวข้องกับสัญญานี้ทั้งหมด</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause3" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 3</field>
+        <field name="title"> </field>
+        <field name="sequence">30</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้ให้บริการไม่ต้องรับผิดชอบเพื่อการรอนสิทธิหรือเพื่อความชำรุดบกพร่องในทรัพย์สินที่ให้บริการ อันเกิดขึ้นในระหว่างเวลาบริการและไม่ว่ากรณีใดๆ และผู้ให้บริการไม่มีหน้าที่บำรุงรักษาและซ่อมแซมทรัพย์สินที่ให้บริการอันเกิดจากความชำรุดบกพร่องในระหว่างการบริการ ทั้งนี้ ผู้รับบริการมีหน้าที่และรับผิดเสียค่าใช้จ่ายในการบำรุงรักษาทรัพย์สินที่ให้บริการ</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause4" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 4</field>
+        <field name="title"> </field>
+        <field name="sequence">40</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการจะต้องประกอบกิจการค้าขายตามช่วงเวลาที่กำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.</p>
+                <p>ผู้รับบริการจะหยุดประกอบกิจการ (ปิดร้าน) เกิน 3 วันติดต่อกันไม่ได้ หากมีความจำเป็นต้องปิดร้านเกินกำหนดเวลาดังกล่าวจะต้องมีหนังสือแจ้งต่อผู้ให้บริการ เพื่อพิจารณาอนุญาตก่อนหยุดประกอบกิจการ (ปิดร้าน) หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ค.</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause5" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 5</field>
+        <field name="title"> </field>
+        <field name="sequence">50</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ถ้าทรัพย์สินที่ให้บริการสูญหายหรือเสียหาย เกินกว่าครึ่งหนึ่งของทรัพย์สินที่ให้บริการก็ดี หรือสูญหายหรือเสียหายในส่วนที่สำคัญ ให้สัญญาเป็นอันระงับตั้งแต่วันที่ทรัพย์สินนั้นสูญหายหรือเสียหาย ในกรณีที่ทรัพย์สินที่ให้บริการสูญหายหรือเสียหายไม่เกินครึ่งหนึ่ง ผู้รับบริการมีหน้าที่ซ่อมแซมให้กลับคืนสภาพดีดังเดิมภายในระยะเวลาที่ผู้ให้บริการกำหนด</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause6" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 6</field>
+        <field name="title"> </field>
+        <field name="sequence">60</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>การดัดแปลงและการต่อเติมทรัพย์สินที่บริการก็ดี การปลูกสร้างหรือแก้ไขเพิ่มเติม หรือรื้อถอนทรัพย์สินที่บริการก็ดี ผู้รับบริการจะกระทำมิได้ เว้นแต่จะได้รับการอนุญาตจากผู้ให้บริการเป็นหนังสือ และปฏิบัติตามเงื่อนไขที่ผู้ให้บริการกำหนด คือ ส่งแบบแปลน และรายละเอียดของการก่อสร้าง รวมตลอดถึงเอกสารที่จำเป็น ให้ผู้ให้บริการตรวจสอบก่อนการอนุญาต</p>
+                <p>เมื่อได้รับอนุญาตจากผู้ให้บริการแล้ว หากการดังกล่าวต้องขออนุญาตจากหน่วยงานราชการ ผู้รับบริการต้องดำเนินการให้ถูกต้องตามระเบียบที่กำหนด และหากการไม่ขออนุญาตดังกล่าวเป็นความผิดตามกฎหมาย ผู้รับบริการจะต้องรับผิดแต่เพียงผู้เดียวและโดยค่าใช้จ่ายของผู้รับบริการเอง</p>
+                <p>ในกรณีที่การดัดแปลง และการต่อเติมทรัพย์สินที่บริการไม่ได้ขออนุญาตจากผู้ให้บริการก็ดี และ/หรือไม่ได้ทำการขออนุญาตให้ถูกต้องตามระเบียบของหน่วยงานราชการก็ดี ผู้ให้บริการมีสิทธิเรียกร้องต่อผู้รับบริการดังต่อไปนี้</p>
+                <p>ก) เรียกร้องค่าปรับจากการไม่ขออนุญาตจำนวน 5,000 (ห้าพัน) บาท ต่อครั้ง / ต่อสัญญาจากผู้รับบริการ</p>
+                <p>ข) เรียกร้องให้ผู้รับบริการต้องดำเนินการแก้ไข และขออนุญาตตามระเบียบของหน่วยงานราชการให้ถูกต้อง ตามแบบที่ได้รับอนุญาตจากผู้ให้บริการเท่านั้น</p>
+                <p>ค) หากผู้รับบริการเพิกเฉย ผู้ให้บริการมีสิทธิยกเลิกสัญญาบริการได้</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause7" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 7</field>
+        <field name="title"> </field>
+        <field name="sequence">70</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการจะให้ผู้อื่นเช่าช่วง หรือโอนสิทธิของตนอันมีในทรัพย์สินที่ให้บริการ ไม่ว่าทั้งหมดหรือบางส่วน หรือให้ผู้อื่นเข้าใช้ประโยชน์ในพื้นที่บริการแทนตนไม่ได้ หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตรา 500 (ห้าร้อย) บาท ต่อวัน / ต่อสัญญา และขอสงวนสิทธิ์ให้ผู้รับบริการในการพิจารณาเรื่องค่าปรับ และการยกเลิกสัญญาบริการต่อไป</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause8" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 8</field>
+        <field name="title"> </field>
+        <field name="sequence">80</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการตกลงยินยอมให้ผู้ให้บริการหรือผู้ได้รับมอบหมายจากผู้ให้บริการเข้าไปในพื้นที่ที่ให้บริการเป็นครั้งคราวในเวลา และระยะเวลาอันสมควรในระหว่างเวลาทำการของพื้นที่ที่ให้บริการ เพื่อวัตถุประสงค์ที่อาจจำเป็นสำหรับการปกป้องรักษาประโยชน์ของผู้ให้บริการและประโยชน์ส่วนรวมได้ โดยผู้ให้บริการจะต้องแจ้งให้ผู้รับบริการทราบล่วงหน้าตามสมควร เว้นแต่เป็นกรณีฉุกเฉินหรือจำเป็นเร่งด่วนเพื่อป้องกันหรือบรรเทาความเสียหายที่เกิดขึ้นหรืออาจจะเกิดขึ้นกับพื้นที่ที่ให้บริการ อาคาร หรือพื้นที่ที่ให้บริการของผู้รับบริการรายอื่น ผู้ให้บริการสามารถที่จะเข้าไปในพื้นที่ที่ให้บริการได้ในทันทีโดยไม่ต้องแจ้งให้ผู้รับบริการทราบ ทั้งนี้ ไม่ว่าในระหว่างเวลาทำการหรือนอกเวลาทำการของผู้รับบริการก็ตาม โดยมิให้ถือว่ามีเจตนาเป็นการบุกรุก</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause9" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 9</field>
+        <field name="title"> </field>
+        <field name="sequence">90</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>การชำระค่าบริการ และค่าตอบแทน</p>
+                <p>9.1 ผู้รับบริการต้องชำระค่าบริการ ค่าตอบแทน ตามข้อ 1. และค่าบริการสาธารณูปโภค เช่น ค่ากระแสไฟฟ้า ค่าน้ำประปา ค่าโทรศัพท์ เป็นต้น ภายในวันที่ผู้ให้บริการกำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. ณ สำนักงานตลาดในวัน และเวลาทำการ หรือชำระด้วยวิธีการใดๆ ที่ผู้ให้บริการกำหนดเพิ่มเติม หากวันครบกำหนดชำระเงินข้างต้นตรงกับวันหยุดทำการของสำนักงานตลาด ผู้รับบริการตกลงชำระก่อนวันดังกล่าวไม่น้อยกว่า 1 (หนึ่ง) วัน</p>
+                <p>9.2 หากผู้รับบริการค้างชำระค่าบริการสาธารณูปโภค ตั้งแต่ 2 งวดขึ้นไป ผู้รับบริการยินยอมให้ผู้ให้บริการระงับการให้บริการสาธารณูปโภคได้ทันที โดยไม่จำเป็นต้องแจ้งให้ผู้รับบริการทราบล่วงหน้า และผู้รับบริการให้ถือว่าการระงับการให้บริการสาธารณูปโภคดังกล่าวไม่เป็นการกระทำละเมิดต่อผู้รับบริการ และผู้รับบริการไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไร หรือค่าขาดรายได้จากผู้ให้บริการทั้งสิ้น</p>
+                <p>9.3 ผู้รับบริการทราบและให้ความยินยอมว่าในระหว่างอายุสัญญา อาจมีการเปลี่ยนแปลงค่าบริการสาธารณูปโภค และวันชำระค่าบริการ และค่าสาธารณูปโภคเพื่อให้เหมาะสมตามความจำเป็นจากผู้ให้บริการได้ โดยผู้ให้บริการจะแจ้งให้ผู้รับบริการทราบล่วงหน้าก่อน</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause10" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 10</field>
+        <field name="title"> </field>
+        <field name="sequence">100</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ค่าภาษีและค่าธรรมเนียม</p><p>ผู้รับบริการตกลงชำระภาษีที่ดินและสิ่งปลูกสร้างหรือภาษีอื่นใด ค่าอากร ค่าเบี้ยประกันภัย ค่าธรรมเนียม หรือเงินอื่นใดที่รัฐเรียกเก็บเกี่ยวกับทรัพย์สินที่ให้บริการ (หากมี) ตลอดระยะเวลาที่ผู้รับบริการครอบครองทรัพย์สินที่ให้บริการจนถึงวันที่ส่งมอบทรัพย์สินที่ให้บริการคืนแก่ผู้ให้บริการเสร็จเรียบร้อย</p>
+                <p>หากผู้ให้บริการชำระไปก่อน ให้ผู้ให้บริการมีสิทธิเรียกเงินที่ได้ชำระไปนั้นคืนจากผู้รับบริการได้ทั้งหมด พร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 (สิบห้า) ต่อปี นับแต่วันที่ผู้ให้บริการได้ชำระเงินนั้น</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause11" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 11</field>
+        <field name="title"> </field>
+        <field name="sequence">110</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการต้องปฏิบัติตาม กฎหมาย กฎระเบียบ ประกาศ คำสั่ง ระเบียบของราชการ หรือกฎหมายเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคล หรือคำสั่งของพนักงานเจ้าหน้าที่ตามกฎหมายที่เกี่ยวข้องกับการดำเนินกิจการตลาด และการดำเนินกิจการค้าของผู้รับบริการให้ถูกต้องตามกฎหมาย หรือข้อกำหนดของกฎหมายทั้งปวงที่ผู้ให้บริการหรือสำนักงานตลาดประกาศใช้บังคับแก่ผู้รับบริการไม่ว่าขณะนี้ หรือที่ผู้ให้บริการจะประกาศใช้บังคับต่อไปในภายหน้า  รวมทั้งจะต้องไม่ให้ลูกจ้างหรือบริวารของผู้รับบริการ หรือบุคคลอื่นใดฝ่าฝืน คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัด การเพิกเฉยหรือฝ่าฝืนให้ถือว่าเป็นการปฏิบัติผิดสัญญาบริการอย่างร้ายแรง</p>
+            ]]>
+        </field>
+    </record>
+
+    <record id="agreement_service_clause12" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 12</field>
+        <field name="title"> </field>
+        <field name="sequence">120</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการรับทราบแล้วว่าสิทธิกาบริการของผู้รับบริการมีเพียงเท่าที่ตกลงตามสัญญาบริการนี้ และเมื่อครบกำหนดอายุสัญญาบริการแล้ว และหรือ มีเหตุอื่นใดที่ผู้รับบริการปฏิบัติผิดเงื่อนไขในสัญญาอันเป็นเหตุให้สัญญาเป็นอันระงับสิ้นไป ผู้รับบริการจะต้องส่งมอบทรัพย์สินที่ให้บริการคืนแก่ผู้ให้บริการในสภาพเดิม และเรียบร้อย โดยค่าใช้จ่ายในการส่งมอบพื้นที่ หรือรื้อถอนเป็นหน้าที่ของผู้รับบริการเอง และผู้รับบริการไม่ติดใจว่าเมื่อครบกำหนดอายุสัญญาการให้บริการ ผู้ให้บริการจะต่อสัญญาบริการให้อีกต่อไปหรือไม่</p>
+                <p>การส่งมอบพื้นที่ให้บริการคืนก็ดี และหรือ การรื้อถอนการดัดแปลง และการต่อเติมทรัพย์สินที่ให้บริการตามที่บังคับไว้ใน ข้อ 6. ก็ดี ขอสงวนสิทธิ์ให้ผู้ให้บริการเป็นผู้พิจารณา</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause13" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 13</field>
+        <field name="title"> </field>
+        <field name="sequence">130</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้เช่ามีไปถึงผู้เช่า ตามที่อยู่ที่ผู้เช่าให้ไว้ในสัญญานี้ไม่ว่าผู้เช่าจะได้รับหรือไม่เพียงใดผู้เช่าตกลงให้ถือว่าผู้เช่าได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว</p>
+                <p>หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบเป็นลายลักษณ์อักษรภายใน 15 วัน นับแต่วันเปลี่ยนแปลง</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause14" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 14</field>
+        <field name="title"> </field>
+        <field name="sequence">140</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ก่อนครบกำหนดสัญญาบริการไม่น้อยกว่า 90(เก้าสิบ) วัน ผู้ให้บริการจะแจ้งให้ผู้รับบริการทราบถึงเรื่องการต่อสัญญาบริการ และ/หรือ การไม่ต่อสัญญาบริการ เพื่อให้คู่สัญญาทั้งสองฝ่ายได้เจรจาตกลงค่าบริการ และเงื่อนไขใน  สัญญาบริการ หากตกลงกันไม่ได้ก่อนครบกำหนดสัญญาบริการ ให้ถือว่าสัญญาบริการสิ้นสุดเมื่อครบกำหนดการให้บริการ และผู้ให้บริการมีสิทธิให้สัญญาบริการกับบุคคลอื่นได้</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause15" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 15</field>
+        <field name="title"> </field>
+        <field name="sequence">150</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการตกลงหรือยินยอมให้ผู้ให้บริการ และบุคคลอื่นที่ผู้ให้บริการมอบหมายใช้ข้อมูลส่วนบุคคลของผู้รับบริการ เพื่อวัตถุประสงค์ตามสัญญานี้หรือที่เกี่ยวข้องต่อเนื่องกับการปฏิบัติตามสัญญานี้ได้</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause16" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 16</field>
+        <field name="title"> </field>
+        <field name="sequence">160</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผู้รับบริการจะต้องตั้งวางจำหน่ายสินค้าภายในพื้นที่ให้บริการเท่านั้น และจะไม่ตั้งวางสินค้า หรือสิ่งของนอกบริเวณพื้นที่ให้บริการ บนทางเท้า ถนน หรือพื้นที่ส่วนกลาง และต้องไม่ตั้งวางสินค้า หรือสิ่งของรุกล้ำพื้นที่ให้บริการอื่น หรือตั้งวางสินค้า หรือสิ่งของอันมีลักษณะเป็นการบังพื้นที่ให้บริการอื่น หรือเป็นอุปสรรคในการประกอบการค้าของ ผู้รับบริการรายอื่นโดยไม่ได้รับอนุญาตเป็นหนังสือจากผู้ให้บริการ หรือการตั้งวางสินค้าในพื้นที่โดยมีน้ำหนักเกิน หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตราวันละ 500 (ห้าร้อย) บาท ต่อสัญญา โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause17" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 17</field>
+        <field name="title"> </field>
+        <field name="sequence">170</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>การปฏิบัติผิดสัญญาและค่าปรับ</p><p>17.1 ในกรณีที่ผู้รับบริการผิดนัดชำระเงินค่าบริการ ค่าบริการสาธารณูปโภค หรือเงินอื่นใดในสัญญาหรือปฏิบัติผิดสัญญาข้อหนึ่งข้อใดหรือแม้แต่ส่วนหนึ่งส่วนใดหากผู้ให้บริการมีหนังสือแจ้งเตือนผู้รับบริการแล้วแต่ผู้รับบริการไม่ดำเนินการภายในระยะเวลาที่ผู้ให้บริการกำหนดผู้ให้บริการมีสิทธิบอกเลิกสัญญาได้ทันที แต่ทั้งนี้หากผู้ให้บริการยังไม่ใช้สิทธิบอกเลิกสัญญาให้ผู้ให้บริการมีสิทธิดำเนินการดังต่อไปนี้</p>
+                <p style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ก) เรียกให้ชำระค่าปรับในอัตราที่ผู้ให้บริการกำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้าย สัญญา ก. จนกว่าผู้รับบริการจะแก้ไขและดำเนินการปฏิบัติตามสัญญาให้ถูกต้อง</p>
+                <p style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ข) ผู้รับบริการยินยอมให้ผู้ให้บริการใช้สิทธิยึดหน่วงในบรรดาทรัพย์สินของผู้รับบริการที่ยังคงอยู่ในทรัพย์สินที่ให้บริการจนกว่าผู้รับบริการ จะพ้นจากภาระผูกพันและหน้าที่ในการชำระค่าบริการหรือหนี้เงินอื่นใดตามสัญญานี้ และสัญญาอื่นๆ ที่เกี่ยวข้อง</p>
+                <p>17.2 ในกรณีที่ผู้รับบริการไม่ปฏิบัติตามสัญญาบริการ ข้อ 3. ข้อ 4. และข้อ 5. ผู้รับบริการต้องชดใช้ค่าปรับ และหรือค่าสินไหมทดแทนแก่ผู้ให้บริการ สำหรับการไม่ปฏิบัติตามเงื่อนไขในสัญญาหรือสำหรับค่าเสื่อมราคาแห่งทรัพย์สินที่ให้บริการ ถ้าผู้ให้บริการเข้าดำเนินการบำรุงรักษาหรือซ่อมแซมทรัพย์สินที่ให้บริการ  ผู้รับบริการต้องใช้เงินทดแทนแก่ผู้ให้บริการเท่ากับที่ผู้ให้บริการได้ใช้จ่ายไปพร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 ต่อปี นับแต่วันที่ผู้ให้บริการได้จ่ายไป</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause18" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 18</field>
+        <field name="title"> </field>
+        <field name="sequence">180</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>กรณีการใช้สิทธิบอกเลิกสัญญา</p>
+                <p>สัญญานี้จะสิ้นสุดลงทันที เมื่อเกิดเหตุการณ์อย่างหนึ่งอย่างใด ดังต่อไปนี้</p>
+                <p>18.1 กรณีการใช้สิทธิบอกเลิกสัญญา</p>
+                <p>&emsp;18.1.1 สัญญาทุกข้อ และเอกสารแนบท้ายสัญญาทั้งหมดถือเป็นสาระสำคัญ ถ้าผู้รับบริการไม่ปฏิบัติตามสัญญาข้อหนึ่งข้อใด หรือแม้แต่ส่วนหนึ่งส่วนใด และผู้ให้บริการได้แจ้งให้ผู้รับบริการแก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนดแล้ว หากผู้รับบริการเพิกเฉย หรือไม่แก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนด ผู้ให้บริการมีสิทธิบอกเลิกการให้บริการได้ทันที โดยมิพักต้องเตือนหรือบอกกล่าวให้ปฏิบัติตามสัญญาก่อน และบรรดาเงินค่าเช่าและค่าบริการหรือเงินอื่นใด ที่ผู้รับบริการได้ชำระไปแล้วให้ตกเป็นของผู้ให้บริการทั้งหมดโดยผู้รับบริการไม่มีสิทธิเรียกร้องคืน</p>
+                <p>&emsp;18.1.2 ในกรณีที่ผู้รับบริการประสงค์จะบอกเลิกสัญญาให้บริการก่อนครบกำหนดอายุสัญญาให้บริการ ผู้รับบริการต้องมีหนังสือแจ้งให้ผู้ให้บริการทราบล่วงหน้าไม่น้อยกว่า 2 เดือน กรณีนี้ผู้ให้บริการมีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตาม ข้อ 2. ของสัญญาให้บริการฉบับนี้ ทั้งนี้ ผู้รับบริการยังคงมีหน้าที่ต้องชำระค่าบริการ หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้</p>
+                <p>&emsp;18.1.3 ผู้ให้บริการจะบอกเลิกสัญญาบริการก่อนครบกำหนดอายุสัญญาบริการก็ได้ โดย ผู้ให้บริการต้องมีหนังสือแจ้งให้ผู้ให้บริการทราบล่วงหน้าไม่น้อยกว่า 2 เดือน</p>
+                <p>&emsp;ก่อนครบกำหนดอายุสัญญาบริการ ในกรณีที่ผู้ให้บริการจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สินที่ให้บริการ ผู้ให้บริการจะแจ้งให้ผู้รับบริการทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาบริการสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้รับบริการจะเรียกร้องค่าเสียหายใดๆ ไม่ได้</p>
+                <p>&emsp;เมื่อผู้ให้บริการบอกเลิกสัญญาบริการ หากปรากฏว่าผู้รับบริการได้ส่งมอบเงินประกันการปฏิบัติตามสัญญาครบถ้วนแล้ว และได้ชำระหนี้ที่ค้างชำระได้แก่ ค่าบริการ ค่าตอบแทน หรือค่าบริการสาธารณูปโภค รวมตลอดถึงค่าปรับ ค่าสินไหมทดแทน และบรรดาค่าเสียหาย หรือหนี้เงินอย่างใดๆ ตามที่ระบุไว้ในสัญญาบริการ และเอกสารแนบท้ายสัญญา ให้แก่ผู้ให้บริการจนครบถ้วนแล้ว ผู้ให้บริการจะคืนเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุไว้ใน ข้อ 2. แห่งสัญญานี้</p>
+                <p>18.2 กรณีดังต่อไปนี้ ให้ถือว่าสัญญาสิ้นสุดลงทันที โดยมิต้องบอกกล่าวแต่อย่างใด</p>
+                <p>&emsp;18.2.1 เมื่อครบกำหนดสิ้นสุดตามอายุการเช่าของสัญญาฉบับนี้ โดยมิได้มีการต่ออายุสัญญาให้บริการ</p>
+                <p>&emsp;18.2.2 ในกรณีเกิดอัคคีภัย หรือภัยพิบัติอย่างอื่นซึ่งทำความเสียหายแก่ทรัพย์สินที่เช่าทั้งหมด หรือแต่ส่วนหนึ่งส่วนใดจนไม่เหมาะสมที่จะใช้ประกอบการค้าอีกต่อไป</p>
+                <p>&emsp;18.2.3 ผู้รับบริการใช้ทรัพย์สินที่เช่าในทางผิดกฎหมาย หรือขัดต่อความสงบเรียบร้อยและศีลธรรมอันดีของประชาชน</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause19" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 19</field>
+        <field name="title"> </field>
+        <field name="sequence">190</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ผลภายหลังสัญญาสิ้นสุด</p>
+                <p>เมื่อสัญญาระงับลงไม่ว่าด้วยเหตุใดก็ตาม ผู้ให้บริการและผู้รับบริการตกลงกัน ดังนี้</p>
+                <p>19.1 บรรดาเงินใดๆ ที่ผู้รับบริการชำระแล้วไม่มีสิทธิเรียกคืน และผู้ให้บริการมีสิทธิเรียกให้ผู้รับบริการชำระหนี้ที่ค้างชำระตลอดจนค่าปรับทั้งหมด และในกรณีผู้รับบริการปฏิบัติผิดสัญญา ผู้รับบริการยินยอมให้ผู้ให้บริการมีสิทธิริบเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุใน ข้อ 2. ของสัญญานี้ รวมทั้งมีสิทธิเรียกค่าเสียหายในส่วนที่เกินจากเงินประกันสัญญาทั้งหมด (หากมี)</p>
+                <p>19.2 ผู้รับบริการจะต้องขนย้ายทรัพย์สิน และบริวารออกจากทรัพย์สินที่ให้บริการ พร้อมทั้งส่งมอบทรัพย์สินที่ให้บริการในสภาพเดิม และเรียบร้อย และรื้อถอนทรัพย์สินที่ผู้รับบริการเป็นผู้ดำเนินการติดตั้ง (หากมี) ภายในระยะเวลาที่สัญญานี้สิ้นสุดลงด้วยค่าใช้จ่ายของผู้รับบริการเองทั้งสิ้น หากผู้รับบริการไม่ดำเนินการให้ถือว่าผู้รับบริการยังคงครอบครองทรัพย์สินที่ให้บริการอยู่ และผู้ให้บริการมีสิทธิเรียกค่าปรับในอัตราวันละ 500 บาท (ห้าร้อยบาทถ้วน) ต่อพื้นที่ให้บริการ นับแต่วันที่สัญญาระงับจนถึงวันที่ผู้รับบริการส่งมอบทรัพย์สินที่ให้บริการคืนเสร็จเรียบร้อยแล้ว ทั้งนี้ไม่ตัดสิทธิผู้ให้บริการในการเรียกร้องค่าใช้จ่ายใดๆ ที่เกิดขึ้นจากการดำเนินการให้ทรัพย์สินที่ให้บริการอยู่ในสภาพเดิมจากผู้รับบริการ</p>
+                <p>19.3 กรณีผู้รับบริการไม่ส่งมอบคืนพื้นที่ตามข้อ 19.2 นอกจากสิทธิเรียกค่าปรับแล้ว ผู้ให้บริการมีสิทธิเข้าครอบครองทรัพย์สินที่ให้บริการได้ด้วยตนเอง โดยผู้รับบริการไม่มีสิทธิคัดค้าน หรือเรียกค่าเสียหาย หรือดำเนินการตามกฎหมายกับผู้ให้บริการทั้งคดีแพ่งและคดีอาญาแต่ประการใด กล่าวคือ</p>
+                <p>&emsp;ก) ให้ถือว่าสิทธิครอบครองพื้นที่กลับคืนสู่ผู้ให้บริการในทันที</p>
+                <p>&emsp;ข) ผู้ให้บริการหรือตัวแทนผู้ให้บริการมีสิทธิที่จะทำลายสิ่งกีดขวางประตู หรือกุญแจ และเคลื่อนย้ายทรัพย์สินต่างๆ ออกจากพื้นที่โดยผู้รับบริการจะต้องเป็นผู้รับผิดชอบค่าใช้จ่ายในการขนย้าย และหรือ เก็บรักษาทรัพย์สินนั้น</p>
+                <p>&emsp;ค) ผู้ให้บริการ หรือตัวแทนผู้ให้บริการ มีสิทธิที่จะปิดกั้น หรือกระทำการใดๆ เพื่อห้ามมิให้ผู้รับบริการ เข้าในทรัพย์สินที่ให้บริการ</p>
+                <p>&emsp;ง) ผู้ให้บริการมีสิทธิระงับการให้บริการสาธารณูปโภค เช่น กระแสไฟฟ้า น้ำประปา โทรศัพท์ และอื่นๆ ที่ให้บริการภายในทรัพย์สินที่ให้บริการได้ทันที โดยการระงับการให้บริการของผู้ให้บริการนั้น ผู้รับบริการไม่มีสิทธิเรียกร้องค่าเสียหายใดๆ หรือค่าขาดกำไรจากผู้ให้บริการแต่อย่างใด</p>
+                <p>&emsp;จ) ผู้ให้บริการมีสิทธิที่จะดำเนินการให้ผู้รับบริการรายใหม่เข้าใช้ประโยชน์ทรัพย์สินที่ให้บริการได้ในทันที</p>
+                <p>19.4 กรณีผู้รับบริการไม่ขนย้ายทรัพย์สินออกจากทรัพย์สินที่ให้บริการ บรรดาทรัพย์สินที่อยู่ในทรัพย์สินที่ให้บริการ ผู้ให้บริการไม่ต้องรับผิดชอบในความสูญหายหรือเสียหายของทรัพย์สินของผู้รับบริการและผู้รับบริการยินยอมให้ผู้ให้บริการมีสิทธิยึดหน่วงทรัพย์สินดังกล่าวได้ โดยสามารถใช้สอย หรือเอาให้เช่าหรือเอาทรัพย์สินนั้นไปเป็นหลักประกันได้จนกว่าผู้ให้บริการจะได้รับชำระหนี้ทั้งหมดตามสัญญาโดยผู้รับบริการจะต้องรับผิดชอบค่าใช้จ่ายในการดำเนินการดังกล่าวทั้งหมด</p>
+                <p>19.5 กรณีที่ผู้รับบริการได้ขนย้ายทรัพย์สินออกจากทรัพย์สินที่ให้บริการแล้ว หากปรากฏว่ามีทรัพย์สินใดๆคงอยู่ในทรัพย์สินที่ให้บริการให้ถือว่าทรัพย์สินนั้นตกเป็นกรรมสิทธิ์ของผู้ให้บริการทันทีโดยไม่มีค่าใช้จ่าย หรือค่าการงานแต่อย่างใด</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause20" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 20</field>
+        <field name="title"> </field>
+        <field name="sequence">200</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาให้บริการนี้ ผู้รับบริการตกลงให้ผู้ให้บริการเป็นผู้วินิจฉัยชี้ขาด และผู้รับบริการตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งครัด</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause21" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 21</field>
+        <field name="title"> </field>
+        <field name="sequence">220</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>การไม่ใช้สิทธิของคู่สัญญาฝ่ายหนึ่งฝ่ายใดในการบังคับคู่สัญญาอีกฝ่ายหนึ่งสำหรับการที่ไม่ปฏิบัติหรือการละเมิดข้อตกลงตามสัญญาฉบับนี้ ไม่ถือว่าคู่สัญญาฝ่ายนั้นได้สละหรือยกเลิกสิทธิ ข้อตกลง หรือเงื่อนไขของตนเป็นการถาวร นอกจากนี้ การที่ผู้ให้บริการยินยอมให้ผู้รับบริการกระทำการ หรือละเว้นกระทำการใดซึ่งขัดต่อข้อตกลงในหนังสือสัญญาฉบับนี้ ให้ถือว่าเป็นการยินยอมเฉพาะกรณี และไม่มีผลต่อการกระทำใด ๆ ที่เกิดขึ้นในภายหลัง</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause22" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 22</field>
+        <field name="title"> </field>
+        <field name="sequence">220</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ห้ามผู้รับบริการกระทำการทุจริตโดยการดัดแปลงแก้ไขอุปกรณ์มิเตอร์หรืออุปกรณ์ควบคุมในการจ่ายกระแสไฟฟ้าหรือน้ำ หรือกระทำการอื่นใดให้ผู้ให้บริการได้รับความเสียหาย หากผู้ให้บริการตรวจพบการกระทำผิดของผู้รับบริการดังกล่าว ให้ถือว่าเป็นการกระทำความผิดอย่างร้ายแรง และเป็นเหตุให้ผู้ให้บริการมีสิทธิยกเลิกสัญญาได้ รวมตลอดถึงการเรียกร้องค่าเสียหาย และการดำเนินคดีตามกฎหมายได้</p>
+            ]]>
+        </field>
+    </record>
+    <record id="agreement_service_clause23" model="agreement.clause">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">ข้อที่ 23</field>
+        <field name="title"> </field>
+        <field name="sequence">230</field>
+        <field name="section_id" ref="agreement_service_contract_section2"/>
+        <field name="content">
+            <![CDATA[
+                <p>ในกรณีที่ส่วนหนึ่งส่วนใดของสัญญาบริการฉบับนี้ตกเป็นโมฆะหรือไม่อาจใช้บังคับกับบุคคลหรือเหตุการณ์ที่กำหนดไว้ได้ ให้ข้อกำหนดส่วนอื่นๆ ของสัญญาบริการฉบับนี้หรือการบังคับใช้สัญญานี้ต่อบุคคลหรือในเหตุการณ์อื่นๆ นอกเหนือจากส่วนที่ตกเป็นโมฆะดังกล่าว รวมทั้งข้อกำหนดแต่ละข้อของสัญญาบริการฉบับนี้ในส่วนอื่นๆ ยังคงมีผลสมบูรณ์และสามารถใช้บังคับได้ตราบเท่าที่ไม่ขัดต่อบทบัญญัติแห่งกฎหมาย</p>
+            ]]>
+        </field>
+    </record>
+
+    <!-- Appendices -->
+    <record id="agreement_appendix1" model="agreement.appendix">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการให้บริการพื้นที่ตลาดคำเที่ยง</field>
+        <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการให้บริการพื้นที่ตลาดคำเที่ยง</field>
+        <field name="sequence">10</field>
+        <field name="content">
+            <![CDATA[
+                <div style="text-align: left;line-height:27px !important;">
+                    <p class="text-center"><b style="text-decoration: underline;text-decoration-thickness: 1px;">เอกสารแนบท้ายสัญญา ก. เงื่อนไขการให้บริการพื้นที่${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่ให้บริการ ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></p>
+                    <p class="text-right"><b>เลขที่</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>1.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้รับบริการ (นิติบุคคล)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-6">
+                            <b>เลขทะเบียนนิติบุคคล</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>2.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้รับบริการ (บุคคลธรรมดา)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-6">
+                            <b>เลขประจำตัวประชาชน</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>3.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;">
+                            <b>ที่อยู่</b>
+                        </div>
+                        <div class="col-9">
+                            ${(object.agreement_id.partner_id.street or object.agreement_id.partner_id.street2 or object.agreement_id.partner_id.zip) and '%s %s %s' % (object.agreement_id.partner_id.street or '', object.agreement_id.partner_id.street2 or '', object.agreement_id.partner_id.zip or '') or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>4.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;padding-right: 0px;">
+                            <b>เบอร์ติดต่อ</b>
+                        </div>
+                        <div class="col-9">
+                            ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>5.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>ประเภทธุรกิจ/กิจการ</b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- ชื่อกิจการ
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.business_name or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    หมวดสินค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.goods_category_id.name or '-'}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- จำหน่ายสินค้าประเภท
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.goods_type or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ช่วงเวลาประกอบการค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.rent_product_id.attribute_value_ids and ', '.join(object.agreement_id.rent_product_id.attribute_value_ids.mapped('name')) or object.agreement_id.rent_product_id.working_hours_id.working_hours or '-'}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>6.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ทรัพย์สินที่ให้บริการ</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- เลขที่พื้นที่ให้บริการ<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่ (กว้าง x ยาว)
+                        </div>
+                        <div class="col-7">
+                            <span style="margin-left: -150px;"><b>อาคาร${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} ${object.agreement_id.company_id.market_address or '&nbsp;&nbsp;&nbsp;'}</b></span><br>
+                            ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
+                            ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร) (พื้นที่โดยประมาณ)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>7.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <b>ผู้รับบริการต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่ให้บริการโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>8.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาการให้บริการ</b>
+                        </div>
+                        <div class="col-7">
+                            ${object.agreement_id.get_rental_period(object.agreement_id.start_date, object.agreement_id.end_date) or '-'} (วันที่ ${object.agreement_id.start_date and '%s %s %s' % (object.agreement_id.start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.start_date.strftime('%m')), (object.agreement_id.start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.end_date and '%s %s %s' % (object.agreement_id.end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.end_date.strftime('%m')), (object.agreement_id.end_date + relativedelta(years=543)).strftime('%Y')) or '-'})
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>9.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันส่งมอบพื้นที่ให้บริการ</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_area_delivery_date and '%s %s %s' % (object.agreement_id.rental_area_delivery_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_area_delivery_date.strftime('%m')), (object.agreement_id.rental_area_delivery_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>10.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาปลอดค่าบริการ</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_free_start_date and '%s %s %s' % (object.agreement_id.rental_free_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_start_date.strftime('%m')), (object.agreement_id.rental_free_start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.rental_free_end_date and '%s %s %s' % (object.agreement_id.rental_free_end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_end_date.strftime('%m')), (object.agreement_id.rental_free_end_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>11.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันเริ่มต้นชำระค่าบริการ</b>
+                        </div>
+                        <div class="col-7">
+                            % set rent_start_date = object.agreement_id.rental_free_end_date and object.agreement_id.rental_free_end_date + relativedelta(days=+1) or object.agreement_id.start_date
+                            วันที่ ${rent_start_date and '%s %s %s' % (rent_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(rent_start_date.strftime('%m')), (rent_start_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>12.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้บริการ จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท (รวมภาษีมูลค่าเพิ่ม) แบ่งจ่ายดังนี้' or ' - บาท (รวมภาษีมูลค่าเพิ่ม)'}
+                            <div>
+                                % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
+                                %endfor
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายวัน วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท  (รวมภาษีมูลค่าเพิ่ม)
+                            ค่าบริการพื้นที่ส่วนกลาง วันละ ${object.agreement_id.recurring_rule_type == 'daily' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- ค่าบริการรายเดือน เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='rent').mapped('total_price')[:1])) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม) ค่าบริการพื้นที่ส่วนกลาง เดือนละ ${object.agreement_id.recurring_rule_type == 'monthly' and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='ค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>13.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;padding-right: 0px;">
+                            <b>เงินประกันการปฏิบัติตามสัญญา</b><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันการปฏิบัติตามสัญญา<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าบริการพื้นที่ส่วนกลาง<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;- เงินประกันค่าสาธารณูปโภค
+                        </div>
+                        <div class="col-7">
+                            <span style="color: white;">.</span><br>
+                            ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='security_deposit').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            ${object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าบริการพื้นที่ส่วนกลาง').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)<br>
+                            ${object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(product_name='เงินประกันค่าสาธารณูปโภค').mapped('total_price'))) or '-'} บาท (รวมภาษีมูลค่าเพิ่ม)
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                                <b>14.</b>
+                            </div>
+                        <div class="col-11" style="padding-left: 0px;padding-right: 0px;">
+                            <b>วันชำระค่าเช่า และค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) และค่าปรับ</b><br>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการรายวัน</div>
+                            <div class="col-6">ชำระทุกวัน (ห้ามค้างชำระเกิน 5 วัน วันที่เกินคิดค่าปรับ)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการรายเดือน</div>
+                            <div class="col-6">ชำระภายในวันที่ 15 ของทุกเดือน</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า)</div>
+                            <div class="col-6">ชำระภายในวันที่ 15 ของเดือนถัดไป</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าบริการ เกินกำหนด</div>
+                            <div class="col-6">คิดค่าปรับในอัตราวันละ 50 บาท ต่อสัญญา ติดต่อกันไป จนกว่าจะชำระเสร็จสิ้น</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" style="padding-left: 70px;">&nbsp;&nbsp;&nbsp;&nbsp;- การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า) เกินกำหนด</div>
+                            <div class="col-6">คิดค่าปรับในอัตราวันละ 50 บาท ต่อสัญญา ติดต่อกันไป จนกว่าจะชำระเสร็จสิ้น</div>
+                        </div>
+                    </div>
+                    <div class="row" style="text-indent: 0px;margin-top: 70px;">
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้ให้บริการ<br>(  นางสาวปิยะดา  เลาหวัฒน์  )</div>
+                        <div class="col-6 text-center">ลงชื่อ.....................................................ผู้รับบริการ<br>(${object.agreement_id.partner_id and &nbsp;&nbsp;&nbsp;object.agreement_id.partner_id.name&nbsp;&nbsp;&nbsp; or '.....................................................'})</div>
+                    </div>
+                </div>
+            ]]>
+        </field>
+    </record>
+
+    <record id="agreement_appendix2" model="agreement.appendix">
+        <field name="agreement_id" ref="agreement_service_contract_data"/>
+        <field name="name">เอกสารแนบท้ายแผนผังแสดงโซนที่ให้บริการ</field>
+        <field name="title">เอกสารแนบท้ายแผนผังแสดงโซนที่ให้บริการ</field>
+        <field name="sequence">20</field>
+        <field name="content">
+            <![CDATA[
+                <p class="text-center" style="page-break-before: always;"><b style="text-decoration: underline;text-decoration-thickness: 1px;">เอกสารแนบท้าย ข. แผนผังแสดงโซนที่ให้บริการ</b></p>
+                <p class="text-right"><b>เลขที่</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
+                <p style="text-align: center;">
+                    % for line in object.agreement_id.rent_product_id.group_id.market_zone_map_ids:
+                    % if line.has_map(object.agreement_id.rent_product_id.lock_number):
+                        <img style="width:90%;" src="data:image/jpeg;base64,${line.map.decode('ascii') or ''}" alt="Market Zone Map">
+                    % endif
+                    % endfor
+                </p>
+            ]]>
+        </field>
+    </record>
+</odoo>
