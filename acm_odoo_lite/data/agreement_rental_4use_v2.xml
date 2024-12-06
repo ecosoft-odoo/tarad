@@ -3,14 +3,25 @@
 <odoo>
 
     <!-- สัญญาเช่าที่ดินเพื่อทำประโยชน์ v2 -->
+
+    <record id="agreement_rental_4use_v2" model="agreement">
+        <field name="name">สัญญาเช่าที่ดินเพื่อทำประโยชน์ V2</field>
+        <field name="code">Template</field>
+        <field name="is_template">True</field>
+        <field name="agreement_type_id" ref="agreement_legal.agreement_type_contract"/>
+        <field name="agreement_subtype_id" ref="acm.agreement_subtype_lease"/>
+        <field name="contract_type">sale</field>
+        <field name="description">สัญญาเช่าที่ดินเพื่อทำประโยชน์</field>
+        <field name="company_id" ref="base.main_company"/>
+    </record>
     <!-- section and clause in here -->
 
     <!-- section สัญญาเช่าที่ดินเพื่อทำประโยชน์ v2-->
     <record id="agreement_section_4use_v2_1" model="agreement.section">
         <field name="name">ย่อหน้าที่ 1</field>
         <field name="sequence">10</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="content" type="html">
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="content">
             <![CDATA[
                 <p style="text-align: center; text-indent: 0px;"><font style="font-size: 28px;"><b>สัญญาเช่าที่ดินเพื่อทำประโยชน์</b></font></p>
                 <p style="text-align: right; text-indent: 0px;">เลขที่ ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
@@ -29,20 +40,22 @@
     <record id="agreement_section_4use_v2_2" model="agreement.section">
         <field name="name">ย่อหน้าที่ 2</field>
         <field name="sequence">20</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="content" type="html">
-            <p style="text-indent: 48px;">
-                คู่สัญญาทั้งสองฝ่ายได้ตกลงทำสัญญากัน มีข้อความดังต่อไปนี้
-            </p>
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="content">
+            <![CDATA[
+                <p style="text-indent: 48px;">
+                    คู่สัญญาทั้งสองฝ่ายได้ตกลงทำสัญญากัน มีข้อความดังต่อไปนี้
+                </p>
+            ]]>
         </field>
     </record>
 
     <record id="agreement_section_4use_v2_3" model="agreement.section">
         <field name="name">ย่อหน้าที่ 3</field>
         <field name="sequence">30</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="content">
+            <![CDATA[
                 <p>สัญญานี้ทำขึ้นไว้สองฉบับข้อความตรงกัน คู่สัญญาได้ตรวจเห็นว่าถูกต้องแล้ว จึงได้ลงลายมือชื่อไว้เป็นสำคัญต่อหน้าพยาน และคู่สัญญาแต่ละฝ่ายต่างยึดถือกันไว้ฝ่ายละฉบับ</p>
                 <br>
                 <br>
@@ -291,9 +304,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_1" model="agreement.clause">
         <field name="name">ข้อ 1</field>
         <field name="sequence">10</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
             <![CDATA[
                 <p>ข้อตกลงการเช่าและทรัพย์สินที่เช่า</p>
                 <p style="text-indent: 114px;">ผู้ให้เช่าตกลงให้เช่า และผู้เช่าตกลงเช่าทรัพย์สินของผู้ให้เช่า โดยคู่สัญญาตกลงกันว่าบรรดาเอกสารแนบท้ายสัญญา รวมทั้งประกาศ คำสั่ง หรือข้อกำหนด ที่ผู้ให้เช่าประกาศใช้บังคับแก่ผู้เช่าไม่ว่าขณะนี้ หรือที่ผู้ให้เช่าจะประกาศใช้บังคับต่อไปในภายหน้า ให้ถือว่าเงื่อนไขดังกล่าวนั้นทั้งหมดเป็นส่วนหนึ่งซึ่งเป็นสาระสำคัญของสัญญานี้ รวมทั้งจะต้องไม่ให้ลูกจ้าง หรือบริวารของผู้เช่า หรือบุคคลอื่นใดฝ่าฝืนกฎระเบียบ ประกาศ คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัด ประกอบด้วย</p>
@@ -309,10 +322,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_2" model="agreement.clause">
         <field name="name">ข้อ 2</field>
         <field name="sequence">20</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>เงินประกันการปฏิบัติตามสัญญา</p>
                 <p style="text-indent: 114px;">ในขณะทำสัญญาฉบับนี้ ผู้เช่าตกลงส่งมอบเงินประกันให้แก่ผู้ให้เช่าเพื่อเป็นเงินประกันการปฏิบัติตามสัญญานี้ โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก.</p>
                 <p style="text-indent: 114px;">หากผู้เช่าปฏิบัติผิดสัญญาข้อใดข้อหนึ่ง ผู้ให้เช่ามีสิทธิเรียกร้องเอาบรรดาค่าเสียหายอย่างใดๆ ตามสัญญานี้ โดยหักเงินจากเงินประกันการปฏิบัติตามสัญญาดังกล่าวได้ทันที และหากปรากฏว่าบรรดาค่าเสียหายดังกล่าวเกินกว่าเงินประกันแล้ว ผู้เช่าจะต้องนำเงินมาชำระเพิ่มเติมให้แก่ผู้ให้เช่า ภายใน 7 (เจ็ด) วัน นับจากวันที่ได้รับแจ้งเป็นหนังสือจากผู้ให้เช่า</p>
@@ -324,9 +337,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_3" model="agreement.clause">
         <field name="name">ข้อ 3</field>
         <field name="sequence">30</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
             <![CDATA[
                 <p>ผู้ให้เช่าไม่ต้องรับผิดชอบเพื่อการรอนสิทธิหรือเพื่อความชำรุดบกพร่องในทรัพย์สินที่เช่า อันเกิดขึ้นในระหว่างเวลาเช่าและไม่ว่ากรณีใดๆ และผู้ให้เช่าไม่มีหน้าที่บำรุงรักษาและซ่อมแซมทรัพย์สินที่เช่าอันเกิดจากความชำรุดบกพร่องในระหว่างการเช่า ทั้งนี้ผู้เช่ามีหน้าที่และรับผิดชอบเสียค่าใช้จ่ายในการบำรุงรักษาทรัพย์สินที่เช่า</p>
             ]]>
@@ -336,10 +349,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_4" model="agreement.clause">
         <field name="name">ข้อ 4</field>
         <field name="sequence">40</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าตกลงจะใช้ทรัพย์สินที่เช่าตามสัญญา  เอกสารแนบท้ายสัญญา  รายละเอียด และเงื่อนไขการเช่าที่ดินเพื่อทำประโยชน์กำหนด และจะไม่ใช้ทรัพย์สินที่เช่าเพื่อกิจการใด อันมีวัตถุประสงค์เป็นการต้องห้ามฝ่าฝืนกฎหมาย หรือขัดต่อความสงบเรียบร้อย หรือศีลธรรมอันดีของประชาชนโดยเด็ดขาด</p>
                 <p>หากผู้เช่ามีความประสงค์ที่จะเปลี่ยนแปลงการใช้ประโยชน์ในทรัพย์สินที่เช่า ผู้เช่าจะต้องได้รับอนุญาตจากผู้ให้เช่าเป็นหนังสือ และปฏิบัติตามเงื่อนไขที่ผู้ให้เช่ากำหนด</p>
             ]]>
@@ -349,10 +362,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_5" model="agreement.clause">
         <field name="name">ข้อ 5</field>
         <field name="sequence">50</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>การดัดแปลงและการต่อเติมทรัพย์สินที่เช่าก็ดี การปลูกสร้างหรือแก้ไขเพิ่มเติม หรือรื้อถอนทรัพย์สินที่เช่าก็ดี ผู้เช่าจะกระทำมิได้ เว้นแต่จะได้รับการอนุญาตจากผู้ให้เช่าเป็นหนังสือ และปฏิบัติตามเงื่อนไขที่ผู้ให้เช่ากำหนด คือ  ส่งแบบแปลน และรายละเอียดของการก่อสร้าง รวมตลอดถึงเอกสารที่จำเป็น ให้ผู้ให้เช่าตรวจสอบก่อนการอนุญาต</p>
                 <p style="text-indent: 114px;">เมื่อได้รับอนุญาตจากผู้ให้เช่าแล้ว หากการดังกล่าวต้องขออนุญาตจากหน่วยงานราชการ ผู้เช่าต้องดำเนินการให้ถูกต้องตามระเบียบที่กำหนด และหากการไม่ขออนุญาตดังกล่าวเป็นความผิดตามกฎหมาย ผู้เช่าจะต้องรับผิดแต่เพียงผู้เดียวและโดยค่าใช้จ่ายของผู้เช่าเอง</p>
                 <p style="text-indent: 114px;">ในกรณีที่การดัดแปลง และการต่อเติมทรัพย์สินที่เช่าไม่ได้ขออนุญาตจากผู้ให้เช่าก็ดี และหรือไม่ได้ทำการขออนุญาตให้ถูกต้องตามระเบียบของหน่วยงานราชการก็ดี ผู้ให้เช่ามีสิทธิเรียกร้องต่อผู้เช่าดังต่อไปนี้</p>
@@ -366,10 +379,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_6" model="agreement.clause">
         <field name="name">ข้อ 6</field>
         <field name="sequence">60</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าจะให้ผู้อื่นเช่าช่วง หรือโอนสิทธิของตนอันมีในทรัพย์สินที่เช่า ไม่ว่าทั้งหมดหรือบางส่วน หรือให้ผู้อื่นเข้าใช้ประโยชน์ในพื้นที่เช่าแทนตนไม่ได้ หากฝ่าฝืนไม่ปฏิบัติตามต้องชำระค่าปรับในอัตรา 500 (ห้าร้อย) บาท ต่อวัน / ต่อสัญญา และขอสงวนสิทธิ์ให้ผู้ให้เช่าในการพิจารณาเรื่องค่าปรับ และการยกเลิกสัญญาเช่าต่อไป</p>
             ]]>
         </field>
@@ -378,10 +391,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_7" model="agreement.clause">
         <field name="name">ข้อ 7</field>
         <field name="sequence">70</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าตกลงยินยอมให้ผู้ให้เช่าหรือผู้ได้รับมอบหมายจากผู้ให้เช่าเข้าไปในพื้นที่เช่าเป็นครั้งคราวในเวลา และระยะเวลาอันสมควรในระหว่างเวลาทำการของพื้นที่เช่า เพื่อวัตถุประสงค์ที่อาจจำเป็นสำหรับการปกป้องรักษาประโยชน์ของผู้ให้เช่าและประโยชน์ส่วนรวมได้ โดยผู้ให้เช่าจะต้องแจ้งให้ผู้เช่าทราบล่วงหน้าตามสมควร เว้นแต่เป็นกรณีฉุกเฉินหรือจำเป็นเร่งด่วนเพื่อป้องกันหรือบรรเทาความเสียหายที่เกิดขึ้นหรืออาจจะเกิดขึ้นกับพื้นที่เช่า อาคาร หรือพื้นที่เช่าของผู้เช่ารายอื่น ผู้ให้เช่าสามารถที่จะเข้าไปในพื้นที่เช่าได้ในทันทีโดยไม่ต้องแจ้งให้ผู้เช่าทราบ ทั้งนี้ ไม่ว่าในระหว่างเวลาทำการหรือนอกเวลาทำการของผู้เช่าก็ตาม โดยมิให้ถือว่ามีเจตนาเป็นการบุกรุก</p>
             ]]>
         </field>
@@ -390,10 +403,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_8" model="agreement.clause">
         <field name="name">ข้อ 8</field>
         <field name="sequence">80</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>การชำระค่าเช่า ค่าตอบแทน และค่าบริการ</p>
                 <p style="text-indent: 114px;">ผู้เช่าต้องชำระค่าเช่า ค่าตอบแทน ค่าบริการตามข้อ 1. ภายในวันที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. ณ สำนักงานของผู้ให้เช่าในวัน และเวลาทำการ หรือชำระด้วยวิธีการใดๆ ที่ผู้ให้เช่ากำหนดเพิ่มเติม หากวันครบกำหนดชำระเงินข้างต้นตรงกับวันหยุดทำการของสำนักงานของผู้ให้เช่า ผู้เช่าตกลงชำระก่อนวันดังกล่าวไม่น้อยกว่า 1 (หนึ่ง) วัน</p>
                 <p style="text-indent: 114px;">กรณีผู้เช่าได้ชำระค่าบริการสาธารณูปโภค ( หากมี ) เช่น ค่าไฟฟ้า ค่ำน้ำประปา ค่าโทรศัพท์ เป็นต้นต่อหน่วยงานที่ให้บริการแล้ว ผู้เช่าต้องแสดงหลักฐานการชำระค่าบริการสาธารณูปโภคว่าไม่มีหนี้ค้างชำระต่อผู้ให้เช่าเมื่อสิ้นสุดการเช่า</p>
@@ -404,10 +417,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_9" model="agreement.clause">
         <field name="name">ข้อ 9</field>
         <field name="sequence">90</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ค่าภาษี และค่าธรรมเนียม</p>
                 <p style="text-indent: 114px;">ผู้เช่าตกลงชำระภาษีที่ดินและสิ่งปลูกสร้าง ภาษีป้าย หรือภาษีอื่นใด ค่าอากร ค่าเบี้ยประกันภัย ค่าธรรมเนียม หรือเงินอื่นใดที่รัฐเรียกเก็บเกี่ยวกับทรัพย์สินที่เช่า (หากมี) ตลอดระยะเวลาที่ผู้เช่าครอบครองทรัพย์สินที่เช่าจนถึงวันที่ส่งมอบทรัพย์สินที่เช่าคืนแก่ผู้ให้เช่าเสร็จเรียบร้อย</p>
                 <p style="text-indent: 114px;">หากผู้ให้เช่าชำระไปก่อน ให้ผู้ให้เช่ามีสิทธิเรียกเก็บเงินที่ได้ชำระไปนั้นคืนจากผู้เช่าได้ทั้งหมด พร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 (สิบห้า) ต่อปี นับแต่วันที่ผู้เช่าได้ชำระเงินนั้น</p>
@@ -418,10 +431,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_10" model="agreement.clause">
         <field name="name">ข้อ 10</field>
         <field name="sequence">100</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าต้องปฏิบัติตาม กฎหมาย กฎระเบียบ ประกาศ คำสั่ง ระเบียบของราชการ หรือกฎหมายเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคล หรือคำสั่งของพนักงานเจ้าหน้าที่ตามกฎหมาย ซึ่งเกี่ยวกับการดำเนินกิจการค้าของผู้เช่าให้ถูกต้องตามกฎหมาย หรือข้อกำหนดของกฎหมายทั้งปวงที่ผู้ให้เช่าหรือสำนักงานของ ผู้ให้เช่าประกาศใช้บังคับแก่ผู้เช่าไม่ว่าขณะนี้ หรือที่ผู้ให้เช่าจะประกาศใช้บังคับต่อไปในภายหน้า รวมทั้งจะต้องไม่ให้ลูกจ้างหรือบริวารของผู้เช่า หรือบุคคลอื่นใดฝ่าฝืน คำสั่ง หรือข้อกำหนดดังกล่าวโดยเคร่งครัด           การเพิกเฉยหรือฝ่าฝืนให้ถือว่าเป็นการปฏิบัติผิดสัญญาเช่าอย่างร้ายแรง</p>
             ]]>
         </field>
@@ -430,10 +443,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_11" model="agreement.clause">
         <field name="name">ข้อ 11</field>
         <field name="sequence">110</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าตกลงหรือยินยอมให้ผู้ให้เช่า และบุคคลอื่นที่ผู้ให้เช่ามอบหมายใช้ข้อมูลส่วนบุคคลของ  ผู้เช่า เพื่อวัตถุประสงค์ตามสัญญานี้หรือที่เกี่ยวข้องต่อเนื่องกับการปฏิบัติตามสัญญานี้ได้</p>
             ]]>
         </field>
@@ -442,10 +455,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_12" model="agreement.clause">
         <field name="name">ข้อ 12</field>
         <field name="sequence">120</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่ารับทราบแล้วว่าสิทธิการเช่าของผู้เช่ามีเพียงเท่าที่ตกลงตามสัญญาเช่านี้ และเมื่อครบกำหนดอายุสัญญาเช่าแล้ว และหรือ มีเหตุอื่นใดที่ผู้เช่าปฏิบัติผิดเงื่อนไขในสัญญาอันเป็นเหตุให้สัญญาเป็นอันระงับสิ้นไป ผู้เช่าจะต้องส่งมอบทรัพย์สินที่เช่าคืนแก่ผู้ให้เช่าในสภาพเดิม และเรียบร้อย โดยค่าใช้จ่ายในการส่งมอบพื้นที่ หรือรื้อถอนเป็นหน้าที่ของผู้เช่าเอง และผู้เช่าไม่ติดใจว่าเมื่อครบกำหนดอายุสัญญาการเช่า ผู้ให้เช่าจะต่อสัญญาเช่าให้อีกต่อไปหรือไม่</p>
                 <p style="text-indent: 114px;">การส่งมอบพื้นที่เช่าคืนก็ดี และหรือ การรื้อถอนการดัดแปลง และการต่อเติมทรัพย์สินที่เช่าตามที่บังคับไว้ใน ข้อ 5. ก็ดี ขอสงวนสิทธิ์ให้ผู้ให้เช่าเป็นผู้พิจารณา</p>
             ]]>
@@ -455,9 +468,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_13" model="agreement.clause">
         <field name="name">ข้อ 13</field>
         <field name="sequence">130</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
             <![CDATA[
                 <p>ก่อนครบกำหนดสัญญาเช่าไม่น้อยกว่า 90(เก้าสิบ) วัน ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบถึงเรื่องการต่อสัญญาเช่า และหรือ การไม่ต่อสัญญาเช่า เพื่อให้คู่สัญญาทั้งสองฝ่ายได้เจรจาตกลงค่าเช่า และเงื่อนไขในสัญญาเช่า หากตกลงกันไม่ได้ก่อนครบกำหนดสัญญาเช่า ให้ถือว่าสัญญาเช่าสิ้นสุดเมื่อครบกำหนดการเช่า และผู้ให้เช่ามีสิทธิให้บุคคลอื่นเช่าได้</p>
             ]]>
@@ -467,14 +480,14 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_14" model="agreement.clause">
         <field name="name">ข้อ 14</field>
         <field name="sequence">140</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>การปฏิบัติผิดสัญญาและค่าปรับ</p>
                 <p style="text-indent: 114px;">14.1 ในกรณีที่ผู้เช่าผิดนัดชำระเงินค่าเช่า หรือเงินอื่นใดในสัญญาหรือปฏิบัติผิดสัญญาข้อหนึ่งข้อใดหรือแม้แต่ส่วนหนึ่งส่วนใดหากผู้ให้เช่ามีหนังสือแจ้งเตือนผู้เช่าแล้วแต่ผู้เช่าไม่ดำเนินการภายในระยะเวลาที่ผู้ให้เช่ากำหนดผู้ให้เช่ามีสิทธิบอกเลิกสัญญาได้ทันที แต่ทั้งนี้หากผู้ให้เช่ายังไม่ใช้สิทธิบอกเลิกสัญญาให้ผู้ให้เช่ามีสิทธิดำเนินการดังต่อไปนี้</p>
                 <p style="text-indent: 160px;">ก) เรียกให้ชำระค่าปรับในอัตราที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. จนกว่าผู้เช่าจะแก้ไขและดำเนินการปฏิบัติตามสัญญาให้ถูกต้อง</p>
-                <p style="text-indent: 160px;">ข) ผู้เช่ายินยอมให้ผู้ให้เช่าใช้สิทธิยึดหน่วงในบรรดาทรัพย์สินของผู้เช่าที่ยังคงอยู่ในทรัพย์สินที่เช่าจนกว่าผู้เช่าจะพ้นจากภาระผูกพันและหน้าที่ในการชำระค่าเช่า ค่าบริการหรือหนี้เงินอื่นใดตามสัญญานี้ และสัญญาอื่นๆ ที่เกี่ยวข้อง</p>    
+                <p style="text-indent: 160px;">ข) ผู้เช่ายินยอมให้ผู้ให้เช่าใช้สิทธิยึดหน่วงในบรรดาทรัพย์สินของผู้เช่าที่ยังคงอยู่ในทรัพย์สินที่เช่าจนกว่าผู้เช่าจะพ้นจากภาระผูกพันและหน้าที่ในการชำระค่าเช่า ค่าบริการหรือหนี้เงินอื่นใดตามสัญญานี้ และสัญญาอื่นๆ ที่เกี่ยวข้อง</p>
                 <p style="text-indent: 114px;">14.2 ในกรณีที่ผู้เช่าไม่ปฏิบัติตามสัญญาเช่า ข้อ 3. ผู้เช่าต้องชดใช้ค่าปรับ และหรือค่าสินไหมทดแทนแก่ผู้ให้เช่า สำหรับการไม่ปฏิบัติตามเงื่อนไขในสัญญา หรือสำหรับค่าเสื่อมราคาแห่งทรัพย์สินที่เช่า ถ้าผู้ให้เช่าเข้าดำเนินการบำรุงรักษาหรือซ่อมแซมทรัพย์สินที่เช่า และหรือที่ชำรุดบกพร่อง ผู้เช่าต้องใช้เงินทดแทนแก่ผู้ให้เช่าเท่ากับที่ผู้ให้เช่าได้ใช้จ่ายไปพร้อมด้วยดอกเบี้ยในอัตราร้อยละ 15 ต่อปี นับแต่วันที่ ผู้ให้เช่าได้จ่ายไป</p>
             ]]>
         </field>
@@ -483,17 +496,17 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_15" model="agreement.clause">
         <field name="name">ข้อ 15</field>
         <field name="sequence">150</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>กรณีการใช้สิทธิบอกเลิกสัญญา</p>
                 <p style="text-indent: 114px;">สัญญานี้จะสิ้นสุดลงทันที เมื่อเกิดเหตุการณ์อย่างหนึ่งอย่างใด ดังต่อไปนี้</p>
                 <p style="text-indent: 114px;">15.1 กรณีการใช้สิทธิบอกเลิกสัญญา</p>
                 <p style="text-indent: 160px;">15.1.1 สัญญาทุกข้อ และเอกสารแนบท้ายสัญญาทั้งหมดถือเป็นสาระสำคัญ ถ้าผู้เช่าไม่ปฏิบัติตามสัญญาข้อหนึ่งข้อใด หรือแม้แต่ส่วนหนึ่งส่วนใด และผู้ให้เช่าได้แจ้งให้ผู้เช่าแก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนดแล้ว หากผู้เช่าเพิกเฉย หรือไม่แก้ไขการปฏิบัติผิดสัญญาภายในเวลาที่กำหนด ผู้ให้เช่ามีสิทธิบอกเลิกการเช่าได้ทันที โดยมิพักต้องเตือนหรือบอกกล่าวให้ปฏิบัติตามสัญญาก่อน และบรรดาเงินค่าเช่าและค่าบริการหรือเงินอื่นใด ที่ผู้เช่าได้ชำระไปแล้วให้ตกเป็นของผู้ให้เช่าทั้งหมดโดยผู้เช่าไม่มีสิทธิเรียกร้องคืน</p>
-                <p style="text-indent: 160px;">15.1.2 ในกรณีที่ผู้เช่าประสงค์จะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่า ผู้เช่าต้องมีหนังสือแจ้งให้ผู้ให้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน กรณีนี้ผู้ให้เช่ามีสิทธิริบเงินประกันการปฏิบัติตามสัญญาตามข้อ 2. ของสัญญาเช่าฉบับนี้ ทั้งนี้ ผู้เช่ายังคงมีหน้าที่ต้องชำระค่าเช่า หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้</p> 
-                <p style="text-indent: 160px;">15.1.3 ผู้ให้เช่าจะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่าก็ได้ โดย   ผู้ให้เช่าต้องมีหนังสือแจ้งให้ผู้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน</p> 
-                <p style="text-indent: 160px;">ก่อนครบกำหนดอายุสัญญาเช่า ในกรณีที่ผู้ให้เช่าจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สินที่เช่า ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาเช่าสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้เช่าจะเรียกร้องค่าเสียหายใดๆ ไม่ได้</p> 
+                <p style="text-indent: 160px;">15.1.2 ในกรณีที่ผู้เช่าประสงค์จะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่า ผู้เช่าต้องมีหนังสือแจ้งให้ผู้ให้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน กรณีนี้ผู้ให้เช่ามีสิทธิริบเงินประกันการปฏิบัติตามสัญญาตามข้อ 2. ของสัญญาเช่าฉบับนี้ ทั้งนี้ ผู้เช่ายังคงมีหน้าที่ต้องชำระค่าเช่า หรือเงินอื่นใดตามสัญญาจนถึงวันที่พ้นจากความผูกพันตามสัญญานี้</p>
+                <p style="text-indent: 160px;">15.1.3 ผู้ให้เช่าจะบอกเลิกสัญญาเช่าก่อนครบกำหนดอายุสัญญาเช่าก็ได้ โดย   ผู้ให้เช่าต้องมีหนังสือแจ้งให้ผู้เช่าทราบล่วงหน้าไม่น้อยกว่า 2 เดือน</p>
+                <p style="text-indent: 160px;">ก่อนครบกำหนดอายุสัญญาเช่า ในกรณีที่ผู้ให้เช่าจะมีการปรับปรุง ดัดแปลง ต่อเติม ทรัพย์สินที่เช่า ผู้ให้เช่าจะแจ้งให้ผู้เช่าทราบล่วงหน้าก่อนตามวรรคแรก กรณีนี้ถือว่าสัญญาเช่าสิ้นสุดลงเมื่อครบกำหนดระยะเวลาในหนังสือแจ้ง และผู้เช่าจะเรียกร้องค่าเสียหายใดๆ ไม่ได้</p>
                 <p style="text-indent: 160px;">เมื่อผู้ให้เช่าบอกเลิกสัญญาเช่า หากปรากฏว่าผู้เช่าได้ส่งมอบเงินประกันการปฏิบัติตามสัญญาครบถ้วนแล้ว และได้ชำระหนี้ที่ค้างชำระได้แก่ ค่าเช่า ค่าตอบแทน ค่าบริการ หรือค่าบริการสาธารณูปโภค รวมตลอดถึงค่าปรับ ค่าสินไหมทดแทน และบรรดาค่าเสียหาย หรือหนี้เงินอย่างใดๆ ตามที่ระบุไว้ในสัญญาเช่า และเอกสารแนบท้ายสัญญา ให้แก่ผู้ให้เช่าจนครบถ้วนแล้ว ผู้ให้เช่าจะคืนเงินประกันการปฏิบัติตามสัญญา ตามที่ระบุไว้ใน ข้อ 2. แห่งสัญญานี้</p>
                 <p style="text-indent: 114px;">15.2 กรณีดังต่อไปนี้ ให้ถือว่าสัญญาสิ้นสุดลงทันที โดยมิต้องบอกกล่าวแต่อย่างใด</p>
                 <p style="text-indent: 160px;">15.2.1 เมื่อครบกำหนดสิ้นสุดตามอายุการเช่าของสัญญาฉบับนี้ โดยมิได้มีการต่ออายุสัญญาเช่า</p>
@@ -504,9 +517,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_16" model="agreement.clause">
         <field name="name">ข้อ 16</field>
         <field name="sequence">160</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
             <![CDATA[
                 <p>ผลภายหลังสัญญาสิ้นสุด</p>
                 <p style="text-indent: 114px;">เมื่อสัญญาระงับลงไม่ว่าด้วยเหตุใดก็ตาม ผู้ให้เช่าและผู้เช่าตกลงกัน ดังนี้</p>
@@ -526,10 +539,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_17" model="agreement.clause">
         <field name="name">ข้อ 17</field>
         <field name="sequence">170</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็นผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งรัด</p>
             ]]>
         </field>
@@ -538,10 +551,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_18" model="agreement.clause">
         <field name="name">ข้อ 18</field>
         <field name="sequence">180</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>การไม่ใช้สิทธิของคู่สัญญาฝ่ายหนึ่งฝ่ายใดในการบังคับคู่สัญญาอีกฝ่ายหนึ่งสำหรับการที่ไม่ปฏิบัติหรือการละเมิดข้อตกลงตามสัญญาฉบับนี้ ไม่ถือว่าคู่สัญญาฝ่ายนั้นได้สละหรือยกเลิกสิทธิ ข้อตกลง หรือเงื่อนไขของตนเป็นการถาวร นอกจากนี้ การที่ผู้ให้เช่ายินยอมให้ผู้เช่ากระทำการ หรือละเว้นกระทำการใดซึ่งขัดต่อข้อตกลงในหนังสือสัญญาฉบับนี้ ให้ถือว่าเป็นการยินยอมเฉพาะกรณี และไม่มีผลต่อการกระทำใด ๆ ที่เกิดขึ้นในภายหลัง</p>
             ]]>
         </field>
@@ -550,10 +563,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_19" model="agreement.clause">
         <field name="name">ข้อ 19</field>
         <field name="sequence">190</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ในกรณีที่ส่วนหนึ่งส่วนใดของสัญญาเช่าฉบับนี้ตกเป็นโมฆะหรือไม่อาจใช้บังคับกับบุคคลหรือเหตุการณ์ที่กำหนดไว้ได้ ให้ข้อกำหนดส่วนอื่นๆ ของสัญญาเช่าฉบับนี้หรือการบังคับใช้สัญญานี้ต่อบุคคลหรือในเหตุการณ์อื่นๆ นอกเหนือจากส่วนที่ตกเป็นโมฆะดังกล่าว รวมทั้งข้อกำหนดแต่ละข้อของสัญญาเช่าฉบับนี้ในส่วนอื่นๆ ยังคงมีผลสมบูรณ์และสามารถใช้บังคับได้ตราบเท่าที่ไม่ขัดต่อบทบัญญัติแห่งกฎหมาย</p>
             ]]>
         </field>
@@ -562,10 +575,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_20" model="agreement.clause">
         <field name="name">ข้อ 20</field>
         <field name="sequence">200</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าจำต้องสงวนทรัพย์สินที่เช่านั้นเสมอกับวิญญูชนจะพึงสงวนทรัพย์สินของตน และต้องบำรุงรักษาทั้งทำการซ่อมแซมด้วย นอกจากนี้ผู้เช่ายังต้องรับผิดชอบในความเสียหายหรือบุบสลายใดๆ อันเกิดขึ้นแก่ทรัพย์สินที่เช่าเพราะความผิดของผู้เช่าหรือบริวารของผู้เช่าอีกด้วย</p>
             ]]>
         </field>
@@ -574,10 +587,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_21" model="agreement.clause">
         <field name="name">ข้อ 21</field>
         <field name="sequence">210</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>หากทรัพย์สินที่เช่าชำรุดทรุดโทรมจำเป็นต้องรับการซ่อมแซมทรัพย์สินที่เช่าตามคำแนะนำของผู้ให้เช่า ผู้ให้เช่าจะแจ้งเป็นหนังสือแก่ผู้เช่า และผู้เช่าต้องจัดการซ่อมแซมทรัพย์สินที่เช่าตามคำแนะนำของผู้ให้เช่า ภายในระยะเวลาที่กำหนดแต่ไม่เกิน 30 วัน นับแต่วันที่ได้รับบอกกล่าว โดยผู้เช่าเป็นผู้ออกค่าใช้จ่ายทั้งหมด</p>
             ]]>
         </field>
@@ -586,10 +599,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_22" model="agreement.clause">
         <field name="name">ข้อ 22</field>
         <field name="sequence">220</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>ผู้เช่าตกลงว่าจะไม่นำสัญญาเช่านี้ไปเป็นหลักประกันการกู้ยืมหรือหนี้ใดๆ หรือก่อภาระผูกพันใดๆ กับบุคคลภายนอกโดยเด็ดขาด</p>
             ]]>
         </field>
@@ -598,10 +611,10 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
     <record id="agreement_clause_4use_v2_23" model="agreement.clause">
         <field name="name">ข้อ 23</field>
         <field name="sequence">230</field>
-        <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
-        <field name="section_id" ref="acm_odoo_lite.agreement_section_4use_v2_2"/>
-        <field name="content" type="html">
-            <![CDATA[ 
+        <field name="agreement_id" ref="agreement_rental_4use_v2"/>
+        <field name="section_id" ref="agreement_section_4use_v2_2"/>
+        <field name="content">
+            <![CDATA[
                 <p>บรรดาหนังสือหรือคำบอกกล่าวใดๆ ที่ผู้ให้เช่ามีไปถึงผู้เช่า ตามที่อยู่ที่ผู้เช่าให้ไว้ในสัญญานี้ไม่ว่าผู้เช่าจะได้รับหรือไม่เพียงใดผู้เช่าตกลงให้ถือว่าผู้เช่าได้รับหนังสือหรือคำบอกกล่าวโดยชอบแล้ว</p>
                 <p style="text-indent: 114px;">หากผู้เช่ามีการเปลี่ยนแปลง หรือย้ายที่อยู่นอกจากที่ปรากฎตามที่ระบุไว้ในสัญญา ผู้เช่าจะต้องแจ้งให้ผู้ให้เช่าทราบเป็นลายลักษณ์อักษรภายใน 15 วัน นับแต่วันเปลี่ยนแปลง</p>
             ]]>
