@@ -756,7 +756,7 @@
                 <p style="text-align: center;">
                     % for line in object.agreement_id.rent_product_id.group_id.market_zone_map_ids:
                     % if line.has_map(object.agreement_id.rent_product_id.lock_number):
-                        <img style="width:90%;" src="data:image/jpeg;base64,${line.map.decode('ascii') or ''}" alt="Market Zone Map">
+                        <img style="width:85%;" src="data:image/jpeg;base64,${line.map.decode('ascii') or ''}" alt="Market Zone Map">
                     % endif
                     % endfor
                 </p>
