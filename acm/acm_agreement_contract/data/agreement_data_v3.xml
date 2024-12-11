@@ -536,166 +536,182 @@
                     <p class="text-center"><b style="text-decoration-thickness: 1px; font-size:28px;">เอกสารแนบท้ายสัญญา ก.<br>เงื่อนไขการเช่าของพื้นที่เช่า${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} เลขที่พื้นที่เช่า ${object.agreement_id.rent_product_id.lock_number or '&nbsp;&nbsp;&nbsp;'} โซน ${object.agreement_id.rent_product_id.group_id.description or '&nbsp;&nbsp;&nbsp;'}</b></p>
                     <p class="text-right"><b>เลขที่สัญญา</b> ${object.agreement_id.code or '&nbsp;&nbsp;&nbsp;'}</p>
                     <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>1.</b>
-                    </div>
-                    <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
-                    <b>ชื่อผู้เช่า (นิติบุคคล)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.name or '-'}
-                    </div>
-                    <div class="col-5">
-                    <b>เลขทะเบียนนิติบุคคล</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.vat or '-'}
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>2.</b>
-                    </div>
-                    <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
-                    <b>ชื่อผู้เช่า (บุคคลธรรมดา)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.name or '-'}
-                    </div>
-                    <div class="col-5">
-                    <b>เลขประจำตัวประชาชน</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.vat or '-'}
-                    </div>
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>1.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้เช่า (นิติบุคคล)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-5">
+                            <b>เลขทะเบียนนิติบุคคล</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'company' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>3.</b>
-                    </div>
-                    <div class="col-2" style="padding-left: 0px;">
-                    <b>ที่อยู่</b>
-                    </div>
-                    <div class="col-9">
-                    ${(object.agreement_id.partner_id.street or object.agreement_id.partner_id.street2 or object.agreement_id.partner_id.zip) and '%s %s %s' % (object.agreement_id.partner_id.street or '', object.agreement_id.partner_id.street2 or '', object.agreement_id.partner_id.zip or '') or '-'}
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>4.</b>
-                    </div>
-                    <div class="col-2" style="padding-left: 0px;padding-right: 0px;">
-                    <b>เบอร์ติดต่อ</b>
-                    </div>
-                    <div class="col-9">
-                    ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '-'}
-                    </div>
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>2.</b>
+                        </div>
+                        <div class="col-6" style="padding-left: 0px;padding-right: 0px;">
+                            <b>ชื่อผู้เช่า (บุคคลธรรมดา)</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.name or '-'}
+                        </div>
+                        <div class="col-5">
+                            <b>เลขประจำตัวประชาชน</b>&nbsp;&nbsp;${object.agreement_id.partner_id.company_type == 'person' and object.agreement_id.partner_id.vat or '-'}
+                        </div>
                     </div>
                     <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>5.</b>
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>3.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;">
+                            <b>ที่อยู่</b>
+                        </div>
+                        <div class="col-9">
+                            ${(object.agreement_id.partner_id.street or object.agreement_id.partner_id.street2 or object.agreement_id.partner_id.zip) and '%s %s %s' % (object.agreement_id.partner_id.street or '', object.agreement_id.partner_id.street2 or '', object.agreement_id.partner_id.zip or '') or '-'}
+                        </div>
                     </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>4.</b>
+                        </div>
+                        <div class="col-2" style="padding-left: 0px;padding-right: 0px;">
+                            <b>เบอร์ติดต่อ</b>
+                        </div>
+                        <div class="col-9">
+                            ${object.agreement_id.partner_id.phone or object.agreement_id.partner_id.mobile or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>5.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <div class="row">
+                                <div class="col-12">
+                                    <b>ประเภทธุรกิจ/กิจการ</b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- ชื่อกิจการ
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.business_name or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    หมวดสินค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.goods_category_id.name or '-'}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- จำหน่ายสินค้าประเภท
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ${object.agreement_id.goods_type or '-'}
+                                </div>
+                                <div class="col-3" style="padding-right: 0px;">
+                                    ช่วงเวลาประกอบการค้า
+                                </div>
+                                <div class="col-3">
+                                    ${object.agreement_id.rent_product_id.attribute_value_ids and ', '.join(object.agreement_id.rent_product_id.attribute_value_ids.mapped('name')) or object.agreement_id.rent_product_id.working_hours_id.working_hours or '-'}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>6.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <div class="row">
+                                <div class="col-2">
+                                    <b>ทรัพย์สินที่เช่า</b>
+                                </div>
+                                <div class="col-10">
+                                    <b>อาคาร${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} ${object.agreement_id.company_id.market_address or '&nbsp;&nbsp;&nbsp;'}</b>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- เลขที่พื้นที่เช่า<br>
+                                </div>
+                                <div class="col-8" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่เช่า (กว้าง x ยาว)
+                                </div>
+                                <div class="col-8" style="padding-right: 0px;">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>7.</b>
+                        </div>
+                        <div class="col-11" style="padding-left: 0px;">
+                            <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>8.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาการเช่า</b>
+                        </div>
+                        <div class="col-7">
+                            ${object.agreement_id.get_rental_period(object.agreement_id.start_date, object.agreement_id.end_date) or '-'} (วันที่ ${object.agreement_id.start_date and '%s %s %s' % (object.agreement_id.start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.start_date.strftime('%m')), (object.agreement_id.start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.end_date and '%s %s %s' % (object.agreement_id.end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.end_date.strftime('%m')), (object.agreement_id.end_date + relativedelta(years=543)).strftime('%Y')) or '-'})
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>9.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันส่งมอบพื้นที่เช่า</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_area_delivery_date and '%s %s %s' % (object.agreement_id.rental_area_delivery_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_area_delivery_date.strftime('%m')), (object.agreement_id.rental_area_delivery_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>10.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>ระยะเวลาปลอดค่าเช่า</b>
+                        </div>
+                        <div class="col-7">
+                            วันที่ ${object.agreement_id.rental_free_start_date and '%s %s %s' % (object.agreement_id.rental_free_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_start_date.strftime('%m')), (object.agreement_id.rental_free_start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.rental_free_end_date and '%s %s %s' % (object.agreement_id.rental_free_end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_end_date.strftime('%m')), (object.agreement_id.rental_free_end_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>11.</b>
+                        </div>
+                        <div class="col-4" style="padding-left: 0px;">
+                            <b>วันเริ่มต้นชำระค่าเช่า</b>
+                        </div>
+                        <div class="col-7">
+                            % set rent_start_date = object.agreement_id.rental_free_end_date and object.agreement_id.rental_free_end_date + relativedelta(days=+1) or object.agreement_id.start_date
+                            วันที่ ${rent_start_date and '%s %s %s' % (rent_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(rent_start_date.strftime('%m')), (rent_start_date + relativedelta(years=543)).strftime('%Y')) or '-'}
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 10px;">
+                        <div class="col-1" style="padding-right: 0px;">
+                            <b>12.</b>
+                        </div>
                     <div class="col-11" style="padding-left: 0px;">
-                    <div class="row">
-                    <div class="col-12">
-                    <b>ประเภทธุรกิจ/กิจการ</b>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-3" style="padding-right: 0px;">
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ชื่อกิจการ
-                    </div>
-                    <div class="col-3" style="padding-right: 0px;">
-                    ${object.agreement_id.business_name or '-'}
-                    </div>
-                    <div class="col-3" style="padding-right: 0px;">
-                    หมวดสินค้า
-                    </div>
-                    <div class="col-3">
-                    ${object.agreement_id.goods_category_id.name or '-'}
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-3" style="padding-right: 0px;">
-                    &nbsp;&nbsp;&nbsp;&nbsp;- จำหน่ายสินค้าประเภท
-                    </div>
-                    <div class="col-3" style="padding-right: 0px;">
-                    ${object.agreement_id.goods_type or '-'}
-                    </div>
-                    <div class="col-3" style="padding-right: 0px;">
-                    ช่วงเวลาประกอบการค้า
-                    </div>
-                    <div class="col-3">
-                    ${object.agreement_id.rent_product_id.attribute_value_ids and ', '.join(object.agreement_id.rent_product_id.attribute_value_ids.mapped('name')) or object.agreement_id.rent_product_id.working_hours_id.working_hours or '-'}
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>6.</b>
-                    </div>
-                    <div class="col-4" style="padding-left: 0px;">
-                    <b>ทรัพย์สินที่เช่า</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- เลขที่พื้นที่เช่า<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- ขนาดพื้นที่เช่า (กว้าง x ยาว)
-                    </div>
-                    <div class="col-7">
-                    <p style="margin-left: -190px;"><b>อาคาร${object.agreement_id.company_id.market_name or '&nbsp;&nbsp;&nbsp;'} ${object.agreement_id.company_id.market_address or '&nbsp;&nbsp;&nbsp;'}</b></p><br>
-                    ${object.agreement_id.rent_product_id.lock_number or '-'} โซน ${object.agreement_id.rent_product_id.group_id.description or '-'}<br>
-                    ${object.agreement_id.rent_product_id.width and '{0:,.2f}'.format(object.agreement_id.rent_product_id.width) or '-'} เมตร x ${object.agreement_id.rent_product_id.length1 and '{0:,.2f}'.format(object.agreement_id.rent_product_id.length1) or '-'} เมตร (${object.agreement_id.rent_product_id.area and '{0:,.2f}'.format(object.agreement_id.rent_product_id.area) or '-'} ตารางเมตร)
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>7.</b>
-                    </div>
-                    <div class="col-11" style="padding-left: 0px;">
-                    <b>ผู้เช่าต้องตั้งวางวัสดุหรือสินค้าในแต่ละพื้นที่เช่าโดยมีน้ำหนัก</b> ไม่มากกว่า 150 กิโลกรัมต่อตารางเมตร
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>8.</b>
-                    </div>
-                    <div class="col-4" style="padding-left: 0px;">
-                    <b>ระยะเวลาการเช่า</b>
-                    </div>
-                    <div class="col-7">
-                    ${object.agreement_id.get_rental_period(object.agreement_id.start_date, object.agreement_id.end_date) or '-'} (วันที่ ${object.agreement_id.start_date and '%s %s %s' % (object.agreement_id.start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.start_date.strftime('%m')), (object.agreement_id.start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.end_date and '%s %s %s' % (object.agreement_id.end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.end_date.strftime('%m')), (object.agreement_id.end_date + relativedelta(years=543)).strftime('%Y')) or '-'})
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>9.</b>
-                    </div>
-                    <div class="col-4" style="padding-left: 0px;">
-                    <b>วันส่งมอบพื้นที่เช่า</b>
-                    </div>
-                    <div class="col-7">
-                    วันที่ ${object.agreement_id.rental_area_delivery_date and '%s %s %s' % (object.agreement_id.rental_area_delivery_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_area_delivery_date.strftime('%m')), (object.agreement_id.rental_area_delivery_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>10.</b>
-                    </div>
-                    <div class="col-4" style="padding-left: 0px;">
-                    <b>ระยะเวลาปลอดค่าเช่า</b>
-                    </div>
-                    <div class="col-7">
-                    วันที่ ${object.agreement_id.rental_free_start_date and '%s %s %s' % (object.agreement_id.rental_free_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_start_date.strftime('%m')), (object.agreement_id.rental_free_start_date + relativedelta(years=543)).strftime('%Y')) or '-'} ถึงวันที่ ${object.agreement_id.rental_free_end_date and '%s %s %s' % (object.agreement_id.rental_free_end_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(object.agreement_id.rental_free_end_date.strftime('%m')), (object.agreement_id.rental_free_end_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>11.</b>
-                    </div>
-                    <div class="col-4" style="padding-left: 0px;">
-                    <b>วันเริ่มต้นชำระค่าเช่า</b>
-                    </div>
-                    <div class="col-7">
-                    % set rent_start_date = object.agreement_id.rental_free_end_date and object.agreement_id.rental_free_end_date + relativedelta(days=+1) or object.agreement_id.start_date
-                    วันที่ ${rent_start_date and '%s %s %s' % (rent_start_date.strftime('%d').lstrip('0'), object.agreement_id.trans_months(rent_start_date.strftime('%m')), (rent_start_date + relativedelta(years=543)).strftime('%Y')) or '-'}
-                    </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 10px;">
-                    <div class="col-1" style="padding-right: 0px;">
-                    <b>12.</b>
-                    </div>
-                    <div class="col-11" style="padding-left: 0px;">
-                    <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
+                        <b>ค่าตอบแทน/ค่าเช่า/ค่าบริการ</b><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;- ค่าตอบแทนการให้เช่า จำนวน ${object.agreement_id.filter_lines(value_type='lump_sum_rent') and '{0:,.2f}'.format(sum(object.agreement_id.filter_lines(value_type='lump_sum_rent').mapped('total_price'))) + ' บาท แบ่งจ่ายดังนี้' or ' - บาท'}
                     <div>
-                    % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
+                        % for line in object.agreement_id.filter_lines(value_type='lump_sum_rent').sorted('date_start'):
                     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;งวดที่ ${loop.index} วันที่ ${line.date_start and '%s %s %s' % (line.date_start.strftime('%d').lstrip('0'), line.agreement_id.trans_months(line.date_start.strftime('%m')), (line.date_start + relativedelta(years=543)).strftime('%Y')) or '-'} จำนวน ${line.total_price and '{0:,.2f}'.format(line.total_price) or '-'} บาท</div>
                     %endfor
                     </div>
@@ -756,7 +772,7 @@
                 <p style="text-align: center;">
                     % for line in object.agreement_id.rent_product_id.group_id.market_zone_map_ids:
                     % if line.has_map(object.agreement_id.rent_product_id.lock_number):
-                        <img style="width:90%;" src="data:image/jpeg;base64,${line.map.decode('ascii') or ''}" alt="Market Zone Map">
+                        <img style="width:85%;" src="data:image/jpeg;base64,${line.map.decode('ascii') or ''}" alt="Market Zone Map">
                     % endif
                     % endfor
                 </p>
