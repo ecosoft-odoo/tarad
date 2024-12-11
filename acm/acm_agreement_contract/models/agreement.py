@@ -508,25 +508,25 @@ class Agreement(models.Model):
             if not rec.rent_product_id:
                 raise UserError(_('Please add rental product.'))
             # Rental product not duplicated with other agreement in same date
-            Range = namedtuple('Range', ['start', 'end'])
-            agreements = self.env['agreement'].search(
-                [('state', '=', 'active'),
-                 ('rent_product_id.group_id', '=', rec.rent_product_id.group_id.id),
-                 ('rent_product_id.subzone', '=', rec.rent_product_id.subzone),
-                 ('rent_product_id.lock_number', '=', rec.rent_product_id.lock_number),
-                 # no check for transfer agreement case
-                 ('is_transfer', '=', False), ])
-            for agreement in agreements:
-                r1 = Range(start=agreement.start_date, end=agreement.end_date)
-                r2 = Range(start=rec.start_date, end=rec.end_date)
-                latest_start = max(r1.start, r2.start)
-                earliest_end = min(r1.end, r2.end)
-                delta = (earliest_end - latest_start).days + 1
-                overlap = max(0, delta)
-                if overlap:
-                    raise UserError(
-                        _('The rental product is duplicated in same period '
-                          'with %s' % (agreement.name, )))
+            # Range = namedtuple('Range', ['start', 'end'])
+            # agreements = self.env['agreement'].search(
+            #     [('state', '=', 'active'),
+            #      ('rent_product_id.group_id', '=', rec.rent_product_id.group_id.id),
+            #      ('rent_product_id.subzone', '=', rec.rent_product_id.subzone),
+            #      ('rent_product_id.lock_number', '=', rec.rent_product_id.lock_number),
+            #      # no check for transfer agreement case
+            #      ('is_transfer', '=', False), ])
+            # for agreement in agreements:
+            #     r1 = Range(start=agreement.start_date, end=agreement.end_date)
+            #     r2 = Range(start=rec.start_date, end=rec.end_date)
+            #     latest_start = max(r1.start, r2.start)
+            #     earliest_end = min(r1.end, r2.end)
+            #     delta = (earliest_end - latest_start).days + 1
+            #     overlap = max(0, delta)
+            #     if overlap:
+            #         raise UserError(
+            #             _('The rental product is duplicated in same period '
+            #               'with %s' % (agreement.name, )))
         return True
 
     @api.model
