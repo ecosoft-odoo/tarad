@@ -664,9 +664,9 @@ class Agreement(models.Model):
                 ('contract_id', 'in', contract.ids),
                 ('state', '!=', 'cancel')])
             # Update product date
-            if rec.state == 'active' and invoices:
+            # if rec.state == 'active' and invoices:
                 # Agreement must be status active and must have at least 1 invoice
-                rec._update_product_date()
+            #    rec._update_product_date()
             contract.write({'active': False, })
             rec.write({'state': 'inactive',
                        'inactive_date': date.today()})
