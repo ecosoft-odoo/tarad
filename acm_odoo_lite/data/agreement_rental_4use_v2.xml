@@ -61,7 +61,7 @@
                 <br>
                 <div style="page-break-inside: avoid !important;">
                     <div class="row justify-content-center">
-                        <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้ให้เช่า<br>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )</div>
+                        <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้ให้เช่า<br>( นางสาวปิยะดา เลาหวัฒน์ )</div>
                         <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้เช่า<br>( ${object.agreement_id.partner_id and object.agreement_id.partner_id.name or '.....................................................'} )</div>
                     </div>
                     <br>
@@ -75,8 +75,9 @@
         </field>
     </record>
 
-    <record id="agreement_section_4use_v2_4" model="agreement.section">
+    <record id="agreement_appendix_4use_v2_1" model="agreement.appendix">
         <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินเพื่อทำประโยชน์</field>
+        <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินเพื่อทำประโยชน์</field>
         <field name="sequence">40</field>
         <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
         <field name="content" type="html">
@@ -84,7 +85,7 @@
                 <thead>
                     <tr>
                         <th colspan="3" style="text-align:center;">
-                            เอกสารแนบท้ายสัญญารายละเอียดและเงื่อนไขการเช่า<br/>${object.agreement_id.lessor_id.name or '&#160;&#160;&#160;'} หมายเลข ${object.agreement_id.code or '&#160;&#160;&#160;'}
+                            สัญญาเช่าที่ดินเพื่อทำประโยชน์<br/>เอกสารแนบท้ายสัญญา ก. รายละเอียดและเงื่อนไขการเช่าพื้นที่<br/>${object.agreement_id.lessor_id.name or '&#160;&#160;&#160;'} หมายเลข ${object.agreement_id.code or '&#160;&#160;&#160;'}
                         </th>
                     </tr>
                 </thead>
@@ -209,12 +210,36 @@
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
                         <td style="border : 1px solid black; padding: 5px;">การชำระค่าเช่ารายเดือน</td>
-                        <td style="border : 1px solid black; padding: 5px;">ชำระภายในวันที่ 15 ของทุกเดือน</td>
+                        <td style="border : 1px solid black; padding: 5px;">
+                            % if object.agreement_id.payment_type == 'installment':
+                                % if object.agreement_id.recurring_rule_type == 'monthly':
+                                    ชำระภายในวันที่ ${object.agreement_id.payment_every_days or '-'} ของทุกเดือน
+                                % endif
+                                % if object.agreement_id.recurring_rule_type == 'yearly':
+                                    -
+                                % endif
+                            % endif
+                            % if object.agreement_id.payment_type == 'full_paid':
+                                -
+                            % endif
+                        </td>
                     </tr>
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
                         <td style="border : 1px solid black; padding: 5px;">การชำระค่าเช่ารายปี</td>
-                        <td style="border : 1px solid black; padding: 5px;">ชำระภายในวันที่ 15 เดือนธันวาคม ของทุกงวด</td>
+                        <td style="border : 1px solid black; padding: 5px;">
+                            % if object.agreement_id.payment_type == 'installment':
+                                % if object.agreement_id.recurring_rule_type == 'yearly':
+                                    ชำระภายในวันที่ ${object.agreement_id.payment_every_days or '-'} เดือน${object.agreement_id.trans_months(object.agreement_id.payment_every_months) or '-'} ของทุกงวด
+                                % endif
+                                % if object.agreement_id.recurring_rule_type == 'monthly':
+                                    -
+                                % endif
+                            % endif
+                            % if object.agreement_id.payment_type == 'full_paid':
+                                -
+                            % endif
+                        </td>
                     </tr>
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
@@ -244,7 +269,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
                             <br/>
                             <br/>
                             <div style="display: inline-block;margin-right: 40px;">
-                                ลงชื่อ.....................................................ผู้ให้เช่า<br/>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )
+                                ลงชื่อ.....................................................ผู้ให้เช่า<br/>( นางสาวปิยะดา เลาหวัฒน์ )
                             </div>
                             <div style="display: inline-block;margin-left: 40px;">
                                 ลงชื่อ.....................................................ผู้เช่า<br/>( ${object.agreement_id.partner_id and  object.agreement_id.partner_id.name or '.....................................................'} )
@@ -256,8 +281,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         </field>
     </record>
 
-    <record id="agreement_section_4use_v2_5" model="agreement.section">
+    <record id="agreement_appendix_4use_v2_2" model="agreement.appendix">
         <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินเพื่อทำประโยชน์ (แผนผังโฉนดที่ดิน)</field>
+        <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินเพื่อทำประโยชน์ (แผนผังโฉนดที่ดิน)</field>
         <field name="sequence">50</field>
         <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_4use_v2"/>
         <field name="content" type="html">
@@ -285,7 +311,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
                                         <br/>
                                         <br/>
                                         <div style="display: inline-block;margin-right: 40px;">
-                                            ลงชื่อ.....................................................ผู้ให้เช่า<br/>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )
+                                            ลงชื่อ.....................................................ผู้ให้เช่า<br/>( นางสาวปิยะดา เลาหวัฒน์ )
                                         </div>
                                         <div style="display: inline-block;margin-left: 40px;">
                                             ลงชื่อ.....................................................ผู้เช่า<br/>( ${object.agreement_id.partner_id and  object.agreement_id.partner_id.name or '.....................................................'} )
@@ -408,8 +434,8 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         <field name="content">
             <![CDATA[
                 <p>การชำระค่าเช่า ค่าตอบแทน และค่าบริการ</p>
-                <p style="text-indent: 114px;">ผู้เช่าต้องชำระค่าเช่า ค่าตอบแทน ค่าบริการตามข้อ 1. ภายในวันที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. ณ สำนักงานของผู้ให้เช่าในวัน และเวลาทำการ หรือชำระด้วยวิธีการใดๆ ที่ผู้ให้เช่ากำหนดเพิ่มเติม หากวันครบกำหนดชำระเงินข้างต้นตรงกับวันหยุดทำการของสำนักงานของผู้ให้เช่า ผู้เช่าตกลงชำระก่อนวันดังกล่าวไม่น้อยกว่า 1 (หนึ่ง) วัน</p>
-                <p style="text-indent: 114px;">กรณีผู้เช่าได้ชำระค่าบริการสาธารณูปโภค ( หากมี ) เช่น ค่าไฟฟ้า ค่ำน้ำประปา ค่าโทรศัพท์ เป็นต้นต่อหน่วยงานที่ให้บริการแล้ว ผู้เช่าต้องแสดงหลักฐานการชำระค่าบริการสาธารณูปโภคว่าไม่มีหนี้ค้างชำระต่อผู้ให้เช่าเมื่อสิ้นสุดการเช่า</p>
+                <p style="text-indent: 114px;">8.1 ผู้เช่าต้องชำระค่าเช่า ค่าตอบแทน ค่าบริการตามข้อ 1. ภายในวันที่ผู้ให้เช่ากำหนด โดยเงื่อนไขให้เป็นไปตามเอกสารแนบท้ายสัญญา ก. ณ สำนักงานของผู้ให้เช่าในวัน และเวลาทำการ หรือชำระด้วยวิธีการใดๆ ที่ผู้ให้เช่ากำหนดเพิ่มเติม หากวันครบกำหนดชำระเงินข้างต้นตรงกับวันหยุดทำการของสำนักงานของผู้ให้เช่า ผู้เช่าตกลงชำระก่อนวันดังกล่าวไม่น้อยกว่า 1 (หนึ่ง) วัน</p>
+                <p style="text-indent: 114px;">8.2 กรณีผู้เช่าได้ชำระค่าบริการสาธารณูปโภค ( หากมี ) เช่น ค่าไฟฟ้า ค่ำน้ำประปา ค่าโทรศัพท์ เป็นต้นต่อหน่วยงานที่ให้บริการแล้ว ผู้เช่าต้องแสดงหลักฐานการชำระค่าบริการสาธารณูปโภคว่าไม่มีหนี้ค้างชำระต่อผู้ให้เช่าเมื่อสิ้นสุดการเช่า</p>
             ]]>
         </field>
     </record>
@@ -543,7 +569,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         <field name="section_id" ref="agreement_section_4use_v2_2"/>
         <field name="content">
             <![CDATA[
-                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็นผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งรัด</p>
+                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็นผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งครัด</p>
             ]]>
         </field>
     </record>
@@ -604,6 +630,12 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         <field name="content">
             <![CDATA[
                 <p>ผู้เช่าตกลงว่าจะไม่นำสัญญาเช่านี้ไปเป็นหลักประกันการกู้ยืมหรือหนี้ใดๆ หรือก่อภาระผูกพันใดๆ กับบุคคลภายนอกโดยเด็ดขาด</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             ]]>
         </field>
     </record>

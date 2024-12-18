@@ -61,7 +61,7 @@
                 <br>
                 <div style="page-break-inside: avoid !important;">
                     <div class="row justify-content-center">
-                        <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้ให้เช่า<br>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )</div>
+                        <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้ให้เช่า<br>( นางสาวปิยะดา เลาหวัฒน์ )</div>
                         <div class="col-6" style="text-align:center;text-indent:0px;">ลงชื่อ.....................................................ผู้เช่า<br>( ${object.agreement_id.partner_id and object.agreement_id.partner_id.name or '.....................................................'} )</div>
                     </div>
                     <br>
@@ -75,8 +75,9 @@
         </field>
     </record>
 
-    <record id="agreement_section_land_v2_4" model="agreement.section">
+    <record id="agreement_appendix_land_v2_1" model="agreement.appendix">
         <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินและสิ่งปลูกสร้าง</field>
+        <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินและสิ่งปลูกสร้าง</field>
         <field name="sequence">40</field>
         <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_land_v2"/>
         <field name="content" type="html">
@@ -84,7 +85,7 @@
                 <thead>
                     <tr>
                         <th colspan="3" style="text-align:center;">
-                            เอกสารแนบท้ายสัญญา ก. รายละเอียดและเงื่อนไขการเช่าพื้นที่<br/>${object.agreement_id.lessor_id.name or '&#160;&#160;&#160;'} หมายเลข ${object.agreement_id.code or '&#160;&#160;&#160;'}
+                            สัญญาเช่าที่ดินและสิ่งปลูกสร้าง<br/>เอกสารแนบท้ายสัญญา ก. รายละเอียดและเงื่อนไขการเช่าพื้นที่<br/>${object.agreement_id.lessor_id.name or '&#160;&#160;&#160;'} หมายเลข ${object.agreement_id.code or '&#160;&#160;&#160;'}
                         </th>
                     </tr>
                 </thead>
@@ -209,12 +210,43 @@
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
                         <td style="border : 1px solid black; padding: 5px;">การชำระค่าเช่ารายเดือน</td>
-                        <td style="border : 1px solid black; padding: 5px;">ชำระภายในวันที่ 15 ของทุกเดือน</td>
+                        <td style="border : 1px solid black; padding: 5px;">
+                            % if object.agreement_id.payment_type == 'installment':
+                                % if object.agreement_id.recurring_rule_type == 'monthly':
+                                    ชำระภายในวันที่ ${object.agreement_id.payment_every_days or '-'} ของทุกเดือน
+                                % endif
+                                % if object.agreement_id.recurring_rule_type == 'yearly':
+                                    -
+                                % endif
+                            % endif
+                            % if object.agreement_id.payment_type == 'full_paid':
+                                -
+                            % endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border : 1px solid black; padding: 5px;"></td>
+                        <td style="border : 1px solid black; padding: 5px;">การชำระค่าเช่ารายปี</td>
+                        <td style="border : 1px solid black; padding: 5px;">
+                            % if object.agreement_id.payment_type == 'installment':
+                                % if object.agreement_id.recurring_rule_type == 'yearly':
+                                    ชำระภายในวันที่ ${object.agreement_id.payment_every_days or '-'} เดือน${object.agreement_id.trans_months(object.agreement_id.payment_every_months) or '-'} ของทุกงวด
+                                % endif
+                                % if object.agreement_id.recurring_rule_type == 'monthly':
+                                    -
+                                % endif
+                            % endif
+                            % if object.agreement_id.payment_type == 'full_paid':
+                                -
+                            % endif
+                        </td>
                     </tr>
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
                         <td style="border : 1px solid black; padding: 5px;">การชำระค่าสาธารณูปโภค (น้ำ/ไฟฟ้า)</td>
-                        <td style="border : 1px solid black; padding: 5px;">ชำระภายในวันที่ 15 ของเดือนถัดไป (หากมี)</td>
+                        <td style="border : 1px solid black; padding: 5px;">
+                            ชำระภายในวันที่ ${object.agreement_id.payment_every_days or '-'} ของเดือนถัดไป (หากมี)
+                        </td>
                     </tr>
                     <tr>
                         <td style="border : 1px solid black; padding: 5px;"></td>
@@ -256,7 +288,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
                             <br/>
                             <br/>
                             <div style="display: inline-block;margin-right: 40px;">
-                                ลงชื่อ.....................................................ผู้ให้เช่า<br/>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )
+                                ลงชื่อ.....................................................ผู้ให้เช่า<br/>( นางสาวปิยะดา เลาหวัฒน์ )
                             </div>
                             <div style="display: inline-block;margin-left: 40px;">
                                 ลงชื่อ.....................................................ผู้เช่า<br/>( ${object.agreement_id.partner_id and  object.agreement_id.partner_id.name or '.....................................................'} )
@@ -268,8 +300,9 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         </field>
     </record>
 
-    <record id="agreement_section_land_v2_5" model="agreement.section">
+    <record id="agreement_appendix_land_v2_2" model="agreement.appendix">
         <field name="name">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินและสิ่งปลูกสร้าง (แผนผังโฉนดที่ดิน)</field>
+        <field name="title">เอกสารแนบท้ายสัญญาเงื่อนไขการเช่า สัญญาเช่าที่ดินและสิ่งปลูกสร้าง (แผนผังโฉนดที่ดิน)</field>
         <field name="sequence">50</field>
         <field name="agreement_id" ref="acm_odoo_lite.agreement_rental_land_v2"/>
         <field name="content" type="html">
@@ -297,7 +330,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
                                         <br/>
                                         <br/>
                                         <div style="display: inline-block;margin-right: 40px;">
-                                            ลงชื่อ.....................................................ผู้ให้เช่า<br/>( ${object.agreement_id.lessor_id and object.agreement_id.lessor_id.name or '.....................................................'} )
+                                            ลงชื่อ.....................................................ผู้ให้เช่า<br/>( นางสาวปิยะดา เลาหวัฒน์ )
                                         </div>
                                         <div style="display: inline-block;margin-left: 40px;">
                                             ลงชื่อ.....................................................ผู้เช่า<br/>( ${object.agreement_id.partner_id and  object.agreement_id.partner_id.name or '.....................................................'} )
@@ -660,7 +693,7 @@ ${object.agreement_id.filter_lines(value_type='security_deposit') and '{0:,.2f}'
         <field name="section_id" ref="acm_odoo_lite.agreement_section_land_v2_2"/>
         <field name="content">
             <![CDATA[
-                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็น ผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งรัด</p>
+                <p>หากมีปัญหาเกิดขึ้นเกี่ยวกับการวินิจฉัยหรือตีความในสัญญาเช่านี้ ผู้เช่าตกลงให้ผู้ให้เช่าเป็น ผู้วินิจฉัยชี้ขาด และผู้เช่าตกลงยอมรับและปฏิบัติตามคำวินิจฉัยดังกล่าวอย่างเคร่งครัด</p>
             ]]>
         </field>
     </record>
