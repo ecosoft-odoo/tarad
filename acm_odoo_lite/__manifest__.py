@@ -13,6 +13,8 @@
         "data/agreement_data.xml",
         "data/agreement_sections_data.xml",
         "data/agreement_clauses_data.xml",
+        "data/agreement_rental_4use_v2.xml",
+        "data/agreement_rental_land_v2.xml",
         "views/account_analytic_account_views.xml",
         "views/agreement_views.xml",
         "views/agreement_income_type_views.xml",
