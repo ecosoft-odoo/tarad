@@ -1,0 +1,10 @@
+<odoo noupdate="1">
+    <record id="minimum_electric_amount" model="ir.config_parameter">
+        <field name="key">minimum.electric.amount</field>
+        <field name="value">0.0</field>
+    </record>
+    <record id="minimum_water_amount" model="ir.config_parameter">
+        <field name="key">minimum.water.amount</field>
+        <field name="value">0.0</field>
+    </record>
+</odoo>
