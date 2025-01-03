@@ -67,6 +67,7 @@
         'acm_agreement_contract/report/report_appendix.xml',
         # acm_batch_invoice
         'acm_batch_invoice/data/batch_invoice_sequence.xml',
+        'acm_batch_invoice/data/ir_config_parameter_data.xml',
         'acm_batch_invoice/data/date_range.xml',
         'acm_batch_invoice/data/product.xml',
         'acm_batch_invoice/security/ir.model.access.csv',

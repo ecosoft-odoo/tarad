@@ -365,11 +365,19 @@ class ACMBatchInvoiceLine(models.Model):
     def _compute_all_amount(self):
         utility_types = ['water_amount', 'electric_amount',
                          'electric_amount_2', 'flat_rate']
+        param = self.env['ir.config_parameter'].sudo().get_param
+        minimum_electric_amount = float(param('minimum.electric.amount', default=0.0))
+        minimum_water_amount = float(param('minimum.water.amount', default=0.0))
         for rec in self:
             amount_subtotal = 0.0
             for type in utility_types:
                 info = rec._get_utility_info(type)
                 rec[type] = info['quantity'] * info['price_unit']
+                if info['quantity'] > 0:
+                    if type in ['electric_amount', 'electric_amount_2'] and rec[type] < minimum_electric_amount:
+                        rec[type] = minimum_electric_amount
+                    elif type == 'water_amount' and rec[type] < minimum_water_amount:
+                        rec[type] = minimum_water_amount
                 amount_subtotal += rec[type]
             rec.amount_subtotal = amount_subtotal
 
