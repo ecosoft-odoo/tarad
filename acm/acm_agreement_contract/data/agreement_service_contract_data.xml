@@ -1,4 +1,4 @@
-<odoo noupdate="0">
+<odoo noupdate="1">
     <!-- สัญญาให้บริการ V3 -->
     <record id="agreement_service_contract_data" model="agreement">
         <field name="name">สัญญาให้บริการ (V3)</field>
