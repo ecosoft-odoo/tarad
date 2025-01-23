@@ -252,10 +252,10 @@ class AgreementTransfer(models.TransientModel):
         security_deposit = agreements.line_ids.filtered(
             lambda l: l.product_id.value_type == 'security_deposit'
         )
-        if self.amount > security_deposit.total_price:
+        if self.amount > sum(security_deposit.total_price):
             raise UserError(
                 _('Maximum amount is "%d".') %
-                security_deposit.total_price
+                sum(security_deposit.total_price)
             )
         new_agreements = Agreement
         for agreement in agreements:
