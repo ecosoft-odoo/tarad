@@ -209,10 +209,10 @@ class AgreementTerminate(models.TransientModel):
         security_deposit = agreements.line_ids.filtered(
             lambda l: l.product_id.value_type == 'security_deposit'
         )
-        if self.amount > sum(security_deposit.total_price):
+        if self.amount > sum(security_deposit.mapped("total_price")):
             raise UserError(
                 _('Maximum amount is "%d".') %
-                sum(security_deposit.total_price)
+                sum(security_deposit.mapped("total_price"))
             )
         for agreement in agreements:
             agreement._validate_contract_create()
