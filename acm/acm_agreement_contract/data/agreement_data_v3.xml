@@ -1,4 +1,4 @@
-<odoo noupdate="0">
+<odoo noupdate="1">
     <!-- สัญญาเช่า ( V3 ) -->
     <record id="agreement_lease_template_v3" model="agreement">
         <field name="name">สัญญาเช่า (V3)</field>
